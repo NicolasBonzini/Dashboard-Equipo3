@@ -1,0 +1,11 @@
+.sidebar{
+    z-index: 100;
+    border: 1px solid red;
+    margin-right: 0;
+    position:fixed;
+    width: 296px;
+    height: 100vh;
+    top:0;
+    left:0;
+    background-color: aliceblue;
+  }

@@ -9,6 +9,9 @@ import Error404 from './pages/Error404/Error404'
 import ProductList from './pages/products/productList/ProductList';
 import ProductView from './pages/products/productView/ProductView';
 import ProductNew from './pages/products/productNew/ProductNew'
+//Css
+import './assets/styles/sidebar.css';
+
 
 
 function App() {
