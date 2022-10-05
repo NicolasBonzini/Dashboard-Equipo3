@@ -2,7 +2,9 @@ import React from 'react'
 
 function ProductView() {
   return (
-    <div>ProductView</div>
+    <div className='productView'>
+      ProductView
+    </div>
   )
 }
 

@@ -1,8 +1,12 @@
 import React from 'react'
+import ProductView from '../pages/products/productView/ProductView'
 
 function ProductCard() {
   return (
-    <div>ProductCard</div>
+    <div className='productCard'>
+    <h1>ProductCard</h1>
+
+    </div>
   )
 }
 

@@ -1,9 +1,11 @@
 import React from 'react'
-import ProductCard from '../../../components/ProductCard'
+import ProductCard from '../../../components/ProductCard';
+import Header from '../../../components/Header';
 
 function ProductList() {
   return (
-    <div>
+    <div className='productList'>
+      <Header  />
       <ProductCard />
     </div>
   )
