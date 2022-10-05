@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+//React-router
+import { Route, Routes } from 'react-router-dom';
+//Components
+import Home from './pages/home/Home';
+import Sidebar from './components/Sidebar';
+import Error404 from './pages/Error404/Error404'
+import ProductList from './pages/products/productList/ProductList';
+import ProductView from './pages/products/productView/ProductView';
+import ProductNew from './pages/products/productNew/ProductNew'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/product/:id" element={<ProductView />} />
+        <Route path="/products/new" element={<ProductNew />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
     </div>
   );
 }
