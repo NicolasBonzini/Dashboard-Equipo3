@@ -1,13 +1,14 @@
 import React from 'react'
 import ProductCard from '../../../components/ProductCard';
 import Header from '../../../components/Header';
+import ContentContainer from '../../../components/contentContainer';
 
 function ProductList() {
   return (
-    <div className='productList'>
+    <ContentContainer className='productList'>
       <Header  />
       <ProductCard />
-    </div>
+    </ContentContainer>
   )
 }
 

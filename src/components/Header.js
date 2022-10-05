@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
+import '../assets/styles/header.css'
 
-function Header(props) {
+function Header({ children }) {
 
   return (
-    <div className='header'></div>
+    <header className='header'>
+      <i class="fa-solid fa-bars"></i>
+      <div>
+      { children }
+      </div>
+      
+    </header>
   )
 }
 
