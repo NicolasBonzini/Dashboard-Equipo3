@@ -7,7 +7,7 @@ function Header({ children }) {
     <header className='header'>
       <i class="fa-solid fa-bars"></i>
       <div>
-      { children }
+        { children }
       </div>
       
     </header>

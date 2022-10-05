@@ -7,7 +7,7 @@ function Home() {
   return (
     <ContentContainer className='home'>
       <Header>
-        <p>Algo</p>
+        juancito
       </Header>
       <HomeContent />
     </ContentContainer>
