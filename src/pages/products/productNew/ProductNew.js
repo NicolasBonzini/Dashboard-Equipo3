@@ -9,12 +9,12 @@ function ProductNew() {
   return (
     <ContentContainer className='home'>
       <Header>
-        <div>
-          <Link to='/products'>
+        <div className='title textCtn'>
+          <Link className='title products' to='/products'>
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
-          <Link to='/products/new'>Nuevo Producto</Link>
+          <Link className='title' to='/products/new'>Nuevo Producto</Link>
         </div>
       </Header>
       <HomeContent />

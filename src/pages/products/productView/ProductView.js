@@ -12,14 +12,15 @@ function ProductView() {
   return (
     <ContentContainer className='home'>
       <Header>
-        <div>
-          <Link to='/products'>
+        
+        <div className='title textCtn'>
+          <Link className='title products' to='/products'>
             Productos
-            <i class="fa-solid fa-greater-than"></i>
+            <i className="fa-solid fa-greater-than"></i>
           </Link>
-          <Link to='/products/new'>{id}</Link>
+          <Link className='title' to='/products/new'>{id}</Link>
         </div>
-        <Button text='Eliminar' />
+        <Button text='Eliminar' personalClass='btnDelete'/>
       </Header>
       <HomeContent />
     </ContentContainer>

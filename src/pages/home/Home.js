@@ -11,7 +11,7 @@ function Home() {
   return (
     <ContentContainer className='home'>
       <Header>
-        <Link to='/profile'>¡Hola {id}!</Link>
+        <Link className='title' to='/profile'>¡Hola {id}!</Link>
       </Header>
       <HomeContent />
     </ContentContainer>

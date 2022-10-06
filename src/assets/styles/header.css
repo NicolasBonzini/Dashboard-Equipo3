@@ -13,7 +13,26 @@
 .header .title{
     color: white;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 22px;
+}
+
+.header .textCtn{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.header .title i{
+    font-size: 12px;
+    margin: 0 8px;
+}
+
+.header .products{
+    white-space: nowrap;
+}
+
+.header .products i{
+    vertical-align: middle;
 }
 
 .header .fa-bars{
@@ -39,6 +58,10 @@
 
 .headerGroup a{
     text-decoration: none;
+}
+
+.btnDelete{
+    margin-right: 15px;
 }
 
 .headerGroup form{
@@ -114,7 +137,7 @@
     display: none;
 }
 
-@media screen  and (min-width: 600px) {
+@media screen  and (min-width: 500px) {
     .formContainer{
         margin-right: unset;
     }
@@ -124,6 +147,9 @@
     .headerGroup input{
         display: block;
         border-right: 0 ;
+    }
+    .header .textCtn{
+        flex-direction: row !important;
     }
 
     .headerGroup .fa-magnifying-glass{

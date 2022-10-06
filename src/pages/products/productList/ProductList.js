@@ -15,6 +15,7 @@ function ProductList() {
     console.log('Buscando...')
   }
   function handlerSearchBar(){
+    console.log(window.screen.width)
     if (window.screen.width <= 600) setIsVisibleInput(!isVisibleInput)
   }
   return (
