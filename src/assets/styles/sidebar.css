@@ -13,9 +13,11 @@
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
+  background-color: white;
   line-height: 16px;
   /* display: hidden; */
   display: flex;
+  background-color: white;
 }
 
 .sidebar .left-sidebar {
@@ -90,10 +92,15 @@ a {
     transform: translateX(0);
   }
 
-  .sidebar .right-sidebar{
-    display: none;
+  .sidebar .right-sidebar {
+    display: none; 
+    position: relative;
+    z-index: -10;
   }
-  
+  .contentContainer{
+    z-index: 999;
+    position: relative;
+  }
 }
 
 /* Dark Mode */

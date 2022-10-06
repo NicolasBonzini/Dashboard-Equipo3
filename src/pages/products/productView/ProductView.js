@@ -1,5 +1,5 @@
 
-import ContentContainer from '../../../components/contentContainer';
+import ContentContainer from '../../../components/ContentContainer';
 import Header from '../../../components/Header';
 import {Link, useParams} from 'react-router-dom';
 import Button from '../../../components/Button';
@@ -25,7 +25,7 @@ function ProductView() {
         </div>
         <Button text='Eliminar' personalClass='btnDelete'/>
       </Header>
-        <div className='cont dark'>
+  <div className='cont'>
 
     <div className='productView'>
       <EditProduct/>
