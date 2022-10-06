@@ -9,8 +9,8 @@
     --grey-footer: #999999;
     --header-back: #ffffff80
     --border-buttons-text: #cccccc;
-    --backgroud-light: #dadada;
-
+    --backgroud-light: #e1e1e1;
+    --backgound-dark: rgb(48,46,46)
 }
 
 .contentContainer{
@@ -20,5 +20,5 @@
 }
 
 .dark .contentContainer{
-    background-color: var(--backgroud-light);
+    background-color: var(--backgound-dark);
 }

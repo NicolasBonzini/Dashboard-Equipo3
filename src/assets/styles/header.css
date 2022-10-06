@@ -22,10 +22,18 @@
     border-bottom: 1px solid var(--black);
 }
 
+.dark .header{
+    border-bottom: 0;
+    color: var(--white);
+}
+
 .header .title{
     color: var(--black);
     text-decoration: none;
     font-size: 22px;
+}
+.dark .header .title{
+    color: var(--white);
 }
 
 .header .textCtn{
@@ -93,6 +101,16 @@
     
 }
 
+.dark .headerGroup input{
+    background-color: var();
+}
+
+.headerGroup input:focus, .headerGroup input:active{
+    outline: none;
+}
+
+
+
 .formContainer{
     display: flex;
     width: 100%;
@@ -111,6 +129,11 @@
 .formContainer .inputVisible{
     border-right: 0 !important;
 }
+
+.formContainer .inputVisible{
+    background-color: var(--border-cards);
+}
+
  .xVisible{
 }
 
@@ -118,8 +141,12 @@
     border-radius: 0px 93px 94px 0px !important;
     border-left: 0 !important;
     background-color: var(--white);
-    margin-right: 15px;
+    margin-right: 8px;
     height: 30px;
+}
+
+.dark .formContainer .inputSearchOpen{
+    background-color: var(--border-cards) ;
 }
 
 
@@ -146,6 +173,11 @@
     border-radius: 30px;
     width: 50px;
     cursor: pointer;
+}
+
+.dark .headerGroup .fa-magnifying-glass{
+    background-color: var(--border-cards);
+    color: var(--grey-footer);
 }
 
 .desktopAdd{
