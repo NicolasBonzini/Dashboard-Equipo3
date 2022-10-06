@@ -8,7 +8,6 @@ import testIMG from '../assets/images/Historia-de-Coca-Cola.jpg';
 function ProductCard() {
   return (
     <div className='productCard header_top containerMain'>
-    <div className='productCard'>
       <NavLink className='productCardLink' to='/products/:id'>
         <section className='productCardInfo'>
           <figure className='productCardImg'>
