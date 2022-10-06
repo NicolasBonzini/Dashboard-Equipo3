@@ -6,7 +6,7 @@ import './productView.css'
 
 function ProductView() {
   return (
-    <div className='dark'>
+    <div className='cont dark'>
 
     <div className='productView'>
       <EditProduct/>

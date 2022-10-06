@@ -17,11 +17,15 @@ const editProduct = () => {
             <div className='editProduct__info'>
                 <div className='eachInfo'>
                     <h2>19.900</h2>
-                    <p>PUNTOS SUPERCLUB</p>
+                    <div>
+                        <p>PUNTOS SUPERCLUB</p>
+                    </div>
                 </div>
                 <div className='eachInfo'>
                     <h2>19.900</h2>
-                    <p>PUNTOS SUPERCLUB</p>
+                    <div>
+                        <p>PUNTOS SUPERCLUB</p>
+                    </div>
                 </div>
                 
             </div>    
