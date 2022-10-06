@@ -24,3 +24,9 @@
     width: 45px;
     border-radius: 5px;
 }
+
+
+.dark .formImgs{
+    border: none;
+    background-color: var(--background-inputs-dark);
+}

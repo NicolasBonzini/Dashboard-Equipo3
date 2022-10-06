@@ -1,17 +1,21 @@
 import React from 'react'
 import Images from '../../../components/Images'
+import StockButton from '../../../components/StockButton'
+import EditProduct from '../../../components/EditProduct'
 import './productView.css'
 
 function ProductView() {
   return (
+    <div className='dark'>
+
     <div className='productView'>
-      <div></div>
+      <EditProduct/>
       <form className='newForm' action="">
 
         <div>
           <div className='eachInput'>
 
-          <h3>Información</h3>
+          <h2>Información</h2>
           <label htmlFor='name'>Nombre</label>
           <input
           className='input'
@@ -32,14 +36,7 @@ function ProductView() {
           name='value'
           />
           </div>
-          <div className='eachInput'>
-          <label>Stock</label>
-          <div className="counter">
-            <button type="number" data-name="<%= title %>" data-id="<%= id %> " className="decrement">-</button>
-            <p className="result">5</p>
-            <button type="number" data-id="<%= id%> " className="increment">+</button>
-        </div>
-          </div>
+          <StockButton />
           <div className='eachInput'>
           <label  htmlFor='description'>Descripción</label>
             
@@ -50,7 +47,7 @@ function ProductView() {
           name='descriptiom'
           />
           </div>
-          <div className='eachInput'>
+          <div className='eachInput store-form'>
             <label htmlFor="store">Tienda</label>
             <select name="select" className='input' id="stores">
                 <option selected='true'>Tienda</option>
@@ -64,14 +61,14 @@ function ProductView() {
 
 
         <div>
-          <h3>Galeria de Imágenes</h3>
+          <h2>Galeria de Imágenes</h2>
           <div className='eachInput'>
             <label htmlFor="image">Nueva Imagen</label>
             <input className='input'
             placeholder='inputImg'
-              id='image'
-              name='image'
-              type='text' />
+            id='image'
+            name='image'
+            type='text' />
           </div>
           <div className='eachInput'>
             <label>Imágenes actuales</label>
@@ -87,6 +84,7 @@ function ProductView() {
         </div>
       </form>
     </div>
+            </div>
   )
 }
 
