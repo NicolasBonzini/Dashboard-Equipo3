@@ -25,7 +25,7 @@ function ProductView() {
         </div>
         <Button text='Eliminar' personalClass='btnDelete'/>
       </Header>
-        <div className='cont'>
+  <div className='cont'>
 
     <div className='productView'>
       <EditProduct/>
