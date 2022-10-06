@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import ProductCard from '../../../components/ProductCard';
 import Header from '../../../components/Header';
-import ContentContainer from '../../../components/contentContainer';
+import ContentContainer from '../../../components/ContentContainer';
 import Button from '../../../components/Button'
 
 import '../../../assets/styles/mainContent.css'
