@@ -1,8 +1,4 @@
-*{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   --white: #ffffff;
@@ -16,3 +12,22 @@
   --header-back: #ffffff80
   --border-buttons-text: #cccccc;
 }
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px){
+  .App{
+    margin-left: 296px;
+  }
+}
+
+
+
+
+
+
+
