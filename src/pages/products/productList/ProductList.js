@@ -15,8 +15,7 @@ function ProductList() {
     console.log('Buscando...')
   }
   function handlerSearchBar(){
-    console.log(window.screen.width)
-    if (window.screen.width <= 600) setIsVisibleInput(!isVisibleInput)
+    if (window.screen.width <= 500) setIsVisibleInput(!isVisibleInput)
   }
   return (
     <ContentContainer className='productList '>

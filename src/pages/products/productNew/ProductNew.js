@@ -9,13 +9,14 @@ function ProductNew() {
   return (
     <ContentContainer className='home'>
       <Header>
-        <div className='title textCtn'>
+        <div className='title teCtn'>
           <Link className='title products' to='/products'>
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
           <Link className='title' to='/products/new'>Nuevo Producto</Link>
         </div>
+        
       </Header>
       <HomeContent />
     </ContentContainer>
