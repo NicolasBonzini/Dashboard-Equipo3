@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Header from '../../components/Header'
 import HomeContent from '../../components/HomeContent'
-import ContentContainer from '../../components/contentContainer'
+import ContentContainer from '../../components/ContentContainer'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import CardStartPage from '../../components/CardStartPage'
