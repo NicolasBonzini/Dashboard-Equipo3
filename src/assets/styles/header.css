@@ -96,6 +96,7 @@
     font-weight: 550;
     margin-right: 15px;
     font-size: 33px;
+    cursor: pointer;
 }
 
 .headerGroup .fa-magnifying-glass{
@@ -106,6 +107,7 @@
     border-radius: 30px;
     width: 50px;
     height: 30px;
+    cursor: pointer;
 }
 
 .desktopAdd{
