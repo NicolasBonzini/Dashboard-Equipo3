@@ -1,3 +1,8 @@
+
+import ContentContainer from '../../../components/contentContainer';
+import Header from '../../../components/Header';
+import {Link, useParams} from 'react-router-dom';
+import Button from '../../../components/Button';
 import React from 'react'
 import Images from '../../../components/Images'
 import StockButton from '../../../components/StockButton'
@@ -5,8 +10,22 @@ import EditProduct from '../../../components/EditProduct'
 import './productView.css'
 
 function ProductView() {
+  const id = useParams().id
   return (
-    <div className='cont dark'>
+
+    <ContentContainer className='home'>
+      <Header>
+        
+        <div className='title textCtn'>
+          <Link className='title products' to='/products'>
+            Productos
+            <i className="fa-solid fa-greater-than"></i>
+          </Link>
+          <Link className='title' to='/products/new'>{id}</Link>
+        </div>
+        <Button text='Eliminar' personalClass='btnDelete'/>
+      </Header>
+        <div className='cont dark'>
 
     <div className='productView'>
       <EditProduct/>
@@ -85,6 +104,7 @@ function ProductView() {
       </form>
     </div>
             </div>
+    </ContentContainer>
   )
 }
 
