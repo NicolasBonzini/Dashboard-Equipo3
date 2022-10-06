@@ -82,6 +82,7 @@ a {
 }
 
 .sidebar .right-sidebar {
+  background-color: red;
   background-color: transparent;
   width: 100%;
 }
@@ -89,7 +90,6 @@ a {
 @media (min-width: 1024px) {
   .sidebar {
     transform: translateX(0);
-    display: flex;
   }
 
   .sidebar .right-sidebar {
@@ -101,7 +101,6 @@ a {
     z-index: 999;
     position: relative;
   }
-
 }
 
 /* Dark Mode */

@@ -53,8 +53,7 @@ function Sidebar() {
         </nav>
       </div>
       {/* Space to click in and close sidebar */}
-      <div 
-        className="right-sidebar" ></div>
+      <div className="right-sidebar"></div>
     </div>
   );
 }
