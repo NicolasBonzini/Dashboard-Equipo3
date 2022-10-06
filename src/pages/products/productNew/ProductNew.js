@@ -12,7 +12,7 @@ function ProductNew() {
         <div>
           <Link to='/products'>
             Productos
-            <i class="fa-solid fa-greater-than"></i>
+            <i className="fa-solid fa-greater-than"></i>
           </Link>
           <Link to='/products/new'>Nuevo Producto</Link>
         </div>
