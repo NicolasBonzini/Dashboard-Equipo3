@@ -1,5 +1,5 @@
 import React from 'react'
-import "../assets/Styles/CardStartPage.css";
+import "../assets/styles/cardStartPage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faHouse,
