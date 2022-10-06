@@ -17,6 +17,7 @@
   line-height: 16px;
   /* display: hidden; */
   display: flex;
+  background-color: white;
 }
 
 .sidebar .left-sidebar {

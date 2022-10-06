@@ -214,6 +214,9 @@
     .header .fa-bars{
         display: none;
     }
+    .header {
+       width: calc(100vw - 296px); 
+    }
 
     .mobileAdd{
         display: none !important;
