@@ -1,4 +1,84 @@
+
+
 .header{
     display: flex;
+    background-color: rgb(40, 82, 82);
+    align-items: center;
+    height: 60px;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
 }
 
+.header .title{
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.header .fa-bars{
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.headerContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.headerGroup{
+    display: flex;
+    align-items: center;
+
+}
+
+.headerGroup a{
+    text-decoration: none;
+
+}
+
+.headerGroup form{
+    margin-right: 10px;
+    
+}
+
+.headerGroup input, .headerGroup .fa-x{
+    display: none;
+}
+
+
+
+.headerGroup .mobileAdd{
+    border-radius: 50%;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    font-weight: 550;
+    margin-right: 15px;
+    font-size: 33px;
+}
+
+.headerGroup .fa-magnifying-glass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 30px;
+    width: 50px;
+    height: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+    .header .fa-bars{
+        display: none;
+    }
+    .desktopAdd{
+        margin-right: 15px;
+        padding: 9px 15px !important;
+    }
+}

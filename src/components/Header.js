@@ -5,8 +5,8 @@ function Header({ children }) {
 
   return (
     <header className='header'>
-      <i class="fa-solid fa-bars"></i>
-      <div>
+      <i className="fa-solid fa-bars"></i>
+      <div className='headerContent'>
         { children }
       </div>
       
