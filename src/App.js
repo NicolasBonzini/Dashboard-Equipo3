@@ -13,7 +13,7 @@ import ProductNew from './pages/products/productNew/ProductNew'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App dark">
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -13,15 +13,13 @@
   --border-buttons-text: #cccccc;
 }
 
-.header{
-  color: red;
-}
-
 @media (min-width: 1024px){
   .App{
     margin-left: 296px;
   }
 }
+
+
 
 
 
