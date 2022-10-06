@@ -8,6 +8,9 @@ function HomeContent() {
   return (
     <div className='homeContent header_top containerMain'>
       <CardStartPage />
+      <CardStartPage />
+      <CardStartPage />
+      <CardStartPage />
     </div>
   )
 }
