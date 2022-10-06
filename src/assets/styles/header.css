@@ -29,26 +29,61 @@
     margin-left: 15px;
 }
 
+
 .headerGroup{
     display: flex;
     align-items: center;
-
+    width: 100%;
+    justify-content: space-between;
 }
 
 .headerGroup a{
     text-decoration: none;
-
 }
 
 .headerGroup form{
     margin-right: 10px;
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+}
+
+.headerGroup input{
+    padding: 0 15px;
+    border-radius: 85px 0px 0px 84px;
+    border: 2px solid gray;
+    background-color: rgb(78, 57, 57);
+    width: 100%;
     
+}
+
+.formContainer{
+    display: flex;
+    width: 100%;
+    margin-right: 0px;
+    justify-content: flex-end;
 }
 
 .headerGroup input, .headerGroup .fa-x{
     display: none;
 }
 
+.headerGroup .setVisible{
+    display: block ;
+}
+
+.formContainer .inputVisible{
+    border-right: 0 !important;
+}
+ .xVisible{
+}
+
+.formContainer .inputSearchOpen{
+    border-radius: 0px 93px 94px 0px !important;
+    border-left: 0 !important;
+    background-color: rgb(78, 57, 57);
+
+}
 
 
 .headerGroup .mobileAdd{
@@ -73,12 +108,44 @@
     height: 30px;
 }
 
+.desktopAdd{
+    display: none;
+}
+
+@media screen  and (min-width: 600px) {
+    .formContainer{
+        margin-right: unset;
+    }
+    .headerGroup{
+        width: unset;
+    }
+    .headerGroup input{
+        display: block;
+        border-right: 0 ;
+    }
+
+    .headerGroup .fa-magnifying-glass{
+        border-radius: 0px 93px 94px 0px;
+        background-color: rgb(78, 57, 57);
+        border-left: 0;
+    }
+}
+
+
 @media screen and (min-width: 1024px) {
     .header .fa-bars{
         display: none;
     }
+
+    .mobileAdd{
+        display: none !important;
+    }
+
     .desktopAdd{
+        display: block;
         margin-right: 15px;
         padding: 9px 15px !important;
+        white-space: nowrap;
     }
+
 }
