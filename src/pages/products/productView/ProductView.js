@@ -1,4 +1,5 @@
 import React from 'react'
+import Images from '../../../components/Images'
 import './productView.css'
 
 function ProductView() {
@@ -6,12 +7,14 @@ function ProductView() {
     <div className='productView'>
       <div></div>
       <form className='newForm' action="">
+
         <div>
           <div className='eachInput'>
 
           <h3>Información</h3>
           <label htmlFor='name'>Nombre</label>
           <input
+          className='input'
           placeholder='inputName'
           id='name'
           type="text"
@@ -22,6 +25,7 @@ function ProductView() {
             
           <label htmlFor='value'>Valor</label>
           <input
+          className='input'
           placeholder='inputValue'
           id='value'
           type="text"
@@ -37,9 +41,9 @@ function ProductView() {
         </div>
           </div>
           <div className='eachInput'>
-          <label htmlFor='description'>Descripción</label>
+          <label  htmlFor='description'>Descripción</label>
             
-          <textarea
+          <textarea className='input form-description'
           placeholder='inpuDescription'
           id='description'
           type="textArea"
@@ -48,11 +52,12 @@ function ProductView() {
           </div>
           <div className='eachInput'>
             <label htmlFor="store">Tienda</label>
-            <select name="cars" id="cars" >
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            <select name="select" className='input' id="stores">
+                <option selected='true'>Tienda</option>
+                <option value="easy">Easy</option>
+                <option value="disco">Disco</option>
+                <option value="jumbo">Jumbo</option>
+                <option value="paris">Paris</option>
             </select>
           </div>
         </div>
@@ -62,7 +67,7 @@ function ProductView() {
           <h3>Galeria de Imágenes</h3>
           <div className='eachInput'>
             <label htmlFor="image">Nueva Imagen</label>
-            <input className='inputs'
+            <input className='input'
             placeholder='inputImg'
               id='image'
               name='image'
@@ -70,28 +75,9 @@ function ProductView() {
           </div>
           <div className='eachInput'>
             <label>Imágenes actuales</label>
-            <div className='formImgs'>
-              <div className='formImgs-img'>
-              <img src='https://play-lh.googleusercontent.com/SK5XKAgwe7rL3JisRwDhf4KqUj7Ngc8-ZXliUjympr928hSgpv8b6lzayv4CuHu3diFn' alt="" />
-              <p>aaksdsakdjldjksajdksljdl !!</p>
-              </div>
-              <button className='quitar'>Quitar</button>
-            </div>
-            <div className='formImgs'>
-              <div className='formImgs-img'>
-              <img src='https://play-lh.googleusercontent.com/SK5XKAgwe7rL3JisRwDhf4KqUj7Ngc8-ZXliUjympr928hSgpv8b6lzayv4CuHu3diFn' alt="" />
-              <p>aaksdsakdjldjksajdksljdl !!</p>
-              </div>
-              <button className='quitar'>Quitar</button>
-            </div>
-            <div className='formImgs'>
-              <div className='formImgs-img'>
-              <img src='https://play-lh.googleusercontent.com/SK5XKAgwe7rL3JisRwDhf4KqUj7Ngc8-ZXliUjympr928hSgpv8b6lzayv4CuHu3diFn' alt="" />
-              <p>aaksdsakdjldjksajdksljdl !!</p>
-              </div>
-              <button className='quitar'>Quitar</button>
-            </div>
-           
+            <Images />
+            <Images />
+            <Images />
           </div>
         </div>
 

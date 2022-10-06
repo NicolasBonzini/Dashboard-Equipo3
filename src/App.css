@@ -1,5 +1,17 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark-gray: #333333;
+  --green-back: #0cb093;
+  --box-shadow: #00000040
+  --button-back: #494f51;
+  --border-cards: #6d686876;
+  --grey-footer: #999999;
+  --header-back: #ffffff80
+  --border-buttons-text: #cccccc;
+}
+
 .App {
-  /* text-align: center; */
   display: flex;
 }
 

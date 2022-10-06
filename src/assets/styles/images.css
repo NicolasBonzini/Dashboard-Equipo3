@@ -1,0 +1,26 @@
+.formImgs{
+    margin: 5px 0 5px 0;
+    background-color: var(--background-inputs);
+    border: 1px solid var(--border-gray);
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    border-radius: var(--border-cards);
+    padding: 5px;
+}
+.formImgs-img{
+    display: flex;
+    gap: 10px;
+
+    align-items: center;
+}
+
+.formImgs-img{
+    font-size: 10px;
+}
+.formImgs img{
+    width: 45px;
+    border-radius: 5px;
+}

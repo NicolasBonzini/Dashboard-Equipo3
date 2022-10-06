@@ -1,6 +1,10 @@
 :root{
+    --background-color-dark:rgb(34,34,34);
+    --text-color-dark: black;
+    --white:white;
     --border-gray:rgb(153,153,153);
-    --background-inputs:rgb(51,51,51);
+    --background-inputs-dark:rgb(51,51,51);
+    --background-inputs: white;
     --gray-primary:rgb(89,89,89);
     --border-cards: 15px;
     --text-inputs: #F2F2F2;
@@ -9,59 +13,57 @@
 
 
 .newForm{
-    background-color: rgb(34,34,34);
-
-
-    color: white;
-    border: 1px solid black;
+    background-color: var(--white);
+    color: var(--text-color);
     width: 70vw;
     height: 100%;
     padding: 5px;
-    
 }
 
 .newForm label{
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .newForm h3{
-    font-weight: 300;
+    font-weight: 400;
 }
 
+
+    /* INPUTS */
 .eachInput{
     display: flex;
     flex-direction: column;
 }
 
-.eachInput input , textarea, select{
+.input{
     padding: 10px;
-    background-color: rgb(51,51,51);
     border: 1px solid var(--border-gray);
-    color: white;
+    color: black;
     border-radius: 15px;
     margin: 10px 0 10px 0;
-}
-.eachInput input , select{
-    height: 10px;
     max-width: 300px;
 }
-.eachInput textarea{
+
+.form-description{
     height: 130px;
     max-width: 450px;
+    
 }
-
 
 /* BOTON AGREGAR O QUITAR UNIDAD DE STOCK */
 .decrement, .increment{
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: white;
+    color: black;
 } 
 .counter{
     margin: 8px 0 8px 0;
-    background-color: rgb(51,51,51);
+
+    /* background-color: rgb(51,51,51); */
+    background-color: white;
+
     display: flex;
     align-items: center;
     justify-content: space-evenly; 
@@ -81,32 +83,6 @@
 
 /* IMAGENES */
 
-.formImgs{
-    margin: 5px 0 5px 0;
-    background-color: var(--background-inputs);
-    /* width: 450px; */
-    max-width: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    border-radius: var(--border-cards);
-    /* border: 1px solid; */
-    padding: 5px;
-}
-.formImgs-img{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.formImgs-img{
-    font-size: 10px;
-}
-.formImgs img{
-    width: 45px;
-    border-radius: 5px;
-}
 
 
 .newForm .quitar {
@@ -118,6 +94,11 @@
     border-radius: 16px;
     margin-right: 20px;
     border: none;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+}
+.newForm .quitar:hover{
+    background-color: var(--green-back);
 }
 
 .sendForm{
@@ -128,11 +109,54 @@
 .sendForm button{
     color: var(--text-inputs);
     background-color: var(--gray-primary);
-   font-size: 10px;
+    font-size: 10px;
     width: 60px;
     height: 25px;
     border-radius: 16px;
     margin-right: 20px;
     border: none;
 
+}
+
+
+
+
+
+
+
+
+/* //////////////////////////// */
+
+/* DARKMODE */
+
+.dark .newForm
+{
+        background-color: var(--background-color-dark);
+}
+
+
+.dark .eachInput input , textarea, select{
+    /* background-color: rgb(51,51,51); */
+    border: 1px solid var(--border-gray);
+    color: black
+    
+}
+
+.dark .decrement, .increment{
+    background-color: transparent;
+    color: black;
+} 
+.dark .counter{
+    margin: 8px 0 px 0;
+
+    background-color: rgb(51,51,51);
+    border: 1px solid var(--border-gray);
+   
+}
+
+.dark .newForm label{
+    font-weight: 300;
+}
+.dark .newForm h3{
+    font-weight: 300;
 }
