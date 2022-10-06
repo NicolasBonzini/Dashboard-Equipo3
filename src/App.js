@@ -9,6 +9,7 @@ import Error404 from './pages/Error404/Error404'
 import ProductList from './pages/products/productList/ProductList';
 import ProductView from './pages/products/productView/ProductView';
 import ProductNew from './pages/products/productNew/ProductNew'
+import putProducts from './utils/putProducts';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/product/:id" element={<ProductView />} />
         <Route path="/products/new" element={<ProductNew />} />
         <Route path="*" element={<Error404 />} />
+        <Route path='/santi/prueba' element={<putProducts />}/>
       </Routes>
     </div>
   );
