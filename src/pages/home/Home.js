@@ -4,6 +4,7 @@ import HomeContent from '../../components/HomeContent'
 import ContentContainer from '../../components/contentContainer'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
+import CardStartPage from '../../components/CardStartPage'
 
 function Home() {
   localStorage.setItem('user', JSON.stringify({name: 'Juanito'}))

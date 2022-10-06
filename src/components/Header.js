@@ -9,7 +9,6 @@ function Header({ children }) {
       <div className='headerContent'>
         { children }
       </div>
-      
     </header>
   )
 }
