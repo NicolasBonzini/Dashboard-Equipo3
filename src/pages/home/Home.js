@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 
 function Home() {
+  localStorage.setItem('user', JSON.stringify({name: 'Juanito'}))
+  const id = JSON.parse(localStorage.getItem('user')).name
   return (
     <ContentContainer className='home'>
       <Header>
-        <Link to='/'>Picante</Link>
+        <Link to='/profile'>¡Hola {id}!</Link>
       </Header>
       <HomeContent />
     </ContentContainer>
