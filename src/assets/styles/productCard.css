@@ -8,11 +8,7 @@ body{
     background-color: #EFEFEF;
 }
 
-.productCard{
-    background-color: #FFFFFF;
-    width: 100%;
-    border-radius: 15px;
-}
+
 
 .productCardLink{
     text-decoration: none;
