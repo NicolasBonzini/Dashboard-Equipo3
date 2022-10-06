@@ -17,8 +17,7 @@
     height: 60px;
     justify-content: space-between;
     position: fixed;
-    width: 100%;
-    /* backdrop-filter: blur(4px); */
+    width: 100vw;
     background-color: white;
     border-bottom: 1px solid var(--black);
 }
@@ -208,6 +207,10 @@
 
 
 @media screen and (min-width: 1024px) {
+    .header{
+        width: calc(100vw - 296px);
+    }
+
     .header .fa-bars{
         display: none;
     }
