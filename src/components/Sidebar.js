@@ -14,25 +14,31 @@ import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className="sidebar dark">
       <nav className="top-navbar">
         <img src={logo} className="logo" alt="logo" />
         <nav className="nav-list">
           <ul>
-            <li>
-              <FontAwesomeIcon icon={faHouse} />
-              <NavLink to="/">Inicio</NavLink>
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faBoxOpen} />
-              <NavLink to="/products">
-              Productos
-              </NavLink>
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faStoreAlt} />
-              <NavLink to="/error404">Tiendas</NavLink>
-            </li>
+            <NavLink to="/">
+              <li>
+                <FontAwesomeIcon icon={faHouse} className="icon"/>
+                Inicio
+              </li>
+            </NavLink>
+
+            <NavLink to="/products">
+              <li>
+                <FontAwesomeIcon icon={faBoxOpen} className="icon" />
+                Productos
+              </li>
+            </NavLink>
+
+            <NavLink to="/error404">
+              <li>
+                <FontAwesomeIcon icon={faStoreAlt} className="icon"/>
+                Tiendas
+              </li>
+            </NavLink>
           </ul>
         </nav>
       </nav>
