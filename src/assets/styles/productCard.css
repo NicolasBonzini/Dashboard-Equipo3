@@ -8,6 +8,10 @@ body{
     background-color: #EFEFEF;
 }
 
+.productCard{
+    min-height: fit-content;
+}
+
 .productCardLink{
     
     text-decoration: none;
