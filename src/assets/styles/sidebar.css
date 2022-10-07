@@ -1,4 +1,5 @@
 .sidebar {
+  z-index: 2;
   margin-left: 0;
   position: fixed;
   width: 100%;
@@ -13,11 +14,17 @@
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  background-color: white;
   line-height: 16px;
-  /* display: hidden; */
   display: flex;
-  background-color: white;
+  /* background-color: white; */
+}
+
+.show-sidebar{
+  transform: translateX(0);
+}
+
+.close-sidebar{
+  transform: translateX(-100%);
 }
 
 .sidebar .left-sidebar {
@@ -82,7 +89,6 @@ a {
 }
 
 .sidebar .right-sidebar {
-  background-color: red;
   background-color: transparent;
   width: 100%;
 }
@@ -93,12 +99,13 @@ a {
   }
 
   .sidebar .right-sidebar {
-    display: none; 
+    /* display: none;  */
     position: relative;
     z-index: -10;
+    background-color: white;
   }
   .contentContainer{
-    z-index: 999;
+    z-index: 2;
     position: relative;
   }
 }

@@ -31,7 +31,7 @@
 .card-button {
     background-color: #494f51;
     color: white;
-    border: 1px transparent;
+    border: 1px;
     border-radius: 15px;
     margin-right: 5px;
     transition: all 0.8s ease;
@@ -41,7 +41,6 @@
 
 .card-button:hover {
     background-color: rgba(12, 176, 147, 1);
-
 }
 
 .card-content:hover {
