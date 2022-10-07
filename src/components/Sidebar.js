@@ -1,5 +1,7 @@
 import React from "react";
 import "../assets/styles/sidebar.css";
+//Cookies
+import Cookies from "universal-cookie";
 //FontAwesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,9 +14,16 @@ import { NavLink } from "react-router-dom";
 //ReactComponents
 import Avatar from "./Avatar";
 import Brand from "./Brand";
+import ButtonContext from "../context/ButtonContext";
+
+const cookies = new Cookies()
 
 function Sidebar() {
-
+  function handlerDarkMode(){
+    cookies.get('darkMode') == 'dark' ? 
+      cookies.set('darkMode', ' ', {path: '/'}) :
+      cookies.set('darkMode', 'dark', {path: '/'}) 
+  }
   return (
     <div className="sidebar">
       {/* Sidebar */}
@@ -47,6 +56,8 @@ function Sidebar() {
         </nav>
         {/* Bottom Navbar */}
         <nav className="bottom-navbar">
+        <ButtonContext onclick={handlerDarkMode} />
+
           <NavLink to="/profile">
             <Avatar />
           </NavLink>
