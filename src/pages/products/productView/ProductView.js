@@ -1,6 +1,7 @@
 import ContentContainer from "../../../components/ContentContainer";
 import Header from "../../../components/Header";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import React from "react";
 import Images from "../../../components/Images";
@@ -9,11 +10,43 @@ import EditProduct from "../../../components/EditProduct";
 import "./productView.css";
 
 function ProductView() {
+
   const id = useParams().id;
+
+  const [counter,setCounter] = useState(0);
+      // Seteo estado inicial del formulario a enviar
+  const [form, setform] = useState({
+    id: '',
+    title: "",
+    price: '',
+    stock: '',
+    description: "",
+    category: "",
+    images: [
+      ""
+    ],
+    rating: {
+      rate: '',
+      count: ''
+    }
+  })
+
+  //Tomo los datos de los inputs
+  const handleInput = (e) =>{
+    console.log(e.target.id)
+    setform({
+      ...form,
+      [e.target.name] : e.target.value,
+    })
+   console.log(form)
+    
+  }
+
+
+
 
   return (
     <ContentContainer className="home">
-
       <Header>
         <div className="title textCtn">
           <Link className="title products" to="/products">
@@ -36,6 +69,7 @@ function ProductView() {
                 <h2>Información</h2>
                 <label htmlFor="name">Nombre</label>
                 <input
+                  onChange={handleInput}
                   className="input"
                   placeholder="inputName"
                   id="name"
@@ -46,6 +80,7 @@ function ProductView() {
               <div className="eachInput">
                 <label htmlFor="value">Valor</label>
                 <input
+                  onChange={handleInput}
                   className="input"
                   placeholder="inputValue"
                   id="value"
@@ -53,7 +88,7 @@ function ProductView() {
                   name="value"
                 />
               </div>
-              <StockButton />
+              <StockButton  />
               <div className="eachInput">
                 <label htmlFor="description">Descripción</label>
 

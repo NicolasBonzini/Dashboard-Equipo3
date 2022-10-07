@@ -19,7 +19,7 @@ function ProductList() {
   }
   return (
     <ContentContainer className='productList '>
-            <Header>
+      <Header>
         {!isVisibleInput && <Link className='title' to='/products'>Productos</Link>}
         <div className='headerGroup'>
         <i onClick={handlerSearchBar} className={`fa-regular fa-x ${isVisibleInput ? 'setVisible xVisible': ' '}`}></i>
@@ -44,6 +44,7 @@ function ProductList() {
         </div>
         </div>
       </Header>
+      
       <ProductCard />
     </ContentContainer>
   )
