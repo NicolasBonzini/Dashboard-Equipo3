@@ -1,11 +1,13 @@
 .container-404 {
     position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
+    backdrop-filter: blur(4px);
 }
 
 .container-404::before {
