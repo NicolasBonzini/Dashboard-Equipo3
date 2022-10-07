@@ -4,7 +4,7 @@ import "../assets/styles/burgerMenu.css";
 import { useState } from "react";
 
 function BurgerMenu() {
-  const [isActive, setActive] = useState("false");
+  const [isActive, setActive] = useState(false);
 
   const handleToggle = () => {
     setActive(!isActive);

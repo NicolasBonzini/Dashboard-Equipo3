@@ -94,9 +94,9 @@ a {
 }
 
 @media (min-width: 1024px) {
-  .sidebar {
+  /* .sidebar {
     transform: translateX(0);
-  }
+  } */
 
   .sidebar .right-sidebar {
     /* display: none;  */
