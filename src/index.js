@@ -4,14 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 //React-router-dom
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
+//Context
+import { ToggleProvider } from "./context/ToggleContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ToggleProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ToggleProvider>
   </React.StrictMode>
 );
 

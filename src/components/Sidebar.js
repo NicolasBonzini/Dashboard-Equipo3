@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../assets/styles/sidebar.css";
 //ReactRouter
 import { NavLink } from "react-router-dom";
@@ -6,9 +6,12 @@ import { NavLink } from "react-router-dom";
 import Avatar from "./Avatar";
 import Brand from "./Brand";
 import LinksNavegationSideBar from "./LinksNavegationSideBar";
+//Context
+import { ToggleContext } from '../context/ToggleContext';
 
 function Sidebar() {
-  //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA
+  const { toggle, toggleSidebar } = useContext(ToggleContext);
+  //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA.
   const [windowSize, setWindowSize] = useState(getWindowSize());
   //OBTENGO EL LARGO DE LA RESOLUCION DE PANTALLA
   function getWindowSize() {
@@ -17,21 +20,25 @@ function Sidebar() {
   }
   //EN EL RENDERIZADO INICIAL, AGREGO UN DETECTOR DE EVENTOS
   //A WINDOW. EL EVENTO DE CAMBIO DE TAMANIO SE ACTIVARA 
-  //CUANDO EL TAMANIO DE LA VENTANA CAMBIE
+  //CUANDO EL TAMANIO DE LA VENTANA CAMBIE.
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(getWindowSize());
     };
 
     window.addEventListener("resize", handleWindowResize);
-
+    //AL DESMONTARSE EL COMPONENTE, ELIMINO EL DETECTOR
+    //DE EVENTOS.
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
+  console.log(toggle);
+
   return (
-    <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar" : "close-sidebar"}`}>
+    <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar" : null}
+    ${windowSize.innerWidth < 1024 && toggle ? "close-sidebar" : "show-sidebar"}`}>
       {/* Sidebar */}
       <div className="left-sidebar">
         {/* Top Navbar */}
@@ -43,7 +50,6 @@ function Sidebar() {
             </ul>
           </nav>
         </nav>
-        {windowSize.innerWidth}
         {/* Bottom Navbar */}
         <nav className="bottom-navbar">
           <NavLink to="/profile">
@@ -52,7 +58,10 @@ function Sidebar() {
         </nav>
       </div>
       {/* Space to click in and close sidebar */}
-      <div className="right-sidebar"></div>
+      <div 
+        className={`right-sidebar `}
+
+        onClick={() => toggleSidebar()}></div>
     </div>
   );
 }

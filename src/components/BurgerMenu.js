@@ -1,19 +1,22 @@
 //CSS
 import "../assets/styles/burgerMenu.css";
 //React
-import { useState } from "react";
+import { useState, useContext } from "react";
+//Context
+//Context
+import { ToggleContext } from '../context/ToggleContext';
 
 function BurgerMenu() {
-  const [isActive, setActive] = useState(false);
+  const { toggleSidebar, toggle  } = useContext(ToggleContext);
+  
 
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
+  console.log(toggle);
 
   return (
     <div
-      className={`burger-menu ${isActive ? "change" : null}`}
-      onClick={handleToggle}
+      className={`burger-menu ${toggle ? null : "change"}`}
+      // onClick={handleToggle}
+      onClick={() => toggleSidebar()}
     >
       <div className={`bar1`}></div>
       <div className={`bar2`}></div>
