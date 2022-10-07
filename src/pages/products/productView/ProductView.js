@@ -13,32 +13,36 @@ function ProductView() {
 
   const id = useParams().id;
 
-  const [counter,setCounter] = useState(0);
       // Seteo estado inicial del formulario a enviar
-  const [form, setform] = useState({
-    id: '',
-    title: "",
-    price: '',
-    stock: '',
-    description: "",
-    category: "",
-    images: [
-      ""
-    ],
+  const [form, setform] = useState( {
+    id: 1,
+    title: "iPhone 9",
+    description: "An apple mobile which is nothing like apple",
+    price: 549,
     rating: {
-      rate: '',
-      count: ''
-    }
+      rate: 4.69,
+      count: 354
+    },
+    stock: 94,
+    category: "smartphones",
+    images: [
+      "https://dummyjson.com/image/i/products/1/1.jpg",
+      "https://dummyjson.com/image/i/products/1/2.jpg",
+      "https://dummyjson.com/image/i/products/1/3.jpg",
+      "https://dummyjson.com/image/i/products/1/4.jpg",
+      "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+    ]
   })
 
   //Tomo los datos de los inputs
   const handleInput = (e) =>{
     console.log(e.target.id)
+    // console.log(form)
     setform({
       ...form,
       [e.target.name] : e.target.value,
     })
-   console.log(form)
+    console.log(form)
     
   }
 
@@ -69,6 +73,7 @@ function ProductView() {
                 <h2>Información</h2>
                 <label htmlFor="name">Nombre</label>
                 <input
+                  value={form.title}
                   onChange={handleInput}
                   className="input"
                   placeholder="inputName"
@@ -78,21 +83,23 @@ function ProductView() {
                 />
               </div>
               <div className="eachInput">
-                <label htmlFor="value">Valor</label>
+                <label htmlFor="price">Valor</label>
                 <input
+                  value={form.price}
                   onChange={handleInput}
                   className="input"
-                  placeholder="inputValue"
-                  id="value"
+                  placeholder="inputPrice"
+                  id="price"
                   type="text"
-                  name="value"
+                  name="price"
                 />
               </div>
-              <StockButton  />
+              <StockButton stock={form.stock} />
               <div className="eachInput">
                 <label htmlFor="description">Descripción</label>
 
                 <textarea
+                value={form.description}
                   className="input form-description"
                   placeholder="inpuDescription"
                   id="description"

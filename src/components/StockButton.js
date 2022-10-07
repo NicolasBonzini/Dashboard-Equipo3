@@ -1,8 +1,11 @@
 import React from 'react'
 import '../assets/styles/stockButton.css'
 import { useEffect, useState } from 'react';
-const StockButton = (props) => {
-  const [counter,setCounter] = useState(0);
+
+
+
+const StockButton = ({stock}) => {
+  const [counter,setCounter] = useState(stock);
 
   const handleDecrement = (e)=>{
     e.preventDefault()
