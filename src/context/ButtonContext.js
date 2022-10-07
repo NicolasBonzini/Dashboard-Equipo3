@@ -6,7 +6,7 @@ const ButtonContext = () => {
   const { toggle: toggleTheme } = useContext(ThemeContext)
 
   return (
-    <button onClick={() => toggleTheme()}>Button</button>
+    <label className="button-context" onClick={() => toggleTheme()}>Switch</label>
   )
 }
 

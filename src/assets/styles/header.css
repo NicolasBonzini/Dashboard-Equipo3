@@ -104,6 +104,7 @@
 
 .dark .headerGroup input{
     background-color: var(--border-cards);
+    color: var(--white);
 }
 
 .headerGroup input:focus, .headerGroup input:active{
