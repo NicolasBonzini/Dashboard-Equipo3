@@ -8,7 +8,7 @@ import arrowImg from '../assets/images/chevron-right(1).svg';
 function ProductCard(props) {
   return (
     <div className='productCard header_top containerMain'>
-      <NavLink className='productCardLink' to='/products/:id'>
+      <NavLink className='productCardLink' to={`/product/` + props.id}>
         <section className='productCardInfo'>
           <figure className='productCardImg'>
             <img src={props.image} alt=''></img>

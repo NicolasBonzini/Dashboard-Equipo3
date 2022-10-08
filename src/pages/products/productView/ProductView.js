@@ -6,38 +6,54 @@ import Button from "../../../components/Button";
 import React from "react";
 import Images from "../../../components/Images";
 import StockButton from "../../../components/StockButton";
+
+import getProductById from "../../../utils/getProductById";
 import EditProduct from "../../../components/EditProduct";
 import "./productView.css";
+
+
+const prueba = {
+  id: 1,
+  title: "iPhone 9",
+  description: "An apple mobile which is nothing like apple",
+  price: 549,
+  rating: {
+    rate: 4.69,
+    count: 354
+  },
+  stock: 90,
+  category: "smartphones",
+  images: [
+    "https://dummyjson.com/image/i/products/1/1.jpg",
+    "https://dummyjson.com/image/i/products/1/2.jpg",
+    "https://dummyjson.com/image/i/products/1/3.jpg",
+    "https://dummyjson.com/image/i/products/1/4.jpg",
+    "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+  ]
+}
+
 
 function ProductView() {
 
   const id = useParams().id;
 
-      // Seteo estado inicial del formulario a enviar
-  const [form, setform] = useState( {
-    id: 1,
-    title: "iPhone 9",
-    description: "An apple mobile which is nothing like apple",
-    price: 549,
-    rating: {
-      rate: 4.69,
-      count: 354
-    },
-    stock: 94,
-    category: "smartphones",
-    images: [
-      "https://dummyjson.com/image/i/products/1/1.jpg",
-      "https://dummyjson.com/image/i/products/1/2.jpg",
-      "https://dummyjson.com/image/i/products/1/3.jpg",
-      "https://dummyjson.com/image/i/products/1/4.jpg",
-      "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
-    ]
-  })
 
+      // Seteo estado inicial del formulario a enviar
+  const [form, setform] = useState(prueba)
+  useEffect(()=>{
+    async function get(){
+      await getProductById(id)
+      .then(re=>{setform(re); console.log(re)}
+      )
+    }
+     get()
+    
+    // setform(data)
+
+  }, [])
   //Tomo los datos de los inputs
-  const handleInput = (e) =>{
+  const handleInput = async (e) =>{
     console.log(e.target.id)
-    // console.log(form)
     setform({
       ...form,
       [e.target.name] : e.target.value,
@@ -71,15 +87,15 @@ function ProductView() {
             <div>
               <div className="eachInput">
                 <h2>Información</h2>
-                <label htmlFor="name">Nombre</label>
+                <label htmlFor="title">Nombre</label>
                 <input
                   value={form.title}
                   onChange={handleInput}
                   className="input"
                   placeholder="inputName"
-                  id="name"
+                  id="title"
                   type="text"
-                  name="nombre"
+                  name="title"
                 />
               </div>
               <div className="eachInput">
@@ -100,17 +116,18 @@ function ProductView() {
 
                 <textarea
                 value={form.description}
+                  onChange={handleInput}
                   className="input form-description"
                   placeholder="inpuDescription"
                   id="description"
                   type="textArea"
-                  name="descriptiom"
+                  name="description"
                 />
               </div>
               <div className="eachInput store-form">
                 <label htmlFor="store">Tienda</label>
                 <select name="select" className="input" id="stores">
-                  <option selected="true">Tienda</option>
+                  <option defaultValue={true}>Tienda</option>
                   <option value="easy">Easy</option>
                   <option value="disco">Disco</option>
                   <option value="jumbo">Jumbo</option>
@@ -124,6 +141,8 @@ function ProductView() {
               <div className="eachInput">
                 <label htmlFor="image">Nueva Imagen</label>
                 <input
+                  // value={form.images}
+                  onChange={handleInput}
                   className="input"
                   placeholder="inputImg"
                   id="image"
@@ -133,9 +152,11 @@ function ProductView() {
               </div>
               <div className="eachInput">
                 <label>Imágenes actuales</label>
-                <Images />
-                <Images />
-                <Images />
+                {form.images.map(image=>{
+                  console.log(image)
+                  return <Images url={image} />
+
+                })}
               </div>
             </div>
 
