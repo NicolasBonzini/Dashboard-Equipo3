@@ -67,6 +67,10 @@ body {
   margin-right: 25px;
 }
 
+.void{
+  margin-left: 26px;
+}
+
 /***** DARK MODE *****/
 .dark {
   background-color: #333333;
@@ -82,4 +86,8 @@ body {
 
 .dark .productArrowImg {
   filter: invert(100%);
+}
+
+.dark .void{
+  color: var(--white);
 }

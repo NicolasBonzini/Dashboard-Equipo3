@@ -3,7 +3,7 @@ import React from 'react'
 function Button(props) {
   return (
     <>
-        <button className={'btn_gray ' + props.personalClass}>{props.text}</button>
+        <button onClick={props.deleteProduct} className={'btn_gray ' + props.personalClass}>{props.text}</button>
     </>
   )
 }

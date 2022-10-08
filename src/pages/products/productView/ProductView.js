@@ -1,6 +1,6 @@
 import ContentContainer from "../../../components/ContentContainer";
 import Header from "../../../components/Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import React from "react";
@@ -10,9 +10,8 @@ import EditProduct from "../../../components/EditProduct";
 import "./productView.css";
 
 function ProductView() {
-
   const id = useParams().id;
-
+  const navigate = useNavigate()
       // Seteo estado inicial del formulario a enviar
   const [form, setform] = useState( {
     id: 1,
@@ -45,8 +44,18 @@ function ProductView() {
     console.log(form)
     
   }
-
-
+  //Borrar producto
+  function deleteProduct(){
+    fetch(`http://localhost:5000/api/product?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(res => res.json())
+    .then(data => data.error ? console.log(data.error) : navigate('/products'))
+    .catch(error => console.log('Error al intentar eliminar, revisa: ' + error))
+  }
 
 
   return (
@@ -57,11 +66,12 @@ function ProductView() {
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
-          <Link className="title" to="/products/new">
+          <Link className="title" to={'/product/' + id}>
             {id}
           </Link>
         </div>
-        <Button text="Eliminar" personalClass="btnDelete" />
+        
+        <Button deleteProduct={deleteProduct} text="Eliminar" personalClass="btnDelete"></Button>
       </Header>
 
       <div className="cont">
@@ -110,7 +120,7 @@ function ProductView() {
               <div className="eachInput store-form">
                 <label htmlFor="store">Tienda</label>
                 <select name="select" className="input" id="stores">
-                  <option selected="true">Tienda</option>
+                  <option value=' '>Tienda</option>
                   <option value="easy">Easy</option>
                   <option value="disco">Disco</option>
                   <option value="jumbo">Jumbo</option>
