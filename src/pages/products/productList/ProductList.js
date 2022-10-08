@@ -58,6 +58,7 @@ function ProductList() {
         </div>
       </Header>
       {products.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />)}
+      <ProductCard />
     </ContentContainer>
   )
 }
