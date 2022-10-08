@@ -1,13 +1,11 @@
-import ContentContainer from "./ContentContainer";
-import Header from "./Header";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "./Button";
-
 import React from "react";
+import Images from "./Images";
+import '../assets/styles/stockButton.css'
 
 import getProductById from "../utils/getProductById";
-import "./productView.css";
 
 
 const prueba = {
@@ -35,21 +33,34 @@ function EditForm() {
 
   const id = useParams().id;
 
-
   // Seteo estado inicial del formulario a enviar
   const [form, setform] = useState(prueba)
+  const [counter, setCounter] = useState(form.stock)
 
   //Llamado api
   useEffect(()=>{
     async function get(){
       await getProductById(id)
-      .then(re=>{setform(re); console.log(re)}
+      .then(re=>{setform(re);setCounter(re.stock);console.log(re)}
       )
     }
     get()    
   }, []);
 
 
+
+  //Funciones incremento y decremento
+  const handleDecrement = (e)=>{
+    e.preventDefault()
+    if(counter>0){
+      setCounter(counter-1)
+    } 
+  }
+  const handleIncrement = (e)=>{
+    e.preventDefault()
+    setCounter(counter+1)
+  }
+  
 
   //Tomo los datos de los inputs
   const handleInput = async (e) =>{
@@ -62,32 +73,17 @@ function EditForm() {
     
   }
 
-  const handleStock = (e)=>{
+
+  //BOTON DE GUARDAR
+  const handleSave =(e) =>{
+    e.preventDefault()
     console.log(e)
 
   }
 
-
-
-
   return (
-    <ContentContainer className="home">
-      <Header>
-        <div className="title textCtn">
-          <Link className="title products" to="/products">
-            Productos
-            <i className="fa-solid fa-greater-than"></i>
-          </Link>
-          <Link className="title" to="/products/new">
-            {id}
-          </Link>
-        </div>
-        <Button text="Eliminar" personalClass="btnDelete" />
-      </Header>
-
       <div className="cont">
         <div className="productView">
-          <EditProduct />
           <form className="newForm" action="">
             <div>
               <div className="eachInput">
@@ -115,12 +111,15 @@ function EditForm() {
                   name="price"
                 />
               </div>
-              <StockButton 
-                name='stock'
-                value=''
-                onChange={handleStock}
-                stock={form.stock} 
-              />
+              {/* stock button */}
+            <div className='eachInput'>
+                <label>Stock</label>
+                <div className="counter">
+                <button type="number" onClick={handleDecrement} className="decrement">-</button>
+                <p className="result">{counter}</p>
+                <button type="number"  onClick={handleIncrement} className="increment">+</button>
+            </div>
+            </div>
               <div className="eachInput">
                 <label htmlFor="description">Descripción</label>
 
@@ -151,7 +150,6 @@ function EditForm() {
               <div className="eachInput">
                 <label htmlFor="image">Nueva Imagen</label>
                 <input
-                  // value={form.images}
                   onChange={handleInput}
                   className="input"
                   placeholder="inputImg"
@@ -171,12 +169,11 @@ function EditForm() {
 
             <div className="sendForm">
               <button>Cancelar</button>
-              <button>Guardar</button>
+              <button onClick={handleSave}>Guardar</button>
             </div>
           </form>
         </div>
       </div>
-    </ContentContainer>
   );
 }
 

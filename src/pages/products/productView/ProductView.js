@@ -4,12 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import React from "react";
-import Images from "../../../components/Images";
-import StockButton from "../../../components/StockButton";
 
 import getProductById from "../../../utils/getProductById";
 import EditProduct from "../../../components/EditProduct";
 import "./productView.css";
+import EditForm from "../../../components/EditForm";
 
 
 const prueba = {
@@ -54,20 +53,20 @@ function ProductView() {
 
 
   //Tomo los datos de los inputs
-  const handleInput = async (e) =>{
-    console.log(e.target.id)
-    setform({
-      ...form,
-      [e.target.name] : e.target.value,
-    })
-    console.log(form)
+  // const handleInput = async (e) =>{
+  //   console.log(e.target.id)
+  //   setform({
+  //     ...form,
+  //     [e.target.name] : e.target.value,
+  //   })
+  //   console.log(form)
     
-  }
+  // }
 
-  const handleStock = (e)=>{
-    console.log(e)
+  // const handleStock = (e)=>{
+  //   console.log(e)
 
-  }
+  // }
 
 
 
@@ -75,111 +74,21 @@ function ProductView() {
   return (
     <ContentContainer className="home">
       <Header>
-        <div className="title textCtn">
-          <Link className="title products" to="/products">
-            Productos
-            <i className="fa-solid fa-greater-than"></i>
-          </Link>
-          <Link className="title" to="/products/new">
-            {id}
-          </Link>
-        </div>
-        <Button text="Eliminar" personalClass="btnDelete" />
-      </Header>
-
-      <div className="cont">
-        <div className="productView">
-          <EditProduct />
-          <form className="newForm" action="">
-            <div>
-              <div className="eachInput">
-                <h2>Información</h2>
-                <label htmlFor="title">Nombre</label>
-                <input
-                  value={form.title}
-                  onChange={handleInput}
-                  className="input"
-                  placeholder="inputName"
-                  id="title"
-                  type="text"
-                  name="title"
-                />
-              </div>
-              <div className="eachInput">
-                <label htmlFor="price">Valor</label>
-                <input
-                  value={form.price}
-                  onChange={handleInput}
-                  className="input"
-                  placeholder="inputPrice"
-                  id="price"
-                  type="text"
-                  name="price"
-                />
-              </div>
-              <StockButton 
-                name='stock'
-                value=''
-                onChange={handleStock}
-                stock={form.stock} 
-              />
-              <div className="eachInput">
-                <label htmlFor="description">Descripción</label>
-
-                <textarea
-                value={form.description}
-                  onChange={handleInput}
-                  className="input form-description"
-                  placeholder="inpuDescription"
-                  id="description"
-                  type="textArea"
-                  name="description"
-                />
-              </div>
-              <div className="eachInput store-form">
-                <label htmlFor="store">Tienda</label>
-                <select name="select" className="input" id="stores">
-                  <option defaultValue={true}>Tienda</option>
-                  <option value="easy">Easy</option>
-                  <option value="disco">Disco</option>
-                  <option value="jumbo">Jumbo</option>
-                  <option value="paris">Paris</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <h2>Galeria de Imágenes</h2>
-              <div className="eachInput">
-                <label htmlFor="image">Nueva Imagen</label>
-                <input
-                  // value={form.images}
-                  onChange={handleInput}
-                  className="input"
-                  placeholder="inputImg"
-                  id="image"
-                  name="image"
-                  type="text"
-                />
-              </div>
-              <div className="eachInput">
-                <label>Imágenes actuales</label>
-                {form.images.map((image,id)=>{
-                  return <Images key={id + image}url={image} />
-
-                })}
-              </div>
-            </div>
-
-            <div className="sendForm">
-              <button>Cancelar</button>
-              <button>Guardar</button>
-            </div>
-          </form>
-        </div>
+      <div className="title textCtn">
+        <Link className="title products" to="/products">
+          Productos
+          <i className="fa-solid fa-greater-than"></i>
+        </Link>
+        <Link className="title" to="/products/new">
+          {id}
+        </Link>
       </div>
+      <Button text="Eliminar" personalClass="btnDelete" />
+      </Header>
+      <EditProduct/>
+      <EditForm/>
     </ContentContainer>
-  );
+  )
 }
 
 export default ProductView;
