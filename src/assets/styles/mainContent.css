@@ -39,10 +39,7 @@
     transition: all 0.5s ease;
 }
 
-/*MIENTRAS*/
-.pruebita{
-    border: 2px solid red;
-    border-radius: 10px;
-    padding: 10px;
-    height: 60px;
+.button-context{
+
+    background-color: #0cb093;
 }

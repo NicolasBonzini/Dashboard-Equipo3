@@ -3,21 +3,21 @@ import ProductView from '../pages/products/productView/ProductView'
 import productCard from '../assets/styles/productCard.css';
 import { NavLink } from 'react-router-dom';
 import arrowImg from '../assets/images/chevron-right(1).svg';
-import testIMG from '../assets/images/Historia-de-Coca-Cola.jpg';
 
-function ProductCard() {
+
+function ProductCard(props) {
   return (
     <div className='productCard header_top containerMain'>
       <NavLink className='productCardLink' to='/products/:id'>
         <section className='productCardInfo'>
           <figure className='productCardImg'>
-            <img src={testIMG} alt=''></img>
+            <img src={props.image} alt=''></img>
           </figure>
           <div className='productCardTexts'>
             <h4 className='productCardTitle'>
-              Aca va un titulo de producto
+              {props.title}
             </h4>
-            <p className='productCardCode'>Aca va el #codigo</p>
+            <p className='productCardCode'>#{props.id}</p>
           </div>
         </section>
         <figure className='productArrowImg'>

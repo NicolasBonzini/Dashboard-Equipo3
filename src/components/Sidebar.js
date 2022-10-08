@@ -1,5 +1,17 @@
+//React
 import { useState, useEffect, useContext } from "react";
 import "../assets/styles/sidebar.css";
+//Cookies
+import Cookies from "universal-cookie";
+//FontAwesome Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBoxOpen,
+  faHouse,
+  faStoreAlt,
+  faMoon,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 //ReactRouter
 import { NavLink } from "react-router-dom";
 //ReactComponents
@@ -8,8 +20,11 @@ import Brand from "./Brand";
 import LinksNavegationSideBar from "./LinksNavegationSideBar";
 //Context
 import { ToggleContext } from '../context/ToggleContext';
+import ButtonContext from "../context/ButtonContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 function Sidebar() {
+  const { theme } = useContext(ThemeContext)
   const { toggle, toggleSidebar } = useContext(ToggleContext);
   //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA.
   const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -33,9 +48,7 @@ function Sidebar() {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
-  console.log(toggle);
-
+  
   return (
     <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar" : null}
     ${windowSize.innerWidth < 1024 && toggle ? "close-sidebar" : "show-sidebar"}`}>

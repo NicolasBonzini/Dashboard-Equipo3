@@ -9,8 +9,6 @@
   border-bottom: 1px solid var(--black);
 }
 
-
-
 .dark .header {
   border-bottom: 0;
   color: var(--white);
@@ -86,8 +84,9 @@
   width: 100%;
 }
 
-.dark .headerGroup input {
-  background-color: var();
+.dark .headerGroup input{
+    background-color: var(--border-cards);
+    color: var(--white);
 }
 
 .headerGroup input:focus,

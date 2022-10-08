@@ -1,4 +1,5 @@
 import './App.css';
+import { useContext } from 'react';
 //React-router
 import { Route, Routes } from 'react-router-dom';
 //Components
@@ -8,10 +9,14 @@ import Error404 from './pages/Error404/Error404'
 import ProductList from './pages/products/productList/ProductList';
 import ProductView from './pages/products/productView/ProductView';
 import ProductNew from './pages/products/productNew/ProductNew'
+import { ThemeContext } from './context/ThemeContext';
+import putProducts from './utils/putProducts';
 
 function App() {
+  const { theme } = useContext(ThemeContext)
+
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,6 +24,7 @@ function App() {
         <Route path="/product/:id" element={<ProductView />} />
         <Route path="/products/new" element={<ProductNew />} />
         <Route path="*" element={<Error404 />} />
+        <Route path='/santi/prueba' element={<putProducts />}/>
       </Routes>
     </div>
   );
