@@ -1,14 +1,12 @@
-import ContentContainer from "../../../components/ContentContainer";
-import Header from "../../../components/Header";
+import ContentContainer from "./ContentContainer";
+import Header from "./Header";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Button from "../../../components/Button";
-import React from "react";
-import Images from "../../../components/Images";
-import StockButton from "../../../components/StockButton";
+import Button from "./Button";
 
-import getProductById from "../../../utils/getProductById";
-import EditProduct from "../../../components/EditProduct";
+import React from "react";
+
+import getProductById from "../utils/getProductById";
 import "./productView.css";
 
 
@@ -33,7 +31,7 @@ const prueba = {
 }
 
 
-function ProductView() {
+function EditForm() {
 
   const id = useParams().id;
 
@@ -182,4 +180,4 @@ function ProductView() {
   );
 }
 
-export default ProductView;
+export default EditForm;
