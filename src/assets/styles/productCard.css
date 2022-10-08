@@ -18,6 +18,10 @@ body {
   min-height: fit-content;
 }
 
+.productCard{
+  min-height: fit-content;
+}
+
 .productCardLink:hover {
   background: #0cb093;
 }
