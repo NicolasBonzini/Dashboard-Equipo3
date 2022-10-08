@@ -1,6 +1,8 @@
 import React from 'react'
 import '../assets/styles/editProduct.css'
+import Avatar from './Avatar'
 import StockButton from './StockButton'
+import { NavLink } from "react-router-dom";
 
 const editProduct = () => {
   return (
@@ -28,8 +30,10 @@ const editProduct = () => {
                     </div>
                 </div>
                 
+        <Avatar/>
             </div>    
         </div>    
+        
 
     </div>
   )
