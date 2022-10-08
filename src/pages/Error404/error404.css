@@ -64,10 +64,11 @@
 
 .button-slider:hover::before {
     transform: translateY(-50%) translateX(-50%);
-
 }
 
-a{
+/* Te comento esta linea por que si la sacas no afecta en nada */
+/* Con .button-slider ya le das color */
+/* a{
     text-decoration: none;
     color: rgba(12,176,147,1);
-}
+} */

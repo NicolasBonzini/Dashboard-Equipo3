@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 //React-router-dom
+//Context
+import { ToggleProvider } from "./context/ToggleContext";
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -12,7 +14,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
     <ThemeProvider>
+    <ToggleProvider>
       <App />
+      </ToggleProvider>
     </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

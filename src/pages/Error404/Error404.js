@@ -3,8 +3,6 @@ import "./error404.css";
 
 function Error404() {
 
-
-
   return (
     <main className="container-404">
       <div className="text-container-404">

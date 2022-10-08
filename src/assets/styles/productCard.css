@@ -1,92 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-
-*{
-    font-family: 'Open Sans';
+* {
+  font-family: "Open Sans";
 }
 
-body{
-    background-color: #EFEFEF;
+body {
+  background-color: #efefef;
 }
 
-.productCard{
-    min-height: fit-content;
+.productCardLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: 0px 5px 5px grey;
+  transition: background-color 0.5s;
+  background-color: white;
+  min-height: fit-content;
 }
 
-.productCardLink{
-    
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 15px;
-    box-shadow: 0px 5px 5px grey;
-    transition: background-color 0.5s;
-    background-color: white;
+.productCardLink:hover {
+  background: #0cb093;
 }
 
-.productCardLink:hover{
-    background: #0CB093;
+.productCardInfo {
+  display: flex;
+  align-items: center;
+  padding: 8px;
 }
 
-.productCardInfo{
-    
-    display: flex;
-    align-items: center;
-    padding: 8px;
+.productCardTexts {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.productCardTexts{
-    margin-left: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
+.productCardTitle {
+  justify-self: flex-start;
+  margin: 0px;
+  color: black;
 }
 
-.productCardTitle{
-    justify-self: flex-start;
-    margin: 0px;
-    color: black;
+.productCardCode {
+  color: black;
+  margin: 0px;
+  font-size: small;
 }
 
-.productCardCode{
-    color: black;
-    margin: 0px;
-    font-size: small;
+.productCardImg {
+  margin: 0px;
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
-.productCardImg{
-    margin: 0px;
-    height: 70px;
-    width: 70px;
-    overflow: hidden;
-    border-radius: 5px;
+.productCardImg img {
+  height: 100%;
 }
 
-.productCardImg img{
-    height: 100%;
+.productArrowImg {
+  margin-right: 25px;
 }
-
-.productArrowImg{
-    margin-right: 25px;
-}
-
-
 
 /***** DARK MODE *****/
-
-
-.dark{
-    background-color: #333333;
+.dark {
+  background-color: #333333;
 }
 
-.dark .productCardCode{
-    color: white;
+.dark .productCardCode {
+  color: white;
 }
 
-.dark .productCardTitle{
-    color: white;
+.dark .productCardTitle {
+  color: white;
 }
 
-.dark .productArrowImg{
-    filter: invert(100%);
+.dark .productArrowImg {
+  filter: invert(100%);
 }

@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+//React
+import { useState, useEffect, useContext } from "react";
 import "../assets/styles/sidebar.css";
 //Cookies
 import Cookies from "universal-cookie";
@@ -16,17 +17,41 @@ import { NavLink } from "react-router-dom";
 //ReactComponents
 import Avatar from "./Avatar";
 import Brand from "./Brand";
+import LinksNavegationSideBar from "./LinksNavegationSideBar";
 //Context
+import { ToggleContext } from '../context/ToggleContext';
 import ButtonContext from "../context/ButtonContext";
 import { ThemeContext } from "../context/ThemeContext";
 
-
-
 function Sidebar() {
   const { theme } = useContext(ThemeContext)
+  const { toggle, toggleSidebar } = useContext(ToggleContext);
+  //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA.
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  //OBTENGO EL LARGO DE LA RESOLUCION DE PANTALLA
+  function getWindowSize() {
+    const { innerWidth } = window;
+    return { innerWidth };
+  }
+  //EN EL RENDERIZADO INICIAL, AGREGO UN DETECTOR DE EVENTOS
+  //A WINDOW. EL EVENTO DE CAMBIO DE TAMANIO SE ACTIVARA 
+  //CUANDO EL TAMANIO DE LA VENTANA CAMBIE.
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(getWindowSize());
+    };
 
+    window.addEventListener("resize", handleWindowResize);
+    //AL DESMONTARSE EL COMPONENTE, ELIMINO EL DETECTOR
+    //DE EVENTOS.
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar" : null}
+    ${windowSize.innerWidth < 1024 && toggle ? "close-sidebar" : "show-sidebar"}`}>
       {/* Sidebar */}
       <div className="left-sidebar">
         {/* Top Navbar */}
@@ -34,35 +59,7 @@ function Sidebar() {
           <Brand />
           <nav className="nav-list">
             <ul>
-              <NavLink to="/">
-                <li>
-                  <FontAwesomeIcon icon={faHouse} className="icon" />
-                  Inicio
-                </li>
-              </NavLink>
-              <NavLink to="/products">
-                <li>
-                  <FontAwesomeIcon icon={faBoxOpen} className="icon" />
-                  Productos
-                </li>
-              </NavLink>
-              <NavLink to="/stores">
-                <li>
-                  <FontAwesomeIcon icon={faStoreAlt} className="icon" />
-                  Tiendas
-                </li>
-              </NavLink>
-              <li className="dark-mode-sidebar">
-                <div>
-                  <FontAwesomeIcon icon={
-                    theme == '' ? faMoon : faSun
-                    } className='icon' />
-                  Cambiar a Tema {
-                    theme == 'dark' ? 'Claro' : 'Oscuro'
-                  }
-                </div>
-                <ButtonContext/>
-              </li>
+              <LinksNavegationSideBar />
             </ul>
           </nav>
         </nav>
@@ -74,7 +71,10 @@ function Sidebar() {
         </nav>
       </div>
       {/* Space to click in and close sidebar */}
-      <div className="right-sidebar"></div>
+      <div 
+        className={`right-sidebar `}
+
+        onClick={() => toggleSidebar()}></div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useContext } from 'react';
 //React-router
@@ -18,7 +17,6 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
