@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../assets/styles/sidebar.css";
+//Cookies
+import Cookies from "universal-cookie";
 //FontAwesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoxOpen,
   faHouse,
   faStoreAlt,
+  faMoon,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 //ReactRouter
 import { NavLink } from "react-router-dom";
 //ReactComponents
 import Avatar from "./Avatar";
 import Brand from "./Brand";
+//Context
+import ButtonContext from "../context/ButtonContext";
+import { ThemeContext } from "../context/ThemeContext";
+
+
 
 function Sidebar() {
+  const { theme } = useContext(ThemeContext)
 
   return (
     <div className="sidebar">
@@ -42,6 +52,17 @@ function Sidebar() {
                   Tiendas
                 </li>
               </NavLink>
+              <li className="dark-mode-sidebar">
+                <div>
+                  <FontAwesomeIcon icon={
+                    theme == '' ? faMoon : faSun
+                    } className='icon' />
+                  Cambiar a Tema {
+                    theme == 'dark' ? 'Claro' : 'Oscuro'
+                  }
+                </div>
+                <ButtonContext/>
+              </li>
             </ul>
           </nav>
         </nav>

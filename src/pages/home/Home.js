@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Header from '../../components/Header'
 import HomeContent from '../../components/HomeContent'
 import ContentContainer from '../../components/ContentContainer'
@@ -7,8 +7,15 @@ import Button from '../../components/Button'
 import CardStartPage from '../../components/CardStartPage'
 
 function Home() {
-  localStorage.setItem('user', JSON.stringify({name: 'Juanito'}))
-  const id = JSON.parse(localStorage.getItem('user')).name
+  const [id, setId] = useState('Anonimo')
+  useEffect(() =>{
+    if (!JSON.parse(localStorage.getItem('user'))?.name){
+      const user = prompt('Ingrese su nombre:')
+      localStorage.setItem('user', JSON.stringify({name: user}))
+    }
+    setId(JSON.parse(localStorage.getItem('user'))?.name || id)
+
+  }, [])
   return (
     <ContentContainer className='home'>
       <Header>

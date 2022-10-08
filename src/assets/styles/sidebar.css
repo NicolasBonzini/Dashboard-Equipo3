@@ -87,6 +87,16 @@ a {
   width: 100%;
 }
 
+.dark-mode-sidebar{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.dark-mode-sidebar svg{
+  padding-left: 3px;
+}
+
 @media (min-width: 1024px) {
   .sidebar {
     transform: translateX(0);

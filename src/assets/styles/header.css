@@ -23,6 +23,7 @@
 }
 
 .dark .header{
+    background-color: var(--dark-gray);
     border-bottom: 0;
     color: var(--white);
 }
@@ -102,7 +103,8 @@
 }
 
 .dark .headerGroup input{
-    background-color: var();
+    background-color: var(--border-cards);
+    color: var(--white);
 }
 
 .headerGroup input:focus, .headerGroup input:active{
