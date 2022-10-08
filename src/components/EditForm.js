@@ -4,7 +4,7 @@ import Button from "./Button";
 import React from "react";
 import Images from "./Images";
 import '../assets/styles/stockButton.css'
-
+import putProducts from "../utils/putProducts";
 import getProductById from "../utils/getProductById";
 
 
@@ -77,8 +77,15 @@ function EditForm() {
   //BOTON DE GUARDAR
   const handleSave =(e) =>{
     e.preventDefault()
-    console.log(e)
+    // console.log(e)
+     function putProductos(form){
+        const data =  putProducts(form)
+        // .then(res=>console.log(res))
+        .then(res=>console.log(res.json()))
 
+    }
+
+    putProductos(form)
   }
 
   return (
@@ -150,7 +157,7 @@ function EditForm() {
               <div className="eachInput">
                 <label htmlFor="image">Nueva Imagen</label>
                 <input
-                  onChange={handleInput}
+                //   onChange={handleInput}
                   className="input"
                   placeholder="inputImg"
                   id="image"
