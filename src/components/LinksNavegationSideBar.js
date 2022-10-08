@@ -31,6 +31,10 @@ function LinksNavegationSideBar() {
           Tiendas
         </li>
       </NavLink>
+      <li>
+          <FontAwesomeIcon icon={faStoreAlt} className="icon" />
+          Tiendas
+      </li>
     </>
   );
 }
