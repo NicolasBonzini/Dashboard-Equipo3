@@ -1,6 +1,5 @@
 .container-404 {
     position: relative;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +10,6 @@
 }
 
 .container-404::before {
-    z-index: -1;
     content: "";
     position: absolute;
     height: 100%;
@@ -35,6 +33,7 @@
 }
 
 .button-slider {
+    z-index: 1;
     font-size: 2rem;
     font-family: sans-serif;
     position: relative;

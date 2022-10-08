@@ -24,7 +24,6 @@ function App() {
         <Route path="/product/:id" element={<ProductView />} />
         <Route path="/products/new" element={<ProductNew />} />
         <Route path="*" element={<Error404 />} />
-        <Route path='/santi/prueba' element={<putProducts />}/>
       </Routes>
     </div>
   );

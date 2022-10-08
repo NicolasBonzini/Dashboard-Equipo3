@@ -4,7 +4,6 @@ import productCard from '../assets/styles/productCard.css';
 import { NavLink } from 'react-router-dom';
 import arrowImg from '../assets/images/chevron-right(1).svg';
 
-
 function ProductCard(props) {
   return (
     <div className='productCard header_top containerMain'>

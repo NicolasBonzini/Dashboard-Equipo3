@@ -7,7 +7,6 @@ import Button from '../../../components/Button'
 import '../../../assets/styles/mainContent.css'
 import getProducts from '../../../utils/getProducts';
 
-
 function ProductList() {
   const [isVisibleInput, setIsVisibleInput] = useState(false)
   const [products, setProducts] = useState([]);
