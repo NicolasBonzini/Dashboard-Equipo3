@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 //FontAwesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //ReactRouter
@@ -8,9 +8,16 @@ import {
   faBoxOpen,
   faHouse,
   faStoreAlt,
+  faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
+//Context theme
+import { ThemeContext } from "../context/ThemeContext";
+import ButtonContext from "../context/ButtonContext";
+
 
 function LinksNavegationSideBar() {
+  const {theme} = useContext(ThemeContext)
   return (
     <>
       <NavLink to="/">
@@ -31,10 +38,17 @@ function LinksNavegationSideBar() {
           Tiendas
         </li>
       </NavLink>
-      <li>
-          <FontAwesomeIcon icon={faStoreAlt} className="icon" />
-          Tiendas
-      </li>
+      <li className="dark-mode-sidebar">
+                <div>
+                  <FontAwesomeIcon icon={
+                    theme == '' ? faMoon : faSun
+                    } className='icon' />
+                  Cambiar a Tema {
+                    theme == 'dark' ? 'Claro' : 'Oscuro'
+                  }
+                </div>
+                <ButtonContext/>
+              </li>
     </>
   );
 }

@@ -10,22 +10,31 @@ import getProducts from '../../../utils/getProducts';
 function ProductList() {
   const [isVisibleInput, setIsVisibleInput] = useState(false)
   const [products, setProducts] = useState([]);
+  const [productsFilter, setProductsFilter] = useState([])
 
   const inputSearch = useRef(null)
-  function searchProducts() {
-    console.log('Buscando...')
+
+  function filterForValue(array, value){
+    return array.filter(x => x.title.toLowerCase().includes(value.toLowerCase()))
+  }
+  function searchProducts(e) {
+    e?.preventDefault()
+    setProductsFilter(filterForValue(products, inputSearch.current.value))
   }
   function handlerSearchBar() {
     if (window.screen.width <= 500) setIsVisibleInput(!isVisibleInput)
   }
 
+
   useEffect(() => {
     getProducts()
-    .then(data => setProducts(data));
+    .then(data => {
+      setProductsFilter(data)
+      setProducts(data)
+    });
     console.log(products);
   }, [])
 
-  console.log(products);
   
   
 
@@ -36,8 +45,8 @@ function ProductList() {
         <div className='headerGroup'>
           <i onClick={handlerSearchBar} className={`fa-regular fa-x ${isVisibleInput ? 'setVisible xVisible' : ' '}`}></i>
           <div className='formContainer'>
-            <form>
-              <input ref={inputSearch} className={isVisibleInput ? 'setVisible inputVisible' : ''} placeholder='Buscar productos' type='search'></input>
+            <form onSubmit={searchProducts}>
+              <input ref={inputSearch} onChange={searchProducts} className={isVisibleInput ? 'setVisible inputVisible' : ''} placeholder='Buscar productos' type='search'></input>
 
               <i onClick={() => {
                 return inputSearch.current.value ? searchProducts() : handlerSearchBar()
@@ -56,7 +65,7 @@ function ProductList() {
           </div>
         </div>
       </Header>
-      {products.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />)}
+      {productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />)}
       <ProductCard />
     </ContentContainer>
   )
