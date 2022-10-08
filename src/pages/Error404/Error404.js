@@ -1,9 +1,8 @@
 import React from 'react'
-import "./error404.css";
 import ContentContainer from '../../components/ContentContainer';
+import "./error404.css";
 
 function Error404() {
-
   return (
     <ContentContainer className="home">
       <main className="container-404">
@@ -13,7 +12,6 @@ function Error404() {
       <a href="/"><div className="button-slider" text="Go to HOME">Click Me</div></a>
     </main>
     </ContentContainer>
-    
   )
 }
 
