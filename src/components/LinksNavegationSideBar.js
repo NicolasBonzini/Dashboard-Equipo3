@@ -14,6 +14,8 @@ import {
 //Context theme
 import { ThemeContext } from "../context/ThemeContext";
 import ButtonContext from "../context/ButtonContext";
+//Switch css
+import '../assets/styles/switch.css'
 
 
 function LinksNavegationSideBar() {
@@ -38,17 +40,28 @@ function LinksNavegationSideBar() {
           Tiendas
         </li>
       </NavLink>
-      <li className="dark-mode-sidebar">
-                <div>
-                  <FontAwesomeIcon icon={
-                    theme == '' ? faMoon : faSun
-                    } className='icon' />
-                  Cambiar a Tema {
-                    theme == 'dark' ? 'Claro' : 'Oscuro'
-                  }
-                </div>
-                <ButtonContext/>
-              </li>
+      <li className="dark-mode-sidebar">        
+          <ButtonContext>
+          <FontAwesomeIcon icon={
+            theme == '' ? faMoon : faSun
+            } className='icon' />
+          Cambiar a Tema {
+            theme == 'dark' ? 'Claro' : 'Oscuro'
+          }
+          </ButtonContext>
+
+        
+        <input type="checkbox" id="toggle_checkbox" />
+        <ButtonContext>
+          <label htmlFor="toggle_checkbox">
+            <div id="star">
+              <div className="star" id="star-1">★</div>
+              <div className="star" id="star-2">★</div>
+            </div>
+            <div id="moon"></div>
+          </label>
+        </ButtonContext>
+      </li>
     </>
   );
 }
