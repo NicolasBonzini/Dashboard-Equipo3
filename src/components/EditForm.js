@@ -67,16 +67,14 @@ function EditForm() {
     const handleImg = (e)=>{
         const image = e.target.value;
         form.images.push(image);
+        setform({...form})
     }
   
     const deleteIMG = (e)=>{
         e.preventDefault();
-        // console.log(e.target.value)
-        const deletedImage = e.target.value
-        let imagesForm = form.images
-        form.images = form.images.filter(image => image !== deletedImage)
-        console.log(form.images)
-
+        const deletedUrl = e.target.value
+        let imagesForm = form.images.filter(image => image !== deletedUrl)
+        setform({...form, images:imagesForm,})
     }
 
     ///////
