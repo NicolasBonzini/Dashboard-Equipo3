@@ -12,7 +12,7 @@ const deleteProduct = async(id) => {
                         )
 
   return (
-    <div>deleteProduct</div>
+    res
   )
 }
 
