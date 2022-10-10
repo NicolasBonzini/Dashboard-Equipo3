@@ -1,14 +1,19 @@
 import React from 'react'
 import '../assets/styles/images.css'
 
-const Images = (props) => {
+const Images = ({images, handler}) => {
   return (
-    <div className='formImgs'>
-              <div className='formImgs-img'>
-              <img src={props.url} alt="" />
-              <p>{props.url}</p>
-              </div>
-              <button className='quitar'>Quitar</button>
+    <div className="eachInput">
+    <label>Imágenes actuales</label>
+    {images.map((image,id)=>{
+      return (<div key={id + image} className='formImgs'>
+                <div className='formImgs-img'>
+                    <img src={image} alt="" />
+                    <p>{image}</p>
+                </div>
+                <button onClick={handler} value={image} className='quitar'>Quitar</button>
+            </div>)
+    })}
     </div>
   )
 }

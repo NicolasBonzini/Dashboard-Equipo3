@@ -33,7 +33,6 @@ function ProductView() {
       </div>
       <Button  text="Eliminar" id={id} personalClass="btnDelete" />
       </Header>
-      <EditProduct/>
       <EditForm/>
     </ContentContainer>
   )

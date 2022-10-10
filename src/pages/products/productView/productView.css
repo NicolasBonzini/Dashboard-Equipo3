@@ -26,7 +26,9 @@
     background-color: transparent;
     /* padding-left: 30px; */
 }
-
+.newForm h2{
+    margin-bottom: 10px;
+}
 .newForm label{
     font-size: 13px;
     font-weight: 400;

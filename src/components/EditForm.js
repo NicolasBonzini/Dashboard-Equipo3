@@ -6,6 +6,15 @@ import '../assets/styles/stockButton.css'
 import putProducts from "../utils/putProducts";
 import getProductById from "../utils/getProductById";
 import '../assets/styles/images.css'
+import EditProduct from "./EditProduct";
+
+import Input from "./Input";
+import Stock from "./Stock";
+import TextArea from "./TextArea";
+import Select from "./Select";
+import Images from "./Images";
+
+
 
 
 function EditForm() {
@@ -102,100 +111,25 @@ function EditForm() {
   }
 
   return (
+    <>
+    <EditProduct name={form.title} stock={form.stock} valor={form.price} />
     <div className="cont">
         <div className="productView">
             <form className="newForm" action="">
                 <div>
-                    <div className="eachInput">
-                        <h2>Información</h2>
-                        {/* nombre */}
-                        <label htmlFor="title">Nombre</label>
-                        <input
-                        value={form.title}
-                        onChange={handleInput}
-                        className="input"
-                        placeholder="inputName"
-                        id="title"
-                        type="text"
-                        name="title"
-                        />
-                    </div>
-                    {/* Precio */}
-                    <div className="eachInput">
-                    <label htmlFor="price">Valor</label>
-                    <input
-                    value={form.price}
-                    onChange={handleInput}
-                    className="input"
-                    placeholder="inputPrice"
-                    id="price"
-                    type="text"
-                    name="price"
-                    />
-                    </div>
-                    {/* stock button */}
-                    <div className='eachInput'>
-                    <label>Stock</label>
-                    <div className="counter">
-                    <button type="number" onClick={handleDecrement} className="decrement">-</button>
-                    <p 
-                    
-                    className="result">{counter}</p>
-                    <button type="number"  onClick={handleIncrement} className="increment">+</button>
+                    <h2>Información</h2>
+                    <Input name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
+                    <Input name="price" id="price" label="Valor" value={form.price} handler={handleInput}  />
+                    <Stock handlerI={handleIncrement} handlerD={handleDecrement} stock={counter}/>
+                    <TextArea value={form.description} handler={handleInput}/>
+                    <Select/>
                 </div>
-                    </div>
-                    {/* descripcion */}
-                    <div className="eachInput">
-                        <label htmlFor="description">Descripción</label>
-                        <textarea
-                            value={form.description}
-                    onChange={handleInput}
-                    className="input form-description"
-                    placeholder="inpuDescription"
-                    id="description"
-                    type="textArea"
-                    name="description"
-                        />
-                    </div>
-                    <div className="eachInput store-form">
-                    <label htmlFor="store">Tienda</label>
-                    <select name="select" className="input" id="stores">
-                    <option defaultValue={true}>Tienda</option>
-                    <option value="easy">Easy</option>
-                    <option value="disco">Disco</option>
-                    <option value="jumbo">Jumbo</option>
-                    <option value="paris">Paris</option>
-                    </select>
-                    </div>
-                </div>
-
-                {/* añadir y quitar imagenes */}
                 <div>
                     <h2>Galeria de Imágenes</h2>
-                    <div className="eachInput">
-                    <label htmlFor="image">Nueva Imagen</label>
-                    <input
-                    onBlur={handleImg} 
-                    className="input"
-                    placeholder="inputImg"
-                    id="image"
-                    name="image"
-                    type="text"
-                    />
-                    </div>
-                    <div className="eachInput">
-                    <label>Imágenes actuales</label>
-                    {form.images.map((image,id)=>{
-                    return (<div key={id + image} className='formImgs'>
-                                <div className='formImgs-img'>
-                                    <img src={image} alt="" />
-                                    <p>{image}</p>
-                                </div>
-                                <button onClick={deleteIMG} value={image} className='quitar'>Quitar</button>
-                            </div>)
-                    })}
-                    </div>
+                    <Input name="image" id="image" label="Nueva Imagen" handlerBlur={handleImg}/>
+                    <Images images={form.images} handler={deleteIMG}/>
                 </div>
+                
                 {/* cancelar o enviar formulario */}
                 <div className="sendForm">
                     <button>Cancelar</button>
@@ -204,6 +138,7 @@ function EditForm() {
             </form>
         </div>
     </div>
+                    </>
   );
 }
 
