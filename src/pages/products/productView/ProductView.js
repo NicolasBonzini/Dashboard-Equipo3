@@ -60,7 +60,7 @@ function ProductView() {
     <ContentContainer className="home">
       <Header>
         <div className="title textCtn">
-          <Link className="title products" to="/products">
+          <Link className="title " to="/products">
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>

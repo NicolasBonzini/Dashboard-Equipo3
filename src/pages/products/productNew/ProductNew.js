@@ -11,7 +11,7 @@ function ProductNew() {
     <ContentContainer className='home'>
       <Header>
         <div className='title teCtn'>
-          <Link className='title products' to='/products'>
+          <Link className='title ' to='/products'>
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
