@@ -1,13 +1,14 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Button from "./Button";
-import React from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState, React } from "react";
+
+//Estilos
 import '../assets/styles/stockButton.css'
+import '../assets/styles/images.css'
+//Servicios
 import putProducts from "../utils/putProducts";
 import getProductById from "../utils/getProductById";
-import '../assets/styles/images.css'
+// Componentes
 import EditProduct from "./EditProduct";
-
 import Input from "./Input";
 import Stock from "./Stock";
 import TextArea from "./TextArea";
@@ -19,9 +20,10 @@ import Images from "./Images";
 
 function EditForm() {
 
+  // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
 
-  // Estado inicial del formulario
+  // Estado del formulario
   const [form, setform] = useState({
     id: '',
     title: "",
@@ -40,7 +42,10 @@ function EditForm() {
     // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock)
 
-  //Llamado api
+
+
+
+  //Llamado a la api
   useEffect(()=>{
     async function get(){
       await getProductById(id)
@@ -51,6 +56,7 @@ function EditForm() {
   }, []);
 
 
+            //STOCK//
 
   //Funciones incremento y decremento
   const handleDecrement = (e)=>{
@@ -63,7 +69,6 @@ function EditForm() {
     e.preventDefault()
     setCounter(counter+1)
   }
-
     // Actualizo el stock del formulario con el estado del contador
   useEffect(()=>{
     setform({
@@ -71,6 +76,9 @@ function EditForm() {
         stock : counter,
       })
   }, [counter])
+              // FIN STOCK //
+
+              //IMAGENES//
 
   // Actualizo / Elimino las imagenes
     const handleImg = (e)=>{
@@ -78,17 +86,15 @@ function EditForm() {
         form.images.push(image);
         setform({...form})
     }
-  
     const deleteIMG = (e)=>{
-        e.preventDefault();
-        const deletedUrl = e.target.value
-        let imagesForm = form.images.filter(image => image !== deletedUrl)
-        setform({...form, images:imagesForm,})
-    }
-
-    ///////
-
-  //Tomo los datos de los inputs
+      e.preventDefault();
+      const deletedUrl = e.target.value
+      let imagesForm = form.images.filter(image => image !== deletedUrl)
+      setform({...form, images:imagesForm,})
+  }
+              //FIN IMAGENES//
+  
+  //Input handlers
   const handleInput = async (e) =>{
     console.log(e.target.id)
     setform({
@@ -99,8 +105,7 @@ function EditForm() {
     
   }
 
-
-  //BOTON DE GUARDAR
+   //Boton de hardar
   const handleSave =(e) =>{
     e.preventDefault()
      function putProductos(form){
@@ -127,9 +132,9 @@ function EditForm() {
                 <div>
                     <h2>Galeria de Imágenes</h2>
                     <Input name="image" id="image" label="Nueva Imagen" handlerBlur={handleImg}/>
-                    <Images images={form.images} handler={deleteIMG}/>
+                    <Images handler={deleteIMG} images={form.images} />
                 </div>
-                
+
                 {/* cancelar o enviar formulario */}
                 <div className="sendForm">
                     <button>Cancelar</button>

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Stock = ({handlerD, handlerI, stock}) => {
+
+
+    
   return (
     <div className='eachInput'>
                     <label>Stock</label>

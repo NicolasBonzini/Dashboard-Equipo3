@@ -1,7 +1,9 @@
 import React from 'react'
 import '../assets/styles/images.css'
 
-const Images = ({images, handler}) => {
+const Images = ({images,handler}) => {
+
+ 
   return (
     <div className="eachInput">
     <label>Imágenes actuales</label>
