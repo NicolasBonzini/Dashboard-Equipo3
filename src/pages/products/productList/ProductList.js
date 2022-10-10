@@ -14,7 +14,7 @@ function ProductList() {
 
   const inputSearch = useRef(null)
 
-  function filterForValue(array, value){
+  function filterForValue(array, value) {
     return array.filter(x => x.title.toLowerCase().includes(value.toLowerCase()))
   }
   function searchProducts(e) {
@@ -28,15 +28,14 @@ function ProductList() {
 
   useEffect(() => {
     getProducts()
-    .then(data => {
-      setProductsFilter(data)
-      setProducts(data)
-    });
-    console.log(products);
+      .then(data => {
+        setProductsFilter(data)
+        setProducts(data)
+      });
   }, [])
 
-  
-  
+
+
 
   return (
     <ContentContainer className='productList '>
@@ -46,7 +45,7 @@ function ProductList() {
           <i onClick={handlerSearchBar} className={`fa-regular fa-x ${isVisibleInput ? 'setVisible xVisible' : ' '}`}></i>
           <div className='formContainer'>
             <form onSubmit={searchProducts}>
-              <input name='search' type='search' ref={inputSearch} onChange={searchProducts} className={isVisibleInput ? 'setVisible inputVisible' : ''} placeholder='Buscar productos' type='search'></input>
+              <input name='search' type='search' ref={inputSearch} onChange={searchProducts} className={isVisibleInput ? 'setVisible inputVisible' : ''} placeholder='Buscar productos'></input>
 
               <i onClick={() => {
                 return inputSearch.current.value ? searchProducts() : handlerSearchBar()
@@ -65,12 +64,14 @@ function ProductList() {
           </div>
         </div>
       </Header>
-      { products.length ?
-          productsFilter.length ? 
+      <div className='header_top'>
+        {products.length ?
+          productsFilter.length ?
             productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
             <p className='header_top containerMain void'>No hay coincidencias</p> :
           <p className='header_top containerMain void'>Cargando...</p>
-      }
+        }
+      </div>
     </ContentContainer>
   )
 }
