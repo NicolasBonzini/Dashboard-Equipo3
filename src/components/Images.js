@@ -11,7 +11,9 @@ const Images = ({images,handler}) => {
       return (<div key={id + image} className='formImgs'>
                 <div className='formImgs-img'>
                     <img src={image} alt="" />
-                    <p>{image}</p>
+                    <div className='urlContainer'>
+                      <p>{image}</p>
+                    </div>  
                 </div>
                 <button onClick={handler} value={image} className='quitar'>Quitar</button>
             </div>)

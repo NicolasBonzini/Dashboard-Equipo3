@@ -11,7 +11,7 @@ const editProduct = (props) => {
     <div className='editProduct'>
 
         <div className='editProduct__img'>
-            <img src='https://play-lh.googleusercontent.com/SK5XKAgwe7rL3JisRwDhf4KqUj7Ngc8-ZXliUjympr928hSgpv8b6lzayv4CuHu3diFn' alt="" />
+            <img src={props.img} alt="" />
         </div>    
 
         <div className='editProduct__container'>

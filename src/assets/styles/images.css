@@ -2,6 +2,21 @@
     margin: 5px 0 5px 0;
     background-color: var(--background-inputs);
     box-shadow: 3px 3px 9px 2px #00000040;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    border-radius: var(--border-cards);
+    padding: 5px;
+}
+
+
+
+.formImgs{
+    margin: 5px 0 5px 0;
+    background-color: var(--background-inputs);
+    box-shadow: 3px 3px 9px 2px #00000040;
     max-width: 450px;
     display: flex;
     align-items: center;
@@ -14,10 +29,14 @@
 .newForm .quitar {
     color: var(--text-inputs);
     background-color: var(--gray-primary);
-    font-size: 12px;
-    width: 80px;
+
+
+    font-size: 8px;
+    width: 40px;
+    border-radius: 8px;
+
+
     height: 32px;
-    border-radius: 16px;
     margin-right: 20px;
     border: none;
     cursor: pointer;
@@ -29,20 +48,49 @@
 .formImgs-img{
     display: flex;
     gap: 10px;
-
+    width: 10px;
     align-items: center;
-}
-
-.formImgs-img{
     font-size: 10px;
 }
+
 .formImgs img{
     width: 45px;
     border-radius: 5px;
+}
+.urlContainer{
+    display: none;
 }
 
 
 .dark .formImgs{
     border: none;
     background-color: var(--background-inputs-dark);
+}
+
+
+@media (min-width: 320px){
+
+    .urlContainer{
+        display: block;
+        max-width: 130px;
+        word-wrap: break-word;
+    }
+
+    .newForm .quitar {
+        
+        font-size: 12px;
+        width: 80px;
+        border-radius: 16px;
+       
+    }
+  
+}
+@media (min-width: 450px){
+
+    .urlContainer{
+        display: block;
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+
 }
