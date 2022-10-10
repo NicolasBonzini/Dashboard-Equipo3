@@ -26,10 +26,11 @@
     cursor: pointer;
     transition: 0.3s ease background-color;
     overflow: hidden;
+    border: 1px solid white;
 }
 
 .dark .button-context label{
-    background-color: #000;
+    background-color: var(--background-inputs-dark)
 }
 
 

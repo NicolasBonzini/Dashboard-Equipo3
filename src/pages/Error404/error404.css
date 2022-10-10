@@ -44,14 +44,14 @@
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    border: rgba(12,176,147,1) 2px solid;
-    color: rgba(12,176,147,1);
+    border: rgba(12, 176, 147, 1) 2px solid;
+    color: rgba(12, 176, 147, 1);
 }
 
 .button-slider::before {
     content: attr(text);
     position: absolute;
-    background:rgba(12,176,147,1);
+    background: rgba(12, 176, 147, 1);
     color: white;
     padding: 2rem;
     top: 50%;
@@ -63,6 +63,10 @@
 
 .button-slider:hover::before {
     transform: translateY(-50%) translateX(-50%);
+}
+
+.dark .container-404::before {
+    background: url('../../assets/images/not-found-404-Dark.jpeg') center/100%;
 }
 
 /* Te comento esta linea por que si la sacas no afecta en nada */
