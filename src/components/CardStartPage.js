@@ -10,15 +10,12 @@ const CardStartPage = ({listProd}) => {
 
     const navigate = useNavigate();
     
-
-    console.log(listProd);
-
     const handleListProducts = () => {
         navigate('/products');
     }
 
     const handleAddProducts = () => {
-        navigate('/product/21');
+        navigate('/products/new');
     }
 
     return (

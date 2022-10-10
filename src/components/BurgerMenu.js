@@ -9,7 +9,6 @@ import { ToggleContext } from '../context/ToggleContext';
 function BurgerMenu() {
   const { toggleSidebar, toggle  } = useContext(ToggleContext);
   
-  console.log(toggle);
 
   return (
     <div
