@@ -1,12 +1,14 @@
 import { useContext } from "react"
 import { ThemeContext } from "../context/ThemeContext"
 
-const ButtonContext = () => {
+const ButtonContext = (props) => {
 
   const { toggle: toggleTheme } = useContext(ThemeContext)
 
   return (
-    <label className="button-context" onClick={() => toggleTheme()}>Switch</label>
+    <label htmlFor="toggle_checkbox" className="button-context" onClick={() => toggleTheme()}>
+        {props.children}
+    </label>
   )
 }
 

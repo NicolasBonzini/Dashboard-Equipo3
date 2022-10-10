@@ -1,6 +1,7 @@
 .header {
   display: flex;
   align-items: center;
+  
   height: 60px;
   justify-content: space-between;
   position: fixed;
@@ -10,6 +11,7 @@
 }
 
 .dark .header {
+  background-color: var(--dark-gray);
   border-bottom: 0;
   color: var(--white);
   background-color: var(--background-color-dark);
