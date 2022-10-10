@@ -73,7 +73,6 @@ function Sidebar() {
       {/* Space to click in and close sidebar */}
       <div 
         className={`right-sidebar `}
-
         onClick={() => toggleSidebar()}></div>
     </div>
   );
