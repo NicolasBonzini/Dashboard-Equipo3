@@ -12,6 +12,7 @@ import ProductNew from './pages/products/productNew/ProductNew'
 import { ThemeContext } from './context/ThemeContext';
 import putProducts from './utils/putProducts';
 
+
 function App() {
   const { theme } = useContext(ThemeContext)
 

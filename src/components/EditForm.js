@@ -50,7 +50,7 @@ function EditForm() {
   useEffect(()=>{
     async function get(){
       await getProductById(id)
-      .then(re=>{setform(re);setCounter(re.stock);console.log(re)}
+      .then(re=>{setform(re);setCounter(re.stock);}
       )
     }
     get()    
