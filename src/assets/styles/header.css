@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   z-index: 10;
-  height: 60px;
+  height: 72px;
   justify-content: space-between;
   position: fixed;
   width: 100vw;
@@ -43,6 +43,8 @@
 .header .products i {
   vertical-align: middle;
 }
+
+
 
 .header .fa-bars {
   font-size: 20px;
@@ -203,6 +205,7 @@
   }
 
   .mobileAdd {
+
     display: none !important;
   }
 
@@ -211,5 +214,13 @@
     margin-right: 15px;
     padding: 9px 15px !important;
     white-space: nowrap;
+  }
+  
+  .header .title{
+    margin-left: -3px;
+
+  }
+  .header .title_special{
+    margin-left: -6px;
   }
 }

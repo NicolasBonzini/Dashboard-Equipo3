@@ -6,6 +6,7 @@ import Button from "../../../components/Button";
 import React from "react";
 import AddForm from "../../../components/AddForm";
 // import "./productView.css";
+import MainContainer from '../../../components/MainContainer';
 
 function ProductNew() {
   const id = useParams().id;
@@ -58,8 +59,8 @@ function ProductNew() {
   return (
     <ContentContainer className="home">
       <Header>
-        <div className="title textCtn">
-          <Link className="title products" to="/products">
+        <div className='title textCtn'>
+          <Link className='title ' to='/products'>
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
@@ -69,7 +70,9 @@ function ProductNew() {
         </div>
         <Button deleteProduct={deleteProduct} text="Eliminar" personalClass="btnDelete"></Button>
       </Header>
-      <AddForm />
+      <MainContainer>
+       <AddForm />
+      </MainContainer>
     </ContentContainer>
   )
 }

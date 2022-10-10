@@ -6,6 +6,7 @@ import Button from "../../../components/Button";
 import React from "react";
 // import "./productView.css";
 import EditForm from "../../../components/EditForm";
+import MainContainer from "../../../components/MainContainer";
 
 function ProductView() {
   const id = useParams().id;
@@ -59,7 +60,7 @@ function ProductView() {
     <ContentContainer className="contentContainer home">
       <Header>
         <div className="title textCtn">
-          <Link className="title products" to="/products">
+          <Link className="title " to="/products">
             Productos
             <i className="fa-solid fa-greater-than"></i>
           </Link>
@@ -69,7 +70,9 @@ function ProductView() {
         </div>
         <Button deleteProduct={deleteProduct} text="Eliminar" personalClass="btnDelete"></Button>
       </Header>
-    <EditForm/>
+      <MainContainer>
+        <EditForm/>
+      </MainContainer>
     </ContentContainer>
   )
 }

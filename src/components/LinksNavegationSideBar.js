@@ -19,7 +19,8 @@ import '../assets/styles/switch.css'
 
 
 function LinksNavegationSideBar() {
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(ThemeContext);
+
   return (
     <>
       <NavLink to="/">
