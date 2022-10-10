@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/contentContainer.css'
+import '../assets/styles/ContentContainer.css'
 
 export default function contentContainer({children}) {
   return (

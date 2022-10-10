@@ -31,11 +31,12 @@
 .card-button {
     background-color: #494f51;
     color: white;
+    width: 150px;
     border: 1px;
     border-radius: 15px;
     margin-right: 5px;
     transition: all 0.8s ease;
-    padding: 8px 12px;
+    padding: 3px;
     white-space: nowrap;
 }
 
@@ -53,6 +54,16 @@
     width: 100%;
     justify-content: right;
     padding-right: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .card-button-content {
+       width: 100%;
+    }
+
+    .card-button {
+       width: auto;
+    }
 }
 
 
