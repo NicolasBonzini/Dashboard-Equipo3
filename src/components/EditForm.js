@@ -4,6 +4,7 @@ import { useEffect, useState, React } from "react";
 //Estilos
 import '../assets/styles/stockButton.css'
 import '../assets/styles/images.css'
+import '../assets/styles/editForm.css'
 //Servicios
 import putProducts from "../utils/putProducts";
 import getProductById from "../utils/getProductById";

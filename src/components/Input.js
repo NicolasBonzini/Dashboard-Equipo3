@@ -1,4 +1,5 @@
 import React from "react";
+import '../assets/styles/inputs.css'
 
 const Input = ({ name, value, label, handler, handlerBlur }) => {
   return (
