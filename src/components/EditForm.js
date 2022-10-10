@@ -50,7 +50,7 @@ function EditForm() {
   useEffect(()=>{
     async function get(){
       await getProductById(id)
-      .then(re=>{setform(re);setCounter(re.stock);console.log(re)}
+      .then(re=>{setform(re);setCounter(re.stock);}
       )
     }
     get()    
@@ -74,7 +74,7 @@ function EditForm() {
   useEffect(()=>{
     setform({
         ...form,
-        stock : counter,
+        stock : Number(counter),
       })
   }, [counter])
               // FIN STOCK //
@@ -84,8 +84,11 @@ function EditForm() {
   // Actualizo / Elimino las imagenes
     const handleImg = (e)=>{
         const image = e.target.value;
-        form.images.push(image);
-        setform({...form})
+        if(image.length>0){
+
+          form.images.push(image);
+          setform({...form})
+        }
     }
     const deleteIMG = (e)=>{
       e.preventDefault();
@@ -96,8 +99,11 @@ function EditForm() {
               //FIN IMAGENES//
   
   //Input handlers
+
   const handleInput = async (e) =>{
     console.log(e.target.id)
+
+   
     setform({
       ...form,
       [e.target.name] : e.target.value,
@@ -105,6 +111,17 @@ function EditForm() {
     console.log(form)
     
   }
+  const handlePrice = async (e) =>{
+    console.log(e.target.id)
+    setform({
+      ...form,
+      [e.target.name] : Number(e.target.value),
+    })
+    console.log(form)
+    
+  }
+
+ 
 
    //Boton de hardar
   const handleSave =(e) =>{
@@ -118,21 +135,21 @@ function EditForm() {
 
   return (
     <>
-    <EditProduct name={form.title} stock={form.stock} valor={form.price} />
     <div className="cont">
+    <EditProduct img={form.images[0]}name={form.title} stock={form.stock} valor={form.price} />
         <div className="productView">
             <form className="newForm" action="">
                 <div>
                     <h2>Información</h2>
-                    <Input name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
-                    <Input name="price" id="price" label="Valor" value={form.price} handler={handleInput}  />
+                    <Input tipo="text" name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
+                    <Input tipo="number" name="price" id="price" label="Valor" value={form.price} handler={handlePrice}  />
                     <Stock handlerI={handleIncrement} handlerD={handleDecrement} stock={counter}/>
                     <TextArea value={form.description} handler={handleInput}/>
                     <Select/>
                 </div>
                 <div>
                     <h2>Galeria de Imágenes</h2>
-                    <Input name="image" id="image" label="Nueva Imagen" handlerBlur={handleImg}/>
+                    <Input tipo="text"name="image" id="image" label="Nueva Imagen" handlerBlur={handleImg}/>
                     <Images handler={deleteIMG} images={form.images} />
                 </div>
 

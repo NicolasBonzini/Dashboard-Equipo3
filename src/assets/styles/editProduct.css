@@ -28,6 +28,9 @@
     border-radius: 6px;
 }
 
+.editProduct__container .avatar{
+    display: none;
+}
 .editProduct__info{
     display: flex;
 }
@@ -62,12 +65,14 @@
 
 
 
-@media (max-width: 600px) {
-    .editProduct h2{
-        /* margin: 0px; */
-        font-size: 10px;
+
+@media (min-width: 320px) {
+   
+    .editProduct__container .avatar{
+        display: flex;
     }
   }
+
 
 /* DARK */
 .dark .editProduct{
