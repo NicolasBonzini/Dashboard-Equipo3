@@ -11,6 +11,17 @@
   --grey-footer: #999999;
   --header-back: #ffffff80
   --border-buttons-text: #cccccc;
+
+    /* variables de santi */
+  --background-color-dark:rgb(34,34,34);
+  --text-color-dark: black;
+  --white:white;
+  --border-gray:rgb(153,153,153);
+  --background-inputs-dark:rgb(51,51,51);
+  --background-inputs: white;
+  --gray-primary:rgb(89,89,89);
+  --border-cards: 16px;
+  --text-inputs: #F2F2F2;
 }
 
 *{
@@ -22,6 +33,7 @@
 .App {
   display: flex;
 }
+
 
 @media (min-width: 1024px){
   .App{

@@ -12,6 +12,7 @@
 .dark .header {
   border-bottom: 0;
   color: var(--white);
+  background-color: var(--background-color-dark);
 }
 
 .header .title {

@@ -2,10 +2,9 @@
     display: flex;
     color: black;
     box-shadow: 3px 3px 9px 2px #00000040;
-
     align-items: center;
     border-radius: 12px;
-    margin: 10px 0 10px 0;
+    margin: 90px 0 0px 30px;
     height: 80px;
     max-width: 450px;
     
@@ -73,8 +72,8 @@
 /* DARK */
 .dark .editProduct{
     color: white;
-    background-color: var(--background-inputs-dark);
+    background-color: var(--background-color-dark);
 }
 .dark .eachInfo p{
-   color: var(--border-cards);
+   color: white;
 }

@@ -113,6 +113,10 @@ a {
   .sidebar .left-sidebar {
     background-color: white;
   }
+  
+  .sidebar .left-sidebar {
+    box-shadow: none;
+  }
 
   .sidebar .right-sidebar { 
     width: 0;
@@ -140,3 +144,5 @@ a {
   background-color: var(--border-cards);
   color: white;
 }
+
+
