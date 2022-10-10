@@ -10,7 +10,7 @@ function ProductCard(props) {
       <NavLink className='productCardLink' to={'/product/' + props.id}>
         <section className='productCardInfo'>
           <figure className='productCardImg'>
-            <img src={props.image} alt=''></img>
+            <img src={props.image} alt={props.title}></img>
           </figure>
           <div className='productCardTexts'>
             <h4 className='productCardTitle'>
@@ -20,7 +20,7 @@ function ProductCard(props) {
           </div>
         </section>
         <figure className='productArrowImg'>
-          <img src={arrowImg}></img>
+          <img src={arrowImg} alt='Arrow Icon'></img>
         </figure>
       </NavLink>
     </div>
