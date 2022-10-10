@@ -1,5 +1,7 @@
 import React from 'react'
 
+import deleteProduct from '../utils/deleteProduct'
+
 function Button(props) {
   return (
     <>

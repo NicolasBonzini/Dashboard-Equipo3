@@ -16,7 +16,7 @@ function App() {
   const { theme } = useContext(ThemeContext)
 
   return (
-    <div className={`App ${theme}`}>
+    <div className={`App dark ${theme}`}>
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />

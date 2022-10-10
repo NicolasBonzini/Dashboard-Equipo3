@@ -9,13 +9,11 @@ import { ToggleContext } from '../context/ToggleContext';
 function BurgerMenu() {
   const { toggleSidebar, toggle  } = useContext(ToggleContext);
   
-
   console.log(toggle);
 
   return (
     <div
       className={`burger-menu ${toggle ? null : "change"}`}
-      // onClick={handleToggle}
       onClick={() => toggleSidebar()}
     >
       <div className={`bar1`}></div>
