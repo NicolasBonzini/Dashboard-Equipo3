@@ -56,7 +56,7 @@ function ProductView() {
   }
 
   return (
-    <ContentContainer className="home">
+    <ContentContainer className="contentContainer home">
       <Header>
         <div className="title textCtn">
           <Link className="title products" to="/products">

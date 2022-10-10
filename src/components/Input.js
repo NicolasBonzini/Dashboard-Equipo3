@@ -1,7 +1,7 @@
 import React from "react";
 import '../assets/styles/inputs.css'
 
-const Input = ({ name, value, label, handler, handlerBlur, tip }) => {
+const Input = ({ tipo='text',name, value, label, handler, handlerBlur }) => {
   return (
     <div className="eachInput">
       <label htmlFor="title">{label}</label>
@@ -12,7 +12,7 @@ const Input = ({ name, value, label, handler, handlerBlur, tip }) => {
         className="input"
         placeholder="input"
         id={name}
-        type= {tip}
+        type={tipo}
         name={name}
       />
     </div>
