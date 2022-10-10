@@ -6,6 +6,7 @@ import Button from "../../../components/Button";
 import React from "react";
 // import "./productView.css";
 import EditForm from "../../../components/EditForm";
+import MainContainer from "../../../components/MainContainer";
 
 function ProductView() {
   const id = useParams().id;
@@ -69,7 +70,9 @@ function ProductView() {
         </div>
         <Button deleteProduct={deleteProduct} text="Eliminar" personalClass="btnDelete"></Button>
       </Header>
-    <EditForm/>
+      <MainContainer>
+        <EditForm/>
+      </MainContainer>
     </ContentContainer>
   )
 }

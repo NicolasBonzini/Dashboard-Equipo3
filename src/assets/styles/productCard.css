@@ -20,7 +20,7 @@ body {
 
 .productCard {
   min-height: fit-content;
-  margin: 15px;
+  margin-bottom: 15px;
   transition: all 0.8s ease;
 }
 

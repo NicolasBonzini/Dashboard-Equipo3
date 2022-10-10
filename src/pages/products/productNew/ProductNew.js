@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 
 //Mientras como molde
 import HomeContent from '../../../components/HomeContent';
+import MainContainer from '../../../components/MainContainer';
 function ProductNew() { 
   return (
     <ContentContainer className='home'>
@@ -18,7 +19,9 @@ function ProductNew() {
         </div>
         
       </Header>
-      <HomeContent />
+      <MainContainer>
+        <HomeContent />
+      </MainContainer>
     </ContentContainer>
   )
 }

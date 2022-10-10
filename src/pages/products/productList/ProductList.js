@@ -5,7 +5,10 @@ import Header from '../../../components/Header';
 import ContentContainer from '../../../components/ContentContainer';
 import Button from '../../../components/Button'
 import '../../../assets/styles/mainContent.css'
+import '../../../assets/styles/filter.css'
+import './productList.css'
 import getProducts from '../../../utils/getProducts';
+import MainContainer from '../../../components/MainContainer';
 
 function ProductList() {
   const [isVisibleInput, setIsVisibleInput] = useState(false)
@@ -64,14 +67,25 @@ function ProductList() {
           </div>
         </div>
       </Header>
-      <div className='header_top'>
-        {products.length ?
-          productsFilter.length ?
-            productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
-            <p className='header_top containerMain void'>No hay coincidencias</p> :
-          <p className='header_top containerMain void'>Cargando...</p>
-        }
-      </div>
+      <MainContainer >
+
+        <div className='header_top'>
+          {/* filtros */}
+          <div className=''>
+            <div className='filter'>
+              Juanito el filtrados
+            </div>
+          </div>
+          <div className='products'>
+            {products.length ?
+              productsFilter.length ?
+                productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
+                <p className='header_top containerMain void'>No hay coincidencias</p> :
+              <p className='header_top containerMain void'>Cargando...</p>
+            }
+          </div>
+        </div>
+      </MainContainer>
     </ContentContainer>
   )
 }

@@ -1,9 +1,4 @@
-.label_check{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #fafd0f;
-}
+
 .dark-mode-sidebar{
     position: relative;
     cursor: pointer;
