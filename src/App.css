@@ -35,6 +35,11 @@
   overflow-x: hidden;
 }
 
+/* estructura, orden de hooks, funcionalidad que todo funcione, implementacion de hooks,
+renderizaciones inecesarias, jerarquia componentes, eventos bien hechos, router bien implementado,
+peticiones a la api bien hecha validaciones de la api, interaccion de infraestructura aislada,
+implementacion de contexto,  */
+
 
 @media (min-width: 1024px){
   .App{
