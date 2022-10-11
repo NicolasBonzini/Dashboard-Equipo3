@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 //FontAwesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //ReactRouter
@@ -20,6 +20,12 @@ import '../assets/styles/switch.css'
 
 function LinksNavegationSideBar() {
   const {theme} = useContext(ThemeContext);
+  const switchInput = useRef(null)
+
+  useEffect(() =>{
+    if (switchInput.current.checked){
+    }
+  }, [])
 
   return (
     <>
@@ -52,7 +58,7 @@ function LinksNavegationSideBar() {
           </ButtonContext>
 
         
-        <input type="checkbox" id="toggle_checkbox" />
+        <input ref={switchInput} checked={theme !== 'dark'} type="checkbox" id="toggle_checkbox" />
         <ButtonContext>
           <label htmlFor="toggle_checkbox">
             <div id="star">
