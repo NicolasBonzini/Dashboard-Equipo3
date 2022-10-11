@@ -105,7 +105,7 @@
 }
 
 .dark #moon:before {
-  background-color: black;
+  background-color: var(--background-inputs-dark);
 }
 
 /* Tomado como base de: https://codepen.io/alvarotrigo/pen/BamvwQB */
