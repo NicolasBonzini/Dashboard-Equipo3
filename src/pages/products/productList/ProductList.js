@@ -22,16 +22,16 @@ function ProductList() {
   const maxInput = useRef(null)
   const [productsFilter2, setProductsFilter2] = useState([])
 
-
-  function filterForValue(array, value) {
-    return array.filter((x) =>
-      x.title.toLowerCase().includes(value.toLowerCase())
-    );
-  }
   function searchProducts(e) {
     e?.preventDefault()
-    //setProductsFilter2(filterForValue(productsFilter2, inputSearch.current.value))
-    setProductsFilter(filterForValue(products, inputSearch.current.value))
+    Filtros(products)
+  }
+
+  function cleanInput(){
+    inputSearch.current.value = ''
+    selectCategory.current.value = ''
+    minInput.current.value = ''
+    maxInput.current.value = ''
   }
 
   //Filtros
@@ -43,20 +43,15 @@ function ProductList() {
       maxInput.current.value                
     ]
     const [search, select, min, max] = condiciones
+    setProductsFilter(
+    products.filter(x =>
+      x.title.toLowerCase().includes(search.toLowerCase()) && 
+      (x.category.includes(select) || x.category === '') &&
+      (x.price >= Number(min) && (!max || x.price <= Number(max)))
+      )
+    )
+  }
 
-    products.filter(x => 
-      x.title.toLowerCase().includes(search.toLowerCase()) && true)
-  }
-  function handlerCategory(e){
-    setProductsFilter(productsFilter.filter(x => x.category.includes(e.target.value) || x.category === ''))
-  } 
-  function handlerPriceInputMin(e){
-    setProductsFilter(productsFilter.filter(x => x.price >= Number(e.target.value) && x.price <= Number(maxInput.current.value)))
-  }
-  function handlerPriceInputMax(e){
-    setProductsFilter(productsFilter.filter(x => x.price <= Number(e.target.value) && Number(minInput.current.value)))
-
-  }
 
   function handlerSearchBar() {
     if (window.screen.width <= 500) setIsVisibleInput(!isVisibleInput);
@@ -127,7 +122,7 @@ function ProductList() {
           {/* filtros */}
 
             <div className='filter'>
-              <select ref={selectCategory} onChange={handlerCategory} name="category" id="category">
+              <select ref={selectCategory} onChange={searchProducts} name="category" id="category">
                 <option value='' >
                   Categorias
                 </option>
@@ -136,11 +131,11 @@ function ProductList() {
               <label className='price_filter'>
                 Precio:
                 <div>
-                  <input  ref={minInput} min='0' onChange={handlerPriceInputMin} name="category" id="category" type='number' placeholder='Min' />
-                  <input  ref={maxInput} min='0' onChange={handlerPriceInputMax} name="category" id="category" type='number' placeholder='Max' />
+                  <input  ref={minInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Min' />
+                  <input  ref={maxInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Max' />
                 </div>
               </label>
-              <button className="btn btn-secondary">Limpiar</button>
+              <button className="btn btn-secondary" onClick={cleanInput}>Limpiar</button>
             </div>
 
           <div className="products">
