@@ -3,6 +3,7 @@ import ProductView from '../pages/products/productView/ProductView'
 import productCard from '../assets/styles/productCard.css';
 import { NavLink } from 'react-router-dom';
 import arrowImg from '../assets/images/chevron-right(1).svg';
+import Img from '../assets/images/notImage.png'
 
 function ProductCard(props) {
   return (
@@ -10,7 +11,7 @@ function ProductCard(props) {
       <NavLink className='productCardLink' to={'/product/' + props.id}>
         <section className='productCardInfo'>
           <figure className='productCardImg'>
-            <img src={props.image} alt={props.title}></img>
+            <img className={props.image ? '' : 'not_image_center'} src={props.image || Img} alt={props.title}></img>
           </figure>
           <div className='productCardTexts'>
             <h4 className='productCardTitle'>

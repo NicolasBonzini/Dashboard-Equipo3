@@ -27,7 +27,7 @@ function ProductList() {
 
   //Filtros
   function handlerCategory(e){
-    setProductsFilter(products.filter(x => x.category.includes(e.target.value)))
+    setProductsFilter(products.filter(x => x.category.includes(e.target.value) || x.category === ''))
   }
   function handlerPriceInput(e){
     console.log(e.target.value)
@@ -43,7 +43,7 @@ function ProductList() {
       .then(data => {
         setProductsFilter(data)
         setProducts(data)
-        setAllCategory([...new Set(data.map((item) => item.category))])
+        setAllCategory([...new Set(data.map((item) => item.category === '' ? 'Sin categoria' : item.category))])
       });
   }, [])
 
