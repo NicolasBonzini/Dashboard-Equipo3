@@ -89,9 +89,13 @@ function ProductList() {
                 </option>
                 {allCategory?.map(cat => <option key={cat} value={cat} >{cat}</option>)}
               </select>
-              <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Min' />
-              <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Max' />
-
+              <label className='price_filter'>
+                Precio:
+                <div>
+                  <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Min' />
+                  <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Max' />
+                </div>
+              </label>
               <button className="btn btn-secondary">Limpiar</button>
             </div>
 

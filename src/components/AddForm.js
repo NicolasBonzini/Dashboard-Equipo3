@@ -110,7 +110,7 @@ function AddForm() {
     const handleSave = (e) => {
         e.preventDefault();
         let response = addProduct(form);
-
+        console.log(response)
         if (response.isActive === true) {
             alert("Producto agregado correctamente.")
             navigate('/products');
