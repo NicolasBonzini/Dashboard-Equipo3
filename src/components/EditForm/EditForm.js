@@ -15,6 +15,7 @@ import Stock from "../Stock/Stock";
 import TextArea from "../TextArea/TextArea";
 import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
+import swal from 'sweetalert'
 
 function EditForm() {
   // Tomo el parametro de la url para identificar el productos
@@ -74,19 +75,26 @@ function EditForm() {
   //IMAGENES//
 
   // Actualizo / Elimino las imagenes
-  const handleImg = (e) => {
-    const image = e.target.value;
-    if (image.length > 0) {
-      form.images.push(image);
-      setform({ ...form });
-    }
-  };
-  const deleteIMG = (e) => {
-    e.preventDefault();
-    const deletedUrl = e.target.value;
-    let imagesForm = form.images.filter((image) => image !== deletedUrl);
-    setform({ ...form, images: imagesForm });
-  };
+  
+ const handleImg = (e)=>{
+  const image = e.target.value;
+  if(image.length>0){
+
+    form.images.push(image);
+    setform({...form})
+  }
+}
+const deleteIMG = (e)=>{
+e.preventDefault();
+swal({
+  title: 'Imagen eliminada',
+  icon: 'success'
+})
+const deletedUrl = e.target.value
+let imagesForm = form.images.filter(image => image !== deletedUrl)
+setform({...form, images:imagesForm,})
+}
+
   //FIN IMAGENES//
 
   //Input handlers
@@ -113,8 +121,28 @@ function EditForm() {
     function putProductos(form) {
       const data = putProducts(form).then((res) => res.json());
     }
+    swal({
+      title: 'El producto ha sido actualizado',
+      icon: 'success'
+    })
     putProductos(form);
   };
+
+  const handleCancel = (e)=>{
+    e.preventDefault();
+    swal({
+      title: 'El producto no ha sido actualizado',
+      icon: 'error'
+    })
+    async function get() {
+      await getProductById(id).then((re) => {
+        setform(re);
+        setCounter(re.stock);
+      });
+    }
+    get();
+
+  }
 
   return (
     <>
@@ -167,7 +195,7 @@ function EditForm() {
 
             {/* cancelar o enviar formulario */}
             <div className="sendForm">
-              <button>Cancelar</button>
+              <button onClick={handleCancel}>Cancelar</button>
               <button onClick={handleSave}>Guardar</button>
             </div>
           </form>

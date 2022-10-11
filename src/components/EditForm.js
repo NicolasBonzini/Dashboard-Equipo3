@@ -72,24 +72,7 @@ function EditForm() {
 
               //IMAGENES//
   // Actualizo / Elimino las imagenes
-    const handleImg = (e)=>{
-        const image = e.target.value;
-        if(image.length>0){
-
-          form.images.push(image);
-          setform({...form})
-        }
-    }
-    const deleteIMG = (e)=>{
-      e.preventDefault();
-      swal({
-        title: 'Imagen eliminada',
-        icon: 'success'
-      })
-      const deletedUrl = e.target.value
-      let imagesForm = form.images.filter(image => image !== deletedUrl)
-      setform({...form, images:imagesForm,})
-  }
+   
               //FIN IMAGENES//
   
               // HANDLERS //
