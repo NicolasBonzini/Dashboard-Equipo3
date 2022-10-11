@@ -106,7 +106,7 @@
 }
 
 #toggle_checkbox:checked + label #moon {
-  bottom: 6px;
+  bottom: 4px;
 }
 
 .dark #moon:before {
