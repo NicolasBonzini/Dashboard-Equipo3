@@ -126,8 +126,7 @@ setform({...form, images:imagesForm,})
          swal({
       title: 'El producto ha sido actualizado',
       icon: 'success'
-    })
-      navigate('/products');
+    }).then( () => navigate('/products'));
     } else {
         swal({
       title: 'Ha ocurrido un error, no se pudo modificar.',
