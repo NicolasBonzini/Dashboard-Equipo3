@@ -22,11 +22,6 @@ function LinksNavegationSideBar() {
   const {theme} = useContext(ThemeContext);
   const switchInput = useRef(null)
 
-  useEffect(() =>{
-    if (switchInput.current.checked){
-    }
-  }, [])
-
   return (
     <>
       <NavLink to="/">
