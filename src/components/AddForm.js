@@ -15,8 +15,6 @@ import Select from "./Select";
 import Images from "./Images";
 import { useNavigate } from 'react-router-dom';
 
-
-
 function AddForm() {
     const navigate = useNavigate();
     // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
@@ -115,8 +113,6 @@ function AddForm() {
         } else {
             alert(response.error)
         }
-
-
     }
 
     return (
