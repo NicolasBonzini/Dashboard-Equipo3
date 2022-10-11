@@ -14,6 +14,10 @@
     font-size: 12px;
 }   
 
+.input:focus{
+    background-color: var(--input-gray);
+}
+
 .form-description{
     height: 130px;
     max-width: 450px;
