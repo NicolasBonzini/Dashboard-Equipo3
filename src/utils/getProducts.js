@@ -1,12 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
 
 const url = 'http://localhost:5000/api/product';
 
 const getProducts = async () => {
 
     let dataApi = await fetch(url)
-        .then(res => res.json())
+        .then(res => {if(res.status === 200){
+            return res.json()}else{
+                return Promise.reject(res);
+            }})
         .then(data => data)
         .catch(error => alert(`Error: ${error}`));
     

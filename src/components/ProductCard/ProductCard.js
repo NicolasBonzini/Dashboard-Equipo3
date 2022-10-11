@@ -6,6 +6,17 @@ import arrowImg from '../../assets/images/chevron-right(1).svg';
 import Img from '../../assets/images/notImage.png'
 
 function ProductCard(props) {
+
+  const handleDigitCount = () =>{
+    if(props.id.toString().length === 1){
+      return `#00${props.id}`
+    } else if(props.id.toString().length === 2){
+      return `#0${props.id}`
+    }else{
+      return `#${props.id}`
+    }
+  }
+
   return (
     <div className='productCard containerMain'>
       <NavLink className='productCardLink' to={'/product/' + props.id}>
@@ -17,7 +28,7 @@ function ProductCard(props) {
             <h4 className='productCardTitle'>
               {props.title}
             </h4>
-            <p className='productCardCode'>#{props.id}</p>
+            <p className='productCardCode'>{handleDigitCount()}</p>
           </div>
         </section>
         <figure className='productArrowImg'>
