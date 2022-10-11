@@ -7,7 +7,6 @@
   position: fixed;
   width: 100vw;
   background-color: white;
-  border-bottom: 1px solid var(--black);
 }
 
 .dark .header {

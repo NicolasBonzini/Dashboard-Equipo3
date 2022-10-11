@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const deleteProduct = async (id) => {
-  const urlDelete = 'http://localhost:5000/api/product/' + id;
+
+const delProduct = async (id) => {
+  const urlDelete = `http://localhost:5000/api/product?id=${id}`;
   const res = await fetch(urlDelete,
     {
       method: "DELETE",
@@ -10,10 +11,8 @@ const deleteProduct = async (id) => {
       },
     }
   )
-
-  return (
-    res
-  )
+  return await res.json()
 }
 
-export default deleteProduct
+export default delProduct
+

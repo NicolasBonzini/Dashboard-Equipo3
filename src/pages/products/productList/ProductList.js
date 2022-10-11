@@ -142,6 +142,7 @@ function ProductList() {
                 productsFilter.map((product) => (
                   <ProductCard
                     key={product.id}
+                    price={product.price}
                     id={product.id}
                     title={product.title}
                     image={product.images[0]}

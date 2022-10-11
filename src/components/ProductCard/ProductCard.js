@@ -28,7 +28,10 @@ function ProductCard(props) {
             <h4 className='productCardTitle'>
               {props.title}
             </h4>
-            <p className='productCardCode'>{handleDigitCount()}</p>
+            <div className='product_subtitle'>            
+              <p className='productCardCode'>{handleDigitCount()}</p>
+              <p className='productCardCode'>${props.price}.00</p>
+            </div>
           </div>
         </section>
         <figure className='productArrowImg'>
