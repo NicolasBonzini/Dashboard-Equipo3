@@ -1,0 +1,31 @@
+/* INPUTS */
+.eachInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid var(--border-gray);
+  color: black;
+  border-radius: 15px;
+  margin: 10px 0 10px 0;
+  max-width: 300px;
+  font-size: 12px;
+}
+
+.form-description {
+  height: 130px;
+  max-width: 450px;
+  max-height: 200px;
+  min-height: 100px;
+}
+
+/* DARK MODE */
+
+.dark .input {
+  color: white;
+  /* font-weight: 300; */
+  border: 1px solid var(--border-gray);
+  background-color: var(--background-inputs-dark);
+}

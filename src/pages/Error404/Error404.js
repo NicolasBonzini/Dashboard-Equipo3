@@ -1,6 +1,6 @@
 import React from 'react'
-import ContentContainer from '../../components/ContentContainer';
-import MainContainer from '../../components/MainContainer';
+import ContentContainer from '../../components/ContentContainer/ContentContainer';
+import MainContainer from '../../components/MainContainer/MainContainer';
 import "./error404.css";
 
 function Error404() {

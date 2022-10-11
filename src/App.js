@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 //Components
 import Home from './pages/home/Home';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
 import Error404 from './pages/Error404/Error404'
 import ProductList from './pages/products/productList/ProductList';
 import ProductView from './pages/products/productView/ProductView';
