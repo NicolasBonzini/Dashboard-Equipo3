@@ -14,6 +14,7 @@ import TextArea from "../TextArea/TextArea";
 import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert'
 
 function AddForm() {
   const navigate = useNavigate();
@@ -23,11 +24,7 @@ function AddForm() {
     id: 0,
     title: "",
     description: "",
-    price: 10,
-    rating: {
-      rate: 0,
-      count: 5,
-    },
+    price: 0,
     stock: Number(0),
     category: "",
     images: [""],
@@ -44,7 +41,7 @@ function AddForm() {
   }, []);
 
   useEffect(() => {
-    form.id = lastId;
+    setform({ ...form, id: lastId })
   }, [lastId]);
 
   // Actualizo el stock del formulario con el estado del contador
@@ -115,12 +112,17 @@ function AddForm() {
     let response = await addProduct(form);
     console.log(response);
     if (response.status === 201) {
-      alert("Producto agregado correctamente.");
-      navigate("/products");
+      swal({
+        title: 'Producto agregado correctamente.',
+        icon: 'success'
+      }).then(() => navigate('/products'));
     } else {
-      alert(response.error);
-    }
-  };
+      swal({
+        title: 'Ha ocurrido un error, no se ha podido agregar.',
+        icon: 'error'
+      })
+    };
+  }
 
   return (
     <>
