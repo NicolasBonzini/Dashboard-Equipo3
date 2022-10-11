@@ -1,4 +1,4 @@
-import React from "react";
+//Componentes
 import "../../components/MainContainer/mainContainer.css";
 
 export default function MainContainer({ children }) {

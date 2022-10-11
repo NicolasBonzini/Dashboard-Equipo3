@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+//Servicios
 import getProducts from "../../utils/getProducts";
+//Componentes
 import CardStartPage from "../CardStartPage/CardStartPage";
 import Stores from "../Stores/Stores";
 

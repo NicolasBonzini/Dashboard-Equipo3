@@ -12,7 +12,9 @@ import Stock from "../Stock/Stock";
 import TextArea from "../TextArea/TextArea";
 import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
+//React router
 import { useNavigate } from "react-router-dom";
+//Sweet alert
 import swal from 'sweetalert'
 
 function AddForm() {
@@ -55,6 +57,7 @@ function AddForm() {
   //Funciones incremento y decremento
   const handleDecrement = (e) => {
     e.preventDefault();
+
     if (counter > 0) {
       setCounter(counter - 1);
     }

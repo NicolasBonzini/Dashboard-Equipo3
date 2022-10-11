@@ -1,17 +1,6 @@
 //React
 import { useState, useEffect, useContext } from "react";
 import "../Sidebar/sidebar.css";
-//Cookies
-import Cookies from "universal-cookie";
-//FontAwesome Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBoxOpen,
-  faHouse,
-  faStoreAlt,
-  faMoon,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
 //ReactRouter
 import { NavLink } from "react-router-dom";
 //ReactComponents
@@ -20,11 +9,9 @@ import Brand from "../Brand/Brand";
 import LinksNavegationSideBar from "../LinksNavegationSideBar/LinksNavegationSideBar";
 //Context
 import { ToggleContext } from "../../context/ToggleContext";
-import ButtonContext from "../../context/ButtonContext";
-import { ThemeContext } from "../../context/ThemeContext";
 
 function Sidebar() {
-  const { theme } = useContext(ThemeContext);
+
   const { toggle, toggleSidebar } = useContext(ToggleContext);
   //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA.
   const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -64,9 +51,11 @@ function Sidebar() {
       <div className="left-sidebar">
         {/* Top Navbar */}
         <nav className="top-navbar">
+          {/* Logo */}
           <Brand />
           <nav className="nav-list">
             <ul>
+              {/* Links de navegacion */}
               <LinksNavegationSideBar />
             </ul>
           </nav>
