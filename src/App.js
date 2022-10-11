@@ -1,5 +1,5 @@
 import './App.css';
-import { useContext } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 //React-router
 import { Route, Routes } from 'react-router-dom';
 //Components
@@ -10,14 +10,22 @@ import ProductList from './pages/products/productList/ProductList';
 import ProductView from './pages/products/productView/ProductView';
 import ProductNew from './pages/products/productNew/ProductNew'
 import { ThemeContext } from './context/ThemeContext';
-import putProducts from './utils/putProducts';
-
 
 function App() {
   const { theme } = useContext(ThemeContext);
+  const bodyRef = useRef();
 
+  useEffect(() => {
+    bodyRef.current = document.querySelector('body');
+    if(theme == "dark"){
+      bodyRef.current.classList.add('dark');
+    }else{
+      bodyRef.current.classList.remove('dark');
+    }
+  }, [theme])
+  
   return (
-    <div className={`App  ${theme}`}>
+    <div className={`App ${theme}`}>
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
