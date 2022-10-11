@@ -11,7 +11,7 @@ const editProduct = (props) => {
   return (
     <div className="editProduct">
       <div className="editProduct__img">
-        <img src={props.img} alt="" />
+        <img src={props.img} alt={props.alt} />
       </div>
 
       <div className="editProduct__container">

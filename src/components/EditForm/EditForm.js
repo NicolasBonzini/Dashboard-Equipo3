@@ -101,13 +101,20 @@ function EditForm() {
 
   function prueba(e){
     e.preventDefault();
+    const found =form.images.find(im=>im ==image)
     if(image.length>0){
-      form.images.push(image);
-      setform({...form});
-    }
-    setImg('');
-  }
-          //FIN IMAGENES//
+      if(!found){
+        form.images.push(image);
+        setform({...form});
+        setImg('');
+
+      }else{
+        setImg('');
+      }
+      }
+
+
+  }     //FIN IMAGENES//
 
 
   //Input handlers
@@ -171,6 +178,7 @@ function EditForm() {
           name={form.title}
           stock={form.stock}
           valor={form.price}
+          alt={form.title}
         />
         <Form 
           handleIncrement={handleIncrement}

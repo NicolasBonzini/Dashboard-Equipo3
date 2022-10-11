@@ -58,7 +58,7 @@ const Form = (props) => {
                     handler={props.prueba}
                   />
               </div>
-              <DeleteImage handler={props.deleteIMG} images={props.form.images} />
+              <DeleteImage alt={props.form.title} handler={props.deleteIMG} images={props.form.images} />
             </div>
 
             <div className="sendForm">

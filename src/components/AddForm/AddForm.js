@@ -22,7 +22,7 @@ function AddForm() {
     price: 0,
     stock: Number(0),
     category: "",
-    images: [""],
+    images: [],
   });
 
   const [image, setImg] = useState('');
@@ -75,22 +75,20 @@ function AddForm() {
 
   //-------------IMAGENES
   // Actualizo / Elimino las imagenes
-  const handleImg = (e) => {
-    const image = e.target.value;
+  const handleImg = (e)=>{
+    setImg(e.target.value);
+  }
 
-    if(image.length>0){
-      form.images.push(image);
-      setform({...form});
-      
-    }
-  };
-
-  const deleteIMG = (e) => {
+  const deleteIMG = (e)=>{
     e.preventDefault();
-    const deletedUrl = e.target.value;
-    let imagesForm = form.images.filter((image) => image !== deletedUrl);
-    setform({ ...form, images: imagesForm });
-  };
+    swal({
+      title: 'Imagen eliminada',
+      icon: 'success'
+    })
+    const deletedUrl = e.target.value
+    let imagesForm = form.images.filter(image => image !== deletedUrl)
+    setform({...form, images:imagesForm,})
+  }
 
   //--------------Input handlers
   const handleInput = async (e) => {
@@ -127,15 +125,29 @@ function AddForm() {
   }
  
   const handleCancel = (e)=>{
-    e.preventDefault()
+    e.preventDefault();
+    swal({
+      title: 'No ha añadido ningún producto',
+      icon: 'error'
+    }).then(()=> navigate('/products'))
+
   }
   function prueba(e){
     e.preventDefault();
+    const found =form.images.find(im=>im ==image)
     if(image.length>0){
-      form.images.push(image);
-      setform({...form});
-    }
-    setImg('');
+      if(!found){
+        form.images.push(image);
+        setform({...form});
+        setImg('');
+
+
+      }else{
+        setImg('');
+      }
+      }
+
+
   }
   
   return (
