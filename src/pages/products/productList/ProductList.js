@@ -16,21 +16,36 @@ function ProductList() {
   const [productsFilter, setProductsFilter] = useState([])
   const [allCategory, setAllCategory] = useState([])
   const inputSearch = useRef(null)
+  const minInput = useRef(null)
+  const maxInput = useRef(null)
+  const [productsFilter2, setProductsFilter2] = useState([])
 
   function filterForValue(array, value) {
     return array.filter(x => x.title.toLowerCase().includes(value.toLowerCase()))
   }
   function searchProducts(e) {
     e?.preventDefault()
+    //setProductsFilter2(filterForValue(productsFilter2, inputSearch.current.value))
     setProductsFilter(filterForValue(products, inputSearch.current.value))
   }
 
   //Filtros
-  function handlerCategory(e){
-    setProductsFilter(products.filter(x => x.category.includes(e.target.value) || x.category === ''))
+  function Filtros(products){
+    let condiciones = [
+      inputSearch.current.value,
+      minInput.current.value,
+      maxInput.current.value                
+    ]
+    products.filter(x => x)
   }
-  function handlerPriceInput(e){
-    console.log(e.target.value)
+  function handlerCategory(e){
+    setProductsFilter(productsFilter.filter(x => x.category.includes(e.target.value) || x.category === ''))
+  } 
+  function handlerPriceInputMin(e){
+    setProductsFilter(productsFilter.filter(x => x.price >= Number(e.target.value) && x.price <= Number(maxInput.current.value)))
+  }
+  function handlerPriceInputMax(e){
+    setProductsFilter(productsFilter.filter(x => x.price <= Number(e.target.value) && Number(minInput.current.value)))
   }
 
   function handlerSearchBar() {
@@ -42,6 +57,7 @@ function ProductList() {
     getProducts()
       .then(data => {
         setProductsFilter(data)
+        setProductsFilter2(data)
         setProducts(data)
         setAllCategory([...new Set(data.map((item) => item.category === '' ? 'Sin categoria' : item.category))])
       });
@@ -92,8 +108,8 @@ function ProductList() {
               <label className='price_filter'>
                 Precio:
                 <div>
-                  <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Min' />
-                  <input min='0' onChange={handlerPriceInput} name="category" id="category" type='number' placeholder='Max' />
+                  <input  ref={minInput} min='0' onChange={handlerPriceInputMin} name="category" id="category" type='number' placeholder='Min' />
+                  <input  ref={maxInput} min='0' onChange={handlerPriceInputMax} name="category" id="category" type='number' placeholder='Max' />
                 </div>
               </label>
               <button className="btn btn-secondary">Limpiar</button>
@@ -102,7 +118,9 @@ function ProductList() {
           <div className='products'>
             {products.length ?
               productsFilter.length ?
-                productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
+                productsFilter.map((product) => <><ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />
+                                                  {product.price}
+                                                </>) :
                 <p className='header_top containerMain void'>No hay coincidencias</p> :
               <p className='header_top containerMain void'>Cargando...</p>
             }
