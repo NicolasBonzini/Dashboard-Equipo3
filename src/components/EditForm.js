@@ -103,23 +103,22 @@ function EditForm() {
   const handleInput = async (e) =>{
     console.log(e.target.id)
 
-   
-    setform({
-      ...form,
-      [e.target.name] : e.target.value,
-    })
-    console.log(form)
-    
+    if(e.target.name == 'price' & e.target.name.length>0){
+      setform({
+        ...form,
+        [e.target.name] : Number(e.target.value),
+      })
+    }else if(e.target.name == 'price' & e.target.name.length==0){
+      alert('Ingrese un valor en el nombre')
+    }
+    else{
+      setform({
+        ...form,
+        [e.target.name] : e.target.value,
+      })
+    }
   }
-  const handlePrice = async (e) =>{
-    console.log(e.target.id)
-    setform({
-      ...form,
-      [e.target.name] : Number(e.target.value),
-    })
-    console.log(form)
-    
-  }
+
 
  
 
@@ -142,7 +141,7 @@ function EditForm() {
                 <div>
                     <h2>Información</h2>
                     <Input tipo="text" name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
-                    <Input tipo="number" name="price" id="price" label="Valor" value={form.price} handler={handlePrice}  />
+                    <Input tipo="number" name="price" id="price" label="Valor" value={form.price} handler={handleInput}  />
                     <Stock handlerI={handleIncrement} handlerD={handleDecrement} stock={counter}/>
                     <TextArea value={form.description} handler={handleInput}/>
                     <Select/>
