@@ -17,17 +17,6 @@ import { useNavigate } from "react-router-dom";
 
 function AddForm() {
   const navigate = useNavigate();
-  // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
-
-  const [lastId, SetLastId] = useState(0);
-
-  useEffect(() => {
-    getProducts().then((data) => SetLastId(data[data.length - 1].id + 1));
-  }, []);
-
-  useEffect(() => {
-    form.id = lastId;
-  }, [lastId]);
 
   // Estado del formulario
   const [form, setform] = useState({
@@ -44,22 +33,19 @@ function AddForm() {
     images: [""],
   });
 
+  // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
+  const [lastId, SetLastId] = useState(0);
+
   // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock);
 
-  //STOCK//
+  useEffect(() => {
+    getProducts().then((data) => SetLastId(data[data.length - 1].id + 1));
+  }, []);
 
-  //Funciones incremento y decremento
-  const handleDecrement = (e) => {
-    e.preventDefault();
-    if (counter > 0) {
-      setCounter(counter - 1);
-    }
-  };
-  const handleIncrement = (e) => {
-    e.preventDefault();
-    setCounter(counter + 1);
-  };
+  useEffect(() => {
+    form.id = lastId;
+  }, [lastId]);
 
   // Actualizo el stock del formulario con el estado del contador
   useEffect(() => {
@@ -69,31 +55,51 @@ function AddForm() {
     });
   }, [counter]);
 
-  //IMAGENES//
+
+
+  //----------STOCK
+
+  //Funciones incremento y decremento
+  const handleDecrement = (e) => {
+    e.preventDefault();
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
+  };
+
+  const handleIncrement = (e) => {
+    e.preventDefault();
+    setCounter(counter + 1);
+  };
+
+
+  //-------------IMAGENES
 
   // Actualizo / Elimino las imagenes
+
   const handleImg = (e) => {
     const image = e.target.value;
     form.images.push(image);
     setform({ ...form });
   };
+
   const deleteIMG = (e) => {
     e.preventDefault();
     const deletedUrl = e.target.value;
     let imagesForm = form.images.filter((image) => image !== deletedUrl);
     setform({ ...form, images: imagesForm });
   };
-  //FIN IMAGENES//
 
-  //Input handlers
+
+  //--------------Input handlers
 
   const handleInput = async (e) => {
-    if ((e.target.name == "price") & (e.target.name.length > 0)) {
+    if ((e.target.name === "price") & (e.target.name.length > 0)) {
       setform({
         ...form,
         [e.target.name]: Number(e.target.value),
       });
-    } else if ((e.target.name == "price") & (e.target.name.length == 0)) {
+    } else if ((e.target.name === "price") & (e.target.name.length === 0)) {
       alert("Ingrese un valor en el nombre");
     } else {
       setform({
@@ -103,11 +109,11 @@ function AddForm() {
     }
   };
 
-  //Boton de hardar
+
   const handleSave = async (e) => {
     e.preventDefault();
     let response = await addProduct(form);
-
+    console.log(response);
     if (response.status === 201) {
       alert("Producto agregado correctamente.");
       navigate("/products");
