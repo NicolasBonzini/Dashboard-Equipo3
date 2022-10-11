@@ -13,41 +13,7 @@ import swal from 'sweetalert';
 function ProductView() {
   const id = useParams().id;
   const navigate = useNavigate();
-  // Seteo estado inicial del formulario a enviar
-  const [form, setform] = useState({
-    id: 1,
-    title: "iPhone 9",
-    description: "An apple mobile which is nothing like apple",
-    price: 549,
-    rating: {
-      rate: 4.69,
-      count: 354,
-    },
-    stock: 94,
-    category: "smartphones",
-    images: [
-      "https://dummyjson.com/image/i/products/1/1.jpg",
-      "https://dummyjson.com/image/i/products/1/2.jpg",
-      "https://dummyjson.com/image/i/products/1/3.jpg",
-      "https://dummyjson.com/image/i/products/1/4.jpg",
-      "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-    ],
-  });
-
-  //Tomo los datos de los inputs
-  const handleInput = (e) => {
-    e.preventDefault();
-
-    console.log(e.target.id);
-    // console.log(form)
-    setform({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    console.log(form);
-  };
-
-
+  
   //Borrar producto
   function deleteProduct(e) {
     swal({

@@ -7,14 +7,10 @@ import "../EditForm/editForm.css";
 import addProduct from "../../utils/addProduct";
 import getProducts from "../../utils/getProducts";
 // Componentes
-import Input from "../Input/Input";
-import Stock from "../Stock/Stock";
-import TextArea from "../TextArea/TextArea";
-import Select from "../Select/Select";
-import DeleteImage from "../DeleteImage/DeleteImage";
+
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert'
-
+import Form from "../Form/Form";
 function AddForm() {
   const navigate = useNavigate();
 
@@ -28,6 +24,9 @@ function AddForm() {
     category: "",
     images: [""],
   });
+
+  const [image, setImg] = useState('');
+
 
   // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
   const [lastId, SetLastId] = useState(0);
@@ -64,6 +63,15 @@ function AddForm() {
     e.preventDefault();
     setCounter(counter + 1);
   };
+
+  const handleStock = (e)=>{
+    setform({
+      ...form,
+      stock: Number(e.target.value),
+    });
+    console.log(form)
+  }
+
 
   //-------------IMAGENES
   // Actualizo / Elimino las imagenes
@@ -117,38 +125,38 @@ function AddForm() {
       })
     };
   }
-
+ 
+  const handleCancel = (e)=>{
+    e.preventDefault()
+  }
+  function prueba(e){
+    e.preventDefault();
+    if(image.length>0){
+      form.images.push(image);
+      setform({...form});
+    }
+    setImg('');
+  }
+  
   return (
     <>
       <div className="cont">
-        <div className="productView">
-          <form className="newForm" action="">
-            <div>
-              <h2>Información</h2>
-              <Input type="text" name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
-              <Input type="number" name="price" id="price" label="Valor" value={form.price} handler={handleInput} />
-              <Stock handlerI={handleIncrement} handlerD={handleDecrement} stock={counter} />
-              <TextArea value={form.description} handler={handleInput} />
-              <Select />
-            </div>
-            <div>
-              <h2>Galeria de Imágenes</h2>
-              <Input
-                type="text"
-                name="image"
-                id="image"
-                label="Nueva Imagen"
-                handlerBlur={handleImg}
-              />
-              <DeleteImage handler={deleteIMG} images={form.images} />
-            </div>
-            {/* cancelar o enviar formulario */}
-            <div className="sendForm">
-              <button>Cancelar</button>
-              <button onClick={handleSave}>Guardar</button>
-            </div>
-          </form>
-        </div>
+          <Form 
+            handleIncrement={handleIncrement}
+            handleDecrement={handleDecrement} 
+            handleStock ={handleStock}
+            handleSave={handleSave}
+            handleCancel={handleCancel}
+            handleInput={handleInput}
+            prueba={prueba}
+            deleteIMG={deleteIMG}
+            handleImg={handleImg}
+            counter={counter}
+            image={image}
+            form={form}
+        />
+
+        
       </div>
     </>
   );

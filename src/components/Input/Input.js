@@ -2,7 +2,7 @@ import React from "react";
 import "../Input/input.css";
 import { useRef } from "react";
 
-const Input = ({ tipo = "text",name,value, label, handler, handlerBlur }) => {
+const Input = ({ tipo = "text",refe,name,value, label, handler, handlerBlur }) => {
 
 
 

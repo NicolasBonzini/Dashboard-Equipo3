@@ -10,15 +10,11 @@ import putProducts from "../../utils/putProducts";
 import getProductById from "../../utils/getProductById";
 // Componentes
 import EditProduct from "../EditProduct/EditProduct";
-import Input from "../Input/Input";
-import Stock from "../Stock/Stock";
-import TextArea from "../TextArea/TextArea";
-import Select from "../Select/Select";
-import DeleteImage from "../DeleteImage/DeleteImage";
+
 import swal from 'sweetalert'
 import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
 
+import Form from "../Form/Form";
 function EditForm() {
 
   
@@ -69,10 +65,19 @@ function EditForm() {
   useEffect(() => {
     setform({
       ...form,
-
       stock: Number(counter),
     });
   }, [counter]);
+
+
+ 
+  const handleStock = (e)=>{
+    setform({
+      ...form,
+      stock: Number(e.target.value),
+    });
+    console.log(form)
+  }
           // FIN STOCK //
 
     // HANDLERS
@@ -106,7 +111,7 @@ function EditForm() {
 
 
   //Input handlers
-  const handleInput = async (e) => {
+  const handleInput = (e) => {
     if ((e.target.name == "price") & (e.target.name.length > 0)) {
       setform({
         ...form,
@@ -167,62 +172,20 @@ function EditForm() {
           stock={form.stock}
           valor={form.price}
         />
-        <div className="productView">
-          <form className="newForm" action="">
-            <div>
-              <h2>Información</h2>
-              <Input
-                tipo="text"
-                name="title"
-                id="title"
-                label="Nombre"
-                value={form.title}
-                handler={handleInput}
-              />
-              <Input
-                tipo="number"
-                name="price"
-                id="price"
-                label="Valor"
-                value={form.price}
-                handler={handleInput}
-              />
-              <Stock
-                handlerI={handleIncrement}
-                handlerD={handleDecrement}
-                stock={counter}
-              />
-              <TextArea value={form.description} handler={handleInput} />
-              <Select />
-            </div>
-            <div>
-              <h2>Galeria de Imágenes</h2>
-              <div className="addImg">
-
-                <Input
-                  refe='img'
-                  tipo="text"
-                  name="image"
-                  id="image"
-                  value={image}
-                  label="Nueva Imagen"
-                  handler={handleImg}
-                  />
-                  <Button 
-                    text='Añadir'
-                    handler={prueba}
-                  />
-              </div>
-              <DeleteImage handler={deleteIMG} images={form.images} />
-            </div>
-
-            {/* cancelar o enviar formulario */}
-            <div className="sendForm">
-              <button onClick={handleCancel}>Cancelar</button>
-              <button onClick={handleSave}>Guardar</button>
-            </div>
-          </form>
-        </div>
+        <Form 
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          handleStock={handleStock}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+          handleInput={handleInput}
+          prueba={prueba}
+          deleteIMG={deleteIMG}
+          handleImg={handleImg}
+          counter={counter}
+          image={image}
+          form={form}
+        />
       </div>
     </>
   );
