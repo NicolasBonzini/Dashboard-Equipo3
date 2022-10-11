@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 // import "./productView.css";
 
+import swal from 'sweetalert';
+
 function ProductView() {
   const id = useParams().id;
   const navigate = useNavigate();
@@ -34,6 +36,8 @@ function ProductView() {
 
   //Tomo los datos de los inputs
   const handleInput = (e) => {
+    e.preventDefault();
+
     console.log(e.target.id);
     // console.log(form)
     setform({
@@ -42,21 +46,53 @@ function ProductView() {
     });
     console.log(form);
   };
+
+
   //Borrar producto
-  function deleteProduct() {
-    fetch(`http://localhost:5000/api/product?id=${id}`, {
+  function deleteProduct(e) {
+    swal({
+      title: "Está seguro?",
+      text: "Una vez eliminado, no puede recuperar el producto.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Poof! Producto eliminado!", {
+          icon: "success",
+        });
+        fetch(`http://localhost:5000/api/product?id=${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) =>
-        data.error ? console.log(data.error) : navigate("/products")
-      )
-      .catch((error) =>
-        console.log("Error al intentar eliminar, revisa: " + error)
-      );
+    .then( () => navigate('/products'));
+      
+      } else {
+        swal("El producto no ha sido eliminado.");
+      }
+    });
+
+
+
+
+
+
+    // fetch(`http://localhost:5000/api/product?id=${id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) =>
+    //     data.error ? console.log(data.error) : navigate("/products")
+    //   )
+    //   .catch((error) =>
+    //     console.log("Error al intentar eliminar, revisa: " + error)
+    //   );
   }
 
   return (
