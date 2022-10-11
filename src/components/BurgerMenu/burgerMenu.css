@@ -1,5 +1,7 @@
 .burger-menu {
   margin-left: 26px;
+  cursor: pointer;
+
 }
 
 .bar1,

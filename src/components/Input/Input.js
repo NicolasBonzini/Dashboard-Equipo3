@@ -14,7 +14,7 @@ const Input = ({ tipo = "text",refe,name,value, label, handler, handlerBlur }) =
         onChange={handler}
         onBlur={handlerBlur}
         className="input"
-        placeholder="input"
+        placeholder={label}
         id={name}
         type={tipo}
         name={name}

@@ -64,7 +64,7 @@
 
 @media (min-width: 320px) {
   .urlContainer {
-    display: block;
+    /* display: block; */
     max-width: 130px;
     word-wrap: break-word;
   }

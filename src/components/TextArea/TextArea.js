@@ -9,7 +9,7 @@ const TextArea = ({ value, handler }) => {
         value={value}
         onChange={handler}
         className="input form-description"
-        placeholder="inpuDescription"
+        placeholder="Description"
         id="description"
         type="textArea"
         name="description"

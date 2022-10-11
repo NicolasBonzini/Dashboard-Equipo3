@@ -17,7 +17,7 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
         type='number'
         name='stock'
         onChange={handleStock}
-        defaultValue={stock}
+        value={stock}
         id="stock"/>
         <button type="number" onClick={handlerI} className="increment">
           +

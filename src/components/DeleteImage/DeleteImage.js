@@ -11,7 +11,7 @@ const DeleteImage = ({ images, handler }) => {
             <div className="formImgs-img">
               <img src={image} alt="" />
               <div className="urlContainer">
-                <p>{image}</p>
+                <p>{image.substring(0,100)}...</p>
               </div>
             </div>
             <button onClick={handler} value={image} className="quitar">
