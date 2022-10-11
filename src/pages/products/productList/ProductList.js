@@ -16,6 +16,7 @@ function ProductList() {
   const [productsFilter, setProductsFilter] = useState([])
   const [allCategory, setAllCategory] = useState([])
   const inputSearch = useRef(null)
+  const selectCategory = useRef(null)
   const minInput = useRef(null)
   const maxInput = useRef(null)
   const [productsFilter2, setProductsFilter2] = useState([])
@@ -33,10 +34,16 @@ function ProductList() {
   function Filtros(products){
     let condiciones = [
       inputSearch.current.value,
+      selectCategory.current.value,
       minInput.current.value,
       maxInput.current.value                
     ]
-    products.filter(x => x)
+    const [search, select, min, max] = condiciones
+
+    products.filter(x => 
+      x.title.toLowerCase().includes(search.toLowerCase()) &&
+      
+      )
   }
   function handlerCategory(e){
     setProductsFilter(productsFilter.filter(x => x.category.includes(e.target.value) || x.category === ''))
@@ -99,7 +106,7 @@ function ProductList() {
           {/* filtros */}
 
             <div className='filter'>
-              <select onChange={handlerCategory} name="category" id="category">
+              <select ref={selectCategory} onChange={handlerCategory} name="category" id="category">
                 <option value='' >
                   Categorias
                 </option>
@@ -118,9 +125,7 @@ function ProductList() {
           <div className='products'>
             {products.length ?
               productsFilter.length ?
-                productsFilter.map((product) => <><ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />
-                                                  {product.price}
-                                                </>) :
+                productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
                 <p className='header_top containerMain void'>No hay coincidencias</p> :
               <p className='header_top containerMain void'>Cargando...</p>
             }
