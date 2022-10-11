@@ -1,4 +1,6 @@
+//React
 import React from "react";
+//Css
 import "../DeleteImage/deleteImage.css";
 
 const DeleteImage = ({ images, handler }) => {

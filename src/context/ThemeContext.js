@@ -11,7 +11,7 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() =>{
     if (cookies.get('darkMode') == 'dark') {
-      setTheme('dark')
+      setTheme('dark');
     } else {
       setTheme("");
     }

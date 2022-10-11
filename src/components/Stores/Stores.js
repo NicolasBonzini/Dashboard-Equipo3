@@ -1,4 +1,3 @@
-import React from "react";
 import "../CardStartPage/cardStartPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";

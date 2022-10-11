@@ -1,6 +1,6 @@
-import React from 'react'
-import ProductView from '../../pages/products/productView/ProductView'
-import productCard from '../ProductCard/productCard.css';
+
+import '../../pages/products/productView/ProductView'
+import '../ProductCard/productCard.css';
 import { NavLink } from 'react-router-dom';
 import arrowImg from '../../assets/images/chevron-right(1).svg';
 import Img from '../../assets/images/notImage.png'

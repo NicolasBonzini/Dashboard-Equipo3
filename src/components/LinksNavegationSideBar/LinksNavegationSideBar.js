@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useRef } from "react";
-//FontAwesome Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//ReactRouter
-import { NavLink } from "react-router-dom";
+//React
+import { useContext, useRef } from "react";
 //Font Awesome Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoxOpen,
   faHouse,
@@ -16,41 +14,56 @@ import { ThemeContext } from "../../context/ThemeContext";
 import ButtonContext from "../../context/ButtonContext";
 //Switch css
 import "../Switch/switch.css";
+//Components
+import NavigateLink from "../NavigateLink/NavigateLink";
 
 function LinksNavegationSideBar() {
+  const links = [
+    {
+      id: 1,
+      route: "/",
+      icon: faHouse,
+      text: "Inicio",
+    },
+    {
+      id: 2,
+      route: "/products",
+      icon: faBoxOpen,
+      text: "Productos",
+    },
+    {
+      id: 3,
+      route: "/stores",
+      icon: faStoreAlt,
+      text: "Tiendas",
+    },
+  ];
 
-  const {theme} = useContext(ThemeContext);
-  const switchInput = useRef(null)
+  const { theme } = useContext(ThemeContext);
+  const switchInput = useRef(null);
 
   return (
     <>
-      <NavLink to="/">
-        <li>
-          <FontAwesomeIcon icon={faHouse} className="icon" />
-          Inicio
-        </li>
-      </NavLink>
-      <NavLink to="/products">
-        <li>
-          <FontAwesomeIcon icon={faBoxOpen} className="icon" />
-          Productos
-        </li>
-      </NavLink>
-      <NavLink to="/stores">
-        <li>
-          <FontAwesomeIcon icon={faStoreAlt} className="icon" />
-          Tiendas
-        </li>
-      </NavLink>
+    {/* Con un map recorro el objeto links, colocando cada link en el sidebar */}
+      {links.map((link) => {
+        return <NavigateLink key={link.id} {...link} />;
+      })}
+
       <li className="dark-mode-sidebar">
         <ButtonContext>
           <FontAwesomeIcon
-            icon={theme == "" ? faMoon : faSun}
+            icon={theme === "" ? faMoon : faSun}
             className="icon"
           />
-          Tema {theme == "dark" ? "Claro" : "Oscuro"}
+          Tema {theme === "dark" ? "Claro" : "Oscuro"}
         </ButtonContext>
-        <input ref={switchInput} onChange={()=>{}} checked={theme !== 'dark'} type="checkbox" id="toggle_checkbox" />
+        <input
+          ref={switchInput}
+          onChange={() => {}}
+          checked={theme !== "dark"}
+          type="checkbox"
+          id="toggle_checkbox"
+        />
         <ButtonContext>
           <label htmlFor="toggle_checkbox">
             <div id="star">

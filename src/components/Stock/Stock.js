@@ -1,4 +1,3 @@
-import React from "react";
 
 const Stock = ({ handlerD, handlerI, stock }) => {
   return (

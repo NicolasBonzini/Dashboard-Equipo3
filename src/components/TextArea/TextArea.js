@@ -1,4 +1,3 @@
-import React from "react";
 import "../Input/input.css";
 
 const TextArea = ({ value, handler }) => {

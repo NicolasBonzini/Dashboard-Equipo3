@@ -68,10 +68,7 @@
         font-weight: lighter;
         text-align: center  ;
     }
-
 }
-
-
 
 /* DARK MODE */
 
@@ -100,19 +97,3 @@
     background-color: grey;
 }
 
-
-/* .filter {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    text-align: right;
-    width: 100%;
-    padding: 15px;
-    flex-wrap: wrap;
-    z-index: 1;
-    gap: 10px;
-    margin-right: 15px;
-    background-color: white;
-    box-shadow: 0px 5px 5px grey;
-} */

@@ -1,8 +1,7 @@
 //CSS
 import "../../components/BurgerMenu/burgerMenu.css";
 //React
-import { useState, useContext } from "react";
-//Context
+import { useContext } from "react";
 //Context
 import { ToggleContext } from "../../context/ToggleContext";
 

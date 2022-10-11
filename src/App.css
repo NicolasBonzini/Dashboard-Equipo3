@@ -26,10 +26,11 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: "Open Sans";
 }
 
-.App{
-  background-color: #000000;
+body{
+  background-color: var(--white);
 }
 
 .App {
@@ -37,11 +38,13 @@
   overflow-x: hidden;
 }
 
-#root{
-  background-color: transparent;
+.dark{
+  background-color: var(--background-color-dark);
 }
 
-
+.dark body {
+  background-color: var(--background-color-dark);
+}
 
 @media (min-width: 1024px){
   .App{
@@ -57,14 +60,3 @@
 
 
 
-/* estructura, 
-orden de hooks,
- funcionalidad que todo funcione,
-  implementacion de hooks,
-renderizaciones inecesarias,
- jerarquia componentes,
-  eventos bien hechos,
-   router bien implementado,
-peticiones a la api bien hecha validaciones de la api, 
-interaccion de infraestructura aislada,
-implementacion de contexto,  */
