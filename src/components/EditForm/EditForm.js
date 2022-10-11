@@ -19,10 +19,10 @@ import swal from 'sweetalert'
 import { useNavigate } from "react-router-dom";
 
 function EditForm() {
+
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
-
   // Estado del formulario
   const [form, setform] = useState({
     id: "",
@@ -37,10 +37,8 @@ function EditForm() {
     category: "",
     images: [""],
   });
-
   // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock);
-
   //Llamado a la api
   useEffect(() => {
     async function get() {
@@ -52,8 +50,7 @@ function EditForm() {
     get();
   }, []);
 
-  //STOCK//
-
+          //STOCK//
   //Funciones incremento y decremento
   const handleDecrement = (e) => {
     e.preventDefault();
@@ -69,38 +66,36 @@ function EditForm() {
   useEffect(() => {
     setform({
       ...form,
+      
       stock: Number(counter),
     });
   }, [counter]);
-  // FIN STOCK //
+          // FIN STOCK //
 
-  //IMAGENES//
-
+          //IMAGENES//
   // Actualizo / Elimino las imagenes
-  
- const handleImg = (e)=>{
-  const image = e.target.value;
-  if(image.length>0){
-
-    form.images.push(image);
-    setform({...form})
+  const handleImg = (e)=>{
+    const image = e.target.value;
+    if(image.length>0){
+      form.images.push(image);
+      setform({...form})
+    }
   }
-}
-const deleteIMG = (e)=>{
-e.preventDefault();
-swal({
-  title: 'Imagen eliminada',
-  icon: 'success'
-})
-const deletedUrl = e.target.value
-let imagesForm = form.images.filter(image => image !== deletedUrl)
-setform({...form, images:imagesForm,})
-}
+  const deleteIMG = (e)=>{
+    e.preventDefault();
+    swal({
+      title: 'Imagen eliminada',
+      icon: 'success'
+    })
+    const deletedUrl = e.target.value
+    let imagesForm = form.images.filter(image => image !== deletedUrl)
+    setform({...form, images:imagesForm,})
+  }
+          //FIN IMAGENES//
 
-  //FIN IMAGENES//
 
+          // HANDLERS
   //Input handlers
-
   const handleInput = async (e) => {
     if ((e.target.name == "price") & (e.target.name.length > 0)) {
       setform({
@@ -129,7 +124,7 @@ setform({...form, images:imagesForm,})
     }).then( () => navigate('/products'));
     } else {
         swal({
-      title: 'Ha ocurrido un error, no se pudo modificar.',
+      title: 'Ha ocurrido un error, no se pudo modificar el producto.',
       icon: 'error'
     })
     }
@@ -213,3 +208,8 @@ setform({...form, images:imagesForm,})
 }
 
 export default EditForm;
+
+
+// En esta oportunidad, utilicé la liberia de sweetalert para enviar mensajes personalizados al usuario
+// https://sweetalert.js.org/guides/
+// - sdelrive

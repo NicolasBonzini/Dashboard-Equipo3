@@ -68,6 +68,7 @@ function ProductView() {
         "Content-Type": "application/json",
       },
     })
+    .then( () => navigate('/products'));
       
       } else {
         swal("El producto no ha sido eliminado.");
