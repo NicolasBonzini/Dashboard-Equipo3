@@ -1,30 +1,118 @@
-.dark .filter{
-    color: var(--white);
-}
-.filter{
+.filter {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     text-align: right;
-    border-radius: 5px;
-    padding: 5px 0 5px 10px;
+    width: 100%;
+    padding: 15px;
     flex-wrap: wrap;
     z-index: 1;
     gap: 10px;
     margin-right: 15px;
-
+    background-color: white;
+    box-shadow: 0px 5px 5px grey;
 }
 
-.filter #category{
-    
+#category {
+    border-radius: 30px;
+    padding-left: 10px;
+    border: solid 1px var(--black);
+    height: 30px;
 }
 
-.price_filter{
+.filter:nth-child(1){
+    margin-right: 20px;
+}
+
+.filter-inputs-div{
+    display: flex;
+    gap: 10px;
+}
+
+.price_filter {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 20px;
+    font-size: 13px;
 }
-.price_filter input:first-child{
+
+.price_filter input:first-child {
     margin-right: 10px;
 }
+
+.btn-secondary {
+    border-radius: 30px;
+    border: solid 1px var(--black);
+    padding: 2px 20px;
+    height: 30px;
+}
+
+.btn-secondary:hover{
+    background: #0cb093;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+    .filter {
+        flex-direction: column;
+    }
+    .filter-inputs-div{
+        flex-direction: column;
+    }
+
+    #category::placeholder {
+        color: grey;
+        font-weight: lighter;
+        text-align: center  ;
+    }
+
+}
+
+
+
+/* DARK MODE */
+
+.dark .filter {
+    background-color: var(--background-inputs-dark);
+    box-shadow: 0px 5px 5px #121212;
+    color: white;
+}
+
+.dark #category {
+    background-color: #6d686876;
+    color: white;
+}
+
+.dark #category::placeholder {
+    color: grey;
+    font-weight: lighter;
+}
+
+.dark .btn-secondary {
+    background-color: rgb(101, 93, 93);
+    color: white;
+}
+
+.dark .btn-secondary:hover{
+    background-color: grey;
+}
+
+
+/* .filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    text-align: right;
+    width: 100%;
+    padding: 15px;
+    flex-wrap: wrap;
+    z-index: 1;
+    gap: 10px;
+    margin-right: 15px;
+    background-color: white;
+    box-shadow: 0px 5px 5px grey;
+} */
