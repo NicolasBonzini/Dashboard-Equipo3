@@ -1,5 +1,5 @@
 import React from "react";
-import "../ContentContainer/contentContainer.css";
+import "../ContentContainer/ContentContainer.css";
 
 export default function contentContainer({ children }) {
   return <main className="contentContainer">{children}</main>;

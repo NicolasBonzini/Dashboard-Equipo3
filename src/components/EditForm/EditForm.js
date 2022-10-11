@@ -15,8 +15,10 @@ import Stock from "../Stock/Stock";
 import TextArea from "../TextArea/TextArea";
 import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
+import { useNavigate } from "react-router-dom";
 
 function EditForm() {
+  const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
 
@@ -108,12 +110,16 @@ function EditForm() {
   };
 
   //Boton de hardar
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    function putProductos(form) {
-      const data = putProducts(form).then((res) => res.json());
+    let resp = await putProducts(form);
+    console.log(resp);
+    if (resp.status === 200) {
+      alert('Producto modificado correctamente.')
+      navigate('/products');
+    } else {
+      alert('Ha ocurrido un error, no se pudo modificar.')
     }
-    putProductos(form);
   };
 
   return (
