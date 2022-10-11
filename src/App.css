@@ -32,6 +32,7 @@
 
 .App {
   display: flex;
+  overflow-x: hidden;
 }
 
 
