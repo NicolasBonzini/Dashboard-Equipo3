@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, React } from "react";
+import { useEffect, useState, useRef, React } from "react";
 
 //Estilos
 import "../StockButton/stockButton.css";
@@ -17,9 +17,11 @@ import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
 import swal from 'sweetalert'
 import { useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
 
 function EditForm() {
 
+  
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
@@ -39,6 +41,7 @@ function EditForm() {
   });
   // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock);
+  const [image, setImg] = useState('');
   //Llamado a la api
   useEffect(() => {
     async function get() {
@@ -66,21 +69,20 @@ function EditForm() {
   useEffect(() => {
     setform({
       ...form,
-      
+
       stock: Number(counter),
     });
   }, [counter]);
           // FIN STOCK //
 
+    // HANDLERS
+
           //IMAGENES//
   // Actualizo / Elimino las imagenes
   const handleImg = (e)=>{
-    const image = e.target.value;
-    if(image.length>0){
-      form.images.push(image);
-      setform({...form})
-    }
+    setImg(e.target.value);
   }
+
   const deleteIMG = (e)=>{
     e.preventDefault();
     swal({
@@ -91,10 +93,18 @@ function EditForm() {
     let imagesForm = form.images.filter(image => image !== deletedUrl)
     setform({...form, images:imagesForm,})
   }
+
+  function prueba(e){
+    e.preventDefault();
+    if(image.length>0){
+      form.images.push(image);
+      setform({...form});
+    }
+    setImg('');
+  }
           //FIN IMAGENES//
 
 
-          // HANDLERS
   //Input handlers
   const handleInput = async (e) => {
     if ((e.target.name == "price") & (e.target.name.length > 0)) {
@@ -145,10 +155,12 @@ function EditForm() {
     get();
 
   }
+  
 
   return (
     <>
       <div className="cont">
+        
         <EditProduct
           img={form.images[0]}
           name={form.title}
@@ -185,13 +197,22 @@ function EditForm() {
             </div>
             <div>
               <h2>Galeria de Imágenes</h2>
-              <Input
-                tipo="text"
-                name="image"
-                id="image"
-                label="Nueva Imagen"
-                handlerBlur={handleImg}
-              />
+              <div className="addImg">
+
+                <Input
+                  refe='img'
+                  tipo="text"
+                  name="image"
+                  id="image"
+                  value={image}
+                  label="Nueva Imagen"
+                  handler={handleImg}
+                  />
+                  <Button 
+                    text='Añadir'
+                    handler={prueba}
+                  />
+              </div>
               <DeleteImage handler={deleteIMG} images={form.images} />
             </div>
 

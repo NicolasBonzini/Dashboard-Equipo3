@@ -108,7 +108,7 @@ function ProductView() {
           </Link>
         </div>
         <Button
-          deleteProduct={deleteProduct}
+          handler={deleteProduct}
           text="Eliminar"
           personalClass="btnDelete"
         ></Button>

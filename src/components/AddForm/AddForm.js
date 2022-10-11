@@ -69,8 +69,12 @@ function AddForm() {
   // Actualizo / Elimino las imagenes
   const handleImg = (e) => {
     const image = e.target.value;
-    form.images.push(image);
-    setform({ ...form });
+
+    if(image.length>0){
+      form.images.push(image);
+      setform({...form});
+      
+    }
   };
 
   const deleteIMG = (e) => {

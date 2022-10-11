@@ -50,8 +50,14 @@
   background-color: var(--green-back);
 }
 
-/* //////////////////////////// */
 
+.addImg{
+  margin-bottom: 5px;
+}
+.addImg button{
+height: 30px;}
+
+/* /////////////// */
 /* DARKMODE */
 .dark .productView {
   background-color: var(--background-color-dark);
