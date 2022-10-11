@@ -6,6 +6,11 @@
   cursor: pointer;
 }
 
+.button-context{
+  width: 100%;
+  background-color: transparent !important;
+}
+
 .button-context label {
   display: block;
   position: absolute;
@@ -13,7 +18,7 @@
   right: -15px;
   width: 60px;
   height: 30px;
-  margin: 0 auto;
+  margin: 0 15px 0 0;
   background-color: var(--green-back);
   border-radius: 56px;
   transform: translateY(-50%);
@@ -105,7 +110,7 @@
 }
 
 .dark #moon:before {
-  background-color: black;
+  background-color: var(--background-inputs-dark);
 }
 
 /* Tomado como base de: https://codepen.io/alvarotrigo/pen/BamvwQB */
