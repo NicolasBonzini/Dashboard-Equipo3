@@ -32,6 +32,7 @@ function ProductList() {
     selectCategory.current.value = ''
     minInput.current.value = ''
     maxInput.current.value = ''
+    setProductsFilter(products)
   }
 
   //Filtros
