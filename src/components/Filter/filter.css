@@ -3,7 +3,8 @@
 }
 .filter{
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
     justify-content: end;
     text-align: right;
     border-radius: 5px;
@@ -15,10 +16,8 @@
 
 }
 
-.filter form{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+.filter #category{
+    
 }
 
 .price_filter{
