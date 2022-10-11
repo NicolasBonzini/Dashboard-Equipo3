@@ -23,3 +23,9 @@
   .change .bar3{
     transform: translate(0, -5px) rotate(45deg);
   }
+
+  .dark .bar1,
+  .dark .bar2,
+  .dark .bar3{
+    background-color: var(--white);
+  }

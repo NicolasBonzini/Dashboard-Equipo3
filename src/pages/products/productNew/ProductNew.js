@@ -13,22 +13,18 @@ function ProductNew() {
   const navigate = useNavigate()
   // Seteo estado inicial del formulario a enviar
   const [form, setform] = useState({
-    id: 1,
-    title: "iPhone 9",
-    description: "An apple mobile which is nothing like apple",
-    price: 549,
+    id: "",
+    title: "",
+    description: "",
+    price: "",
     rating: {
-      rate: 4.69,
-      count: 354
+      rate: "",
+      count: ""
     },
-    stock: 94,
-    category: "smartphones",
+    stock: "",
+    category: "",
     images: [
-      "https://dummyjson.com/image/i/products/1/1.jpg",
-      "https://dummyjson.com/image/i/products/1/2.jpg",
-      "https://dummyjson.com/image/i/products/1/3.jpg",
-      "https://dummyjson.com/image/i/products/1/4.jpg",
-      "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+      "",
     ]
   })
 
@@ -63,12 +59,12 @@ function ProductNew() {
           <Link className='title ' to='/products'>
             Productos
             <i className="fa-solid fa-greater-than"></i>
+            Nuevo Producto
           </Link>
           <Link className="title" to={'/product/' + id}>
             {id}
           </Link>
         </div>
-        <Button deleteProduct={deleteProduct} text="Eliminar" personalClass="btnDelete"></Button>
       </Header>
       <MainContainer>
        <AddForm />
