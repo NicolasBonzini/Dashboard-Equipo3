@@ -7,7 +7,7 @@ export const ThemeContext = createContext("dark");
 
 export const ThemeProvider = ({ children }) => {
 
-  const [ theme, setTheme ] = useState('')
+  const [ theme, setTheme ] = useState(null)
 
   useEffect(() =>{
     if (cookies.get('darkMode') == 'dark') {

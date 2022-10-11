@@ -51,7 +51,6 @@ function LinksNavegationSideBar() {
           Tema {theme == "dark" ? "Claro" : "Oscuro"}
         </ButtonContext>
         <input ref={switchInput} checked={theme !== 'dark'} type="checkbox" id="toggle_checkbox" />
-        <input type="checkbox" id="toggle_checkbox" />
         <ButtonContext>
           <label htmlFor="toggle_checkbox">
             <div id="star">
