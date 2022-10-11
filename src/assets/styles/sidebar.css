@@ -126,6 +126,7 @@ a {
   .contentContainer {
     z-index: 2;
     position: relative;
+    overflow: hidden;
   }
 }
 

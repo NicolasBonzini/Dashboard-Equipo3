@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState, React } from "react";
 
 //Estilos
@@ -9,7 +8,6 @@ import '../assets/styles/editForm.css'
 import addProduct from "../utils/addProduct";
 import getProducts from "../utils/getProducts";
 // Componentes
-import EditProduct from "./EditProduct";
 import Input from "./Input";
 import Stock from "./Stock";
 import TextArea from "./TextArea";
@@ -107,11 +105,11 @@ function AddForm() {
     }
 
     //Boton de hardar
-    const handleSave = (e) => {
+    const handleSave = async (e) => {
         e.preventDefault();
-        let response = addProduct(form);
-
-        if (response.isActive === true) {
+        let response = await addProduct(form);
+          
+        if (response.status === 201) {
             alert("Producto agregado correctamente.")
             navigate('/products');
         } else {
