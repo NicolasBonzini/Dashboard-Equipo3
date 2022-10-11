@@ -20,7 +20,6 @@ function ProductList() {
   const selectCategory = useRef(null)
   const minInput = useRef(null)
   const maxInput = useRef(null)
-  const [productsFilter2, setProductsFilter2] = useState([])
 
   function searchProducts(e) {
     e?.preventDefault()
@@ -62,7 +61,6 @@ function ProductList() {
     getProducts()
       .then(data => {
         setProductsFilter(data)
-        setProductsFilter2(data)
         setProducts(data)
         setAllCategory([...new Set(data.map((item) => item.category === '' ? 'Sin categoria' : item.category))])
       });
