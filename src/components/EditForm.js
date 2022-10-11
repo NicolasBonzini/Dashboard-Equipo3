@@ -16,9 +16,6 @@ import TextArea from "./TextArea";
 import Select from "./Select";
 import Images from "./Images";
 
-
-
-
 function EditForm() {
 
   // Tomo el parametro de la url para identificar el productos
@@ -42,8 +39,6 @@ function EditForm() {
 
     // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock)
-
-
 
 
   //Llamado a la api
@@ -119,9 +114,6 @@ function EditForm() {
     }
   }
 
-
- 
-
    //Boton de hardar
   const handleSave =(e) =>{
     e.preventDefault()
@@ -160,7 +152,7 @@ function EditForm() {
             </form>
         </div>
     </div>
-                    </>
+    </>
   );
 }
 

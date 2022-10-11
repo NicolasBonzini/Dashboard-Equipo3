@@ -2,7 +2,7 @@ import React from 'react'
 import "../assets/styles/CardStartPage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faHouse,
+    faBoxOpen
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ const CardStartPage = ({listProd}) => {
 
     return (
         <div className='card-content'>
-            <div className='card-logo'><FontAwesomeIcon icon={faHouse} /></div>
+            <div className='card-logo'><FontAwesomeIcon icon={faBoxOpen} /></div>
             <p className='card-number'>{listProd}</p>
             <p className='card-text'>Productos</p>
             <div className='card-button-content'>
