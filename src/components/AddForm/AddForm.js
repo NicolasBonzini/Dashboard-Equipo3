@@ -1,5 +1,4 @@
 import { useEffect, useState, React } from "react";
-
 //Estilos
 import "../StockButton/stockButton.css";
 import "../DeleteImage/deleteImage.css";
@@ -55,10 +54,7 @@ function AddForm() {
     });
   }, [counter]);
 
-
-
   //----------STOCK
-
   //Funciones incremento y decremento
   const handleDecrement = (e) => {
     e.preventDefault();
@@ -72,11 +68,8 @@ function AddForm() {
     setCounter(counter + 1);
   };
 
-
   //-------------IMAGENES
-
   // Actualizo / Elimino las imagenes
-
   const handleImg = (e) => {
     const image = e.target.value;
     form.images.push(image);
@@ -90,9 +83,7 @@ function AddForm() {
     setform({ ...form, images: imagesForm });
   };
 
-
   //--------------Input handlers
-
   const handleInput = async (e) => {
     if ((e.target.name === "price") & (e.target.name.length > 0)) {
       setform({
@@ -109,11 +100,10 @@ function AddForm() {
     }
   };
 
-
   const handleSave = async (e) => {
     e.preventDefault();
     let response = await addProduct(form);
-    console.log(response);
+    
     if (response.status === 201) {
       alert("Producto agregado correctamente.");
       navigate("/products");
