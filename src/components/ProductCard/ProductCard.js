@@ -17,7 +17,10 @@ function ProductCard(props) {
             <h4 className='productCardTitle'>
               {props.title}
             </h4>
-            <p className='productCardCode'>#{props.id}</p>
+            <div className='product_subtitle'>            
+              <p className='productCardCode'>#{props.id}</p>
+              <p className='productCardCode'>#{props.price}</p>
+            </div>
           </div>
         </section>
         <figure className='productArrowImg'>
