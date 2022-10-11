@@ -1,18 +1,19 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import ProductCard from '../../../components/ProductCard';
-import Header from '../../../components/Header';
-import ContentContainer from '../../../components/ContentContainer';
-import Button from '../../../components/Button'
-import '../../../assets/styles/mainContent.css'
-import '../../../assets/styles/filter.css'
-import './productList.css'
-import getProducts from '../../../utils/getProducts';
-import MainContainer from '../../../components/MainContainer';
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import ProductCard from "../../../components/ProductCard/ProductCard";
+import Header from "../../../components/Header/Header.js";
+import ContentContainer from "../../../components/ContentContainer/ContentContainer";
+import Button from "../../../components/Button/Button";
+import "../../../components/MainContainer/mainContainer.css";
+import "../../../components/Filter/filter.css";
+import "./productList.css";
+import getProducts from "../../../utils/getProducts";
+import MainContainer from "../../../components/MainContainer/MainContainer";
 
 function ProductList() {
-  const [isVisibleInput, setIsVisibleInput] = useState(false)
+  const [isVisibleInput, setIsVisibleInput] = useState(false);
   const [products, setProducts] = useState([]);
+
   const [productsFilter, setProductsFilter] = useState([])
   const [allCategory, setAllCategory] = useState([])
   const inputSearch = useRef(null)
@@ -21,8 +22,11 @@ function ProductList() {
   const maxInput = useRef(null)
   const [productsFilter2, setProductsFilter2] = useState([])
 
+
   function filterForValue(array, value) {
-    return array.filter(x => x.title.toLowerCase().includes(value.toLowerCase()))
+    return array.filter((x) =>
+      x.title.toLowerCase().includes(value.toLowerCase())
+    );
   }
   function searchProducts(e) {
     e?.preventDefault()
@@ -41,9 +45,7 @@ function ProductList() {
     const [search, select, min, max] = condiciones
 
     products.filter(x => 
-      x.title.toLowerCase().includes(search.toLowerCase()) &&
-      
-      )
+      x.title.toLowerCase().includes(search.toLowerCase()) && true)
   }
   function handlerCategory(e){
     setProductsFilter(productsFilter.filter(x => x.category.includes(e.target.value) || x.category === ''))
@@ -53,12 +55,12 @@ function ProductList() {
   }
   function handlerPriceInputMax(e){
     setProductsFilter(productsFilter.filter(x => x.price <= Number(e.target.value) && Number(minInput.current.value)))
+
   }
 
   function handlerSearchBar() {
-    if (window.screen.width <= 500) setIsVisibleInput(!isVisibleInput)
+    if (window.screen.width <= 500) setIsVisibleInput(!isVisibleInput);
   }
-
 
   useEffect(() => {
     getProducts()
@@ -70,39 +72,58 @@ function ProductList() {
       });
   }, [])
 
-
-
   return (
-    <ContentContainer className='productList '>
+    <ContentContainer className="productList ">
       <Header>
-        {!isVisibleInput && <Link className='title title_special' to='/products'>Productos</Link>}
-        <div className='headerGroup'>
-          <i onClick={handlerSearchBar} className={`fa-regular fa-x ${isVisibleInput ? 'setVisible xVisible' : ' '}`}></i>
-          <div className='formContainer'>
+        {!isVisibleInput && (
+          <Link className="title title_special" to="/products">
+            Productos
+          </Link>
+        )}
+        <div className="headerGroup">
+          <i
+            onClick={handlerSearchBar}
+            className={`fa-regular fa-x ${
+              isVisibleInput ? "setVisible xVisible" : " "
+            }`}
+          ></i>
+          <div className="formContainer">
             <form onSubmit={searchProducts}>
-              <input name='search' type='search' ref={inputSearch} onChange={searchProducts} 
-                className={isVisibleInput ? 'setVisible inputVisible' : ''} placeholder='Buscar productos'></input>
+              <input
+                name="search"
+                type="search"
+                ref={inputSearch}
+                onChange={searchProducts}
+                className={isVisibleInput ? "setVisible inputVisible" : ""}
+                placeholder="Buscar productos"
+              ></input>
 
-              <i onClick={() => {
-                return inputSearch.current.value ? searchProducts() : handlerSearchBar()
-              }} className={
-                `fa-solid fa-magnifying-glass
-                ${isVisibleInput ? 'inputSearchOpen' : ''}`}>
-              </i>
-
+              <i
+                onClick={() => {
+                  return inputSearch.current.value
+                    ? searchProducts()
+                    : handlerSearchBar();
+                }}
+                className={`fa-solid fa-magnifying-glass
+                ${isVisibleInput ? "inputSearchOpen" : ""}`}
+              ></i>
             </form>
-            {!isVisibleInput &&
-              <Link to='/products/new'>
-                {!isVisibleInput && <Button text='+' personalClass='mobileAdd' ></Button>}
-                <Button text='Agregar Producto' personalClass='desktopAdd' ></Button>
+            {!isVisibleInput && (
+              <Link to="/products/new">
+                {!isVisibleInput && (
+                  <Button text="+" personalClass="mobileAdd"></Button>
+                )}
+                <Button
+                  text="Agregar Producto"
+                  personalClass="desktopAdd"
+                ></Button>
               </Link>
-            }
+            )}
           </div>
         </div>
       </Header>
-      <MainContainer >
-
-        <div className='header_top'>
+      <MainContainer>
+        <div className="header_top">
           {/* filtros */}
 
             <div className='filter'>
@@ -122,18 +143,30 @@ function ProductList() {
               <button className="btn btn-secondary">Limpiar</button>
             </div>
 
-          <div className='products'>
-            {products.length ?
-              productsFilter.length ?
-                productsFilter.map((product) => <ProductCard key={product.id} id={product.id} title={product.title} image={product.images[0]} />) :
-                <p className='header_top containerMain void'>No hay coincidencias</p> :
-              <p className='header_top containerMain void'>Cargando...</p>
-            }
+          <div className="products">
+            {products.length ? (
+              productsFilter.length ? (
+                productsFilter.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    title={product.title}
+                    image={product.images[0]}
+                  />
+                ))
+              ) : (
+                <p className="header_top containerMain void">
+                  No hay coincidencias
+                </p>
+              )
+            ) : (
+              <p className="header_top containerMain void">Cargando...</p>
+            )}
           </div>
         </div>
       </MainContainer>
     </ContentContainer>
-  )
+  );
 }
 
-export default ProductList
+export default ProductList;
