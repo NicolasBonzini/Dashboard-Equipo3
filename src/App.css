@@ -30,10 +30,6 @@
   box-sizing: border-box;
 }
 
-body{
-  background-color: var(--background-color-dark);
-}
-
 .App {
   display: flex;
   overflow-x: hidden;

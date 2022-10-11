@@ -88,7 +88,6 @@ function AddForm() {
   //Input handlers
 
   const handleInput = async (e) => {
-    console.log(e.target.id);
 
     if ((e.target.name == "price") & (e.target.name.length > 0)) {
       setform({
