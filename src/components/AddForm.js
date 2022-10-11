@@ -124,42 +124,17 @@ function AddForm() {
           <form className="newForm" action="">
             <div>
               <h2>Información</h2>
-              <Input
-                type="text"
-                name="title"
-                id="title"
-                label="Nombre"
-                value={form.title}
-                handler={handleInput}
-              />
-              <Input
-                type="number"
-                name="price"
-                id="price"
-                label="Valor"
-                value={form.price}
-                handler={handleInput}
-              />
-              <Stock
-                handlerI={handleIncrement}
-                handlerD={handleDecrement}
-                stock={counter}
-              />
+              <Input type="text" name="title" id="title" label="Nombre" value={form.title} handler={handleInput} />
+              <Input type="number" name="price" id="price" label="Valor" value={form.price} handler={handleInput} />
+              <Stock handlerI={handleIncrement} handlerD={handleDecrement} stock={counter} />
               <TextArea value={form.description} handler={handleInput} />
               <Select />
             </div>
             <div>
               <h2>Galeria de Imágenes</h2>
-              <Input
-                type="text"
-                name="image"
-                id="image"
-                label="Nueva Imagen"
-                handlerBlur={handleImg}
-              />
+              <Input type="text" name="image" id="image" label="Nueva Imagen" handlerBlur={handleImg} />
               <Images handler={deleteIMG} images={form.images} />
             </div>
-
             {/* cancelar o enviar formulario */}
             <div className="sendForm">
               <button>Cancelar</button>
