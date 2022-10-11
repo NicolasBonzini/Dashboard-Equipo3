@@ -46,7 +46,7 @@ function LinksNavegationSideBar() {
           <FontAwesomeIcon icon={
             theme == '' ? faMoon : faSun
             } className='icon' />
-          Cambiar a Tema {
+          Tema {
             theme == 'dark' ? 'Claro' : 'Oscuro'
           }
           </ButtonContext>

@@ -50,7 +50,7 @@ function Sidebar() {
   }, []);
   
   return (
-    <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar" : null}
+    <div className={`sidebar ${windowSize.innerWidth > 1024 ? "show-sidebar dark-desktop" : "dark-mobile"}
     ${windowSize.innerWidth < 1024 && toggle ? "close-sidebar" : "show-sidebar"}`}>
       {/* Sidebar */}
       <div className="left-sidebar">
