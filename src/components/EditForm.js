@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, React } from "react";
-
+//SweetAlert
+import swal from 'sweetalert';
 //Estilos
 import '../assets/styles/stockButton.css'
 import '../assets/styles/images.css'
@@ -20,7 +21,6 @@ function EditForm() {
 
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
-
   // Estado del formulario
   const [form, setform] = useState({
     id: '',
@@ -35,12 +35,9 @@ function EditForm() {
     category: "",
     images: [
       "",
-    ]})
-
+  ]})
     // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock)
-
-
   //Llamado a la api
   useEffect(()=>{
     async function get(){
@@ -53,7 +50,6 @@ function EditForm() {
 
 
             //STOCK//
-
   //Funciones incremento y decremento
   const handleDecrement = (e)=>{
     e.preventDefault()
@@ -75,7 +71,6 @@ function EditForm() {
               // FIN STOCK //
 
               //IMAGENES//
-
   // Actualizo / Elimino las imagenes
     const handleImg = (e)=>{
         const image = e.target.value;
@@ -87,14 +82,17 @@ function EditForm() {
     }
     const deleteIMG = (e)=>{
       e.preventDefault();
+      swal({
+        title: 'Imagen eliminada',
+        icon: 'success'
+      })
       const deletedUrl = e.target.value
       let imagesForm = form.images.filter(image => image !== deletedUrl)
       setform({...form, images:imagesForm,})
   }
               //FIN IMAGENES//
   
-  //Input handlers
-
+              // HANDLERS //
   const handleInput = async (e) =>{
 
     if(e.target.name == 'price' & e.target.name.length>0){
@@ -112,15 +110,33 @@ function EditForm() {
       })
     }
   }
-
-   //Boton de hardar
+   //Botones de guardar - cancelar
   const handleSave =(e) =>{
     e.preventDefault()
      function putProductos(form){
+      swal({
+        title: 'Producto actualizado',
+        icon: 'success'
+      })
         const data =  putProducts(form)
         .then(res=>res.json())
     }
     putProductos(form)
+  }
+  const handleCancel = (e)=>{
+    e.preventDefault();
+
+    swal({
+      title: 'Ha cancelado la edición',
+      icon: 'error'
+    })
+
+    async function get(){
+      await getProductById(id)
+      .then(re=>{setform(re);setCounter(re.stock);}
+      )
+    }
+    get() 
   }
 
   return (
@@ -145,7 +161,7 @@ function EditForm() {
 
                 {/* cancelar o enviar formulario */}
                 <div className="sendForm">
-                    <button>Cancelar</button>
+                    <button onClick={handleCancel}>Cancelar</button>
                     <button onClick={handleSave}>Guardar</button>
                 </div>
             </form>
