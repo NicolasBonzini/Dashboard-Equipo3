@@ -4,7 +4,7 @@
   box-shadow: 3px 3px 9px 2px #00000040;
   align-items: center;
   border-radius: 12px;
-  margin: 0px 0 0px 30px;
+  margin: 0px 16px 0 26px;
   height: 80px;
   max-width: 450px;
 }
@@ -31,6 +31,14 @@
 }
 .editProduct__info {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.editProduct__name {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .editProduct h2 {
@@ -59,10 +67,25 @@
   width: 40px;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 400px) {
   .editProduct__container .avatar {
     display: flex;
   }
+ 
+}
+@media (min-width: 370px) {
+ 
+  .editProduct__name {
+    display: block;
+    /* flex-wrap: wrap;
+    justify-content: center; */
+  }
+  .editProduct__container .avatar {
+    display: flex;
+    width: unset;
+    padding-left: 10px;
+  }
+ 
 }
 
 /* DARK */

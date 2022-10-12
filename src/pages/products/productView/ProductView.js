@@ -13,12 +13,6 @@ import swal from 'sweetalert';
 function ProductView() {
   const id = useParams().id;
   const navigate = useNavigate();
-  // Seteo estado inicial del formulario a enviar
-  const [form, setform] = useState();
-
-  //Tomo los datos de los inputs
-
-
 
   //Borrar producto
   function deleteProduct() {
@@ -54,7 +48,7 @@ function ProductView() {
           </Link>
         </div>
         <Button
-          deleteProduct={deleteProduct}
+          handler={deleteProduct}
           text="Eliminar"
           personalClass="btnDelete"
         ></Button>

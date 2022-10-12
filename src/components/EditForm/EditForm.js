@@ -9,19 +9,16 @@ import putProducts from "../../utils/putProducts";
 import getProductById from "../../utils/getProductById";
 // Componentes
 import EditProduct from "../EditProduct/EditProduct";
-import Input from "../Input/Input";
-import Stock from "../Stock/Stock";
-import TextArea from "../TextArea/TextArea";
-import Select from "../Select/Select";
-import DeleteImage from "../DeleteImage/DeleteImage";
 //Sweet Alert
 import swal from 'sweetalert'
 //React Router
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import Form from "../Form/Form";
 function EditForm() {
 
+  
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
@@ -41,6 +38,7 @@ function EditForm() {
   });
   // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock);
+  const [image, setImg] = useState('');
   //Llamado a la api
   useEffect(() => {
     async function get() {
@@ -70,21 +68,29 @@ function EditForm() {
   useEffect(() => {
     setform({
       ...form,
-      
       stock: Number(counter),
     });
   }, [counter]);
+
+
+ 
+  const handleStock = (e)=>{
+    setform({
+      ...form,
+      stock: Number(e.target.value),
+    });
+    console.log(form)
+  }
           // FIN STOCK //
+
+    // HANDLERS
 
           //IMAGENES//
   // Actualizo / Elimino las imagenes
   const handleImg = (e)=>{
-    const image = e.target.value;
-    if(image.length>0){
-      form.images.push(image);
-      setform({...form})
-    }
+    setImg(e.target.value);
   }
+
   const deleteIMG = (e)=>{
     e.preventDefault();
     swal({
@@ -95,12 +101,27 @@ function EditForm() {
     let imagesForm = form.images.filter(image => image !== deletedUrl)
     setform({...form, images:imagesForm,})
   }
-          //FIN IMAGENES//
+
+  function prueba(e){
+    e.preventDefault();
+    const found =form.images.find(im=>im ==image)
+    if(image.length>0){
+      if(!found){
+        form.images.push(image);
+        setform({...form});
+        setImg('');
+
+      }else{
+        setImg('');
+      }
+      }
 
 
-          // HANDLERS
+  }     //FIN IMAGENES//
+
+
   //Input handlers
-  const handleInput = async (e) => {
+  const handleInput = (e) => {
     if ((e.target.name == "price") & (e.target.name.length > 0)) {
       setform({
         ...form,
@@ -149,63 +170,33 @@ function EditForm() {
     get();
 
   }
+  
 
   return (
     <>
       <div className="cont">
+        
         <EditProduct
           img={form.images[0]}
           name={form.title}
           stock={form.stock}
           valor={form.price}
+          alt={form.title}
         />
-        <div className="productView">
-          <form className="newForm" action="">
-            <div>
-              <h2>Información</h2>
-              <Input
-                tipo="text"
-                name="title"
-                id="title"
-                label="Nombre"
-                value={form.title}
-                handler={handleInput}
-              />
-              <Input
-                tipo="number"
-                name="price"
-                id="price"
-                label="Valor"
-                value={form.price}
-                handler={handleInput}
-              />
-              <Stock
-                handlerI={handleIncrement}
-                handlerD={handleDecrement}
-                stock={counter}
-              />
-              <TextArea value={form.description} handler={handleInput} />
-              <Select />
-            </div>
-            <div>
-              <h2>Galeria de Imágenes</h2>
-              <Input
-                tipo="text"
-                name="image"
-                id="image"
-                label="Nueva Imagen"
-                handlerBlur={handleImg}
-              />
-              <DeleteImage handler={deleteIMG} images={form.images} />
-            </div>
-
-            {/* cancelar o enviar formulario */}
-            <div className="sendForm">
-              <button onClick={handleCancel}>Cancelar</button>
-              <button onClick={handleSave}>Guardar</button>
-            </div>
-          </form>
-        </div>
+        <Form 
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          handleStock={handleStock}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+          handleInput={handleInput}
+          prueba={prueba}
+          deleteIMG={deleteIMG}
+          handleImg={handleImg}
+          counter={counter}
+          image={image}
+          form={form}
+        />
       </div>
     </>
   );

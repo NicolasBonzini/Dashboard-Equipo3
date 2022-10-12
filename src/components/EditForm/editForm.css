@@ -9,6 +9,7 @@
   background-color: var(--white);
   height: 100%;
   background-color: transparent;
+  margin-right:16px;
 }
 .newForm h2 {
   margin-bottom: 10px;
@@ -30,9 +31,7 @@
   display: flex;
   justify-content: flex-end;
 }
-.editProduct {
-  margin-top: 80px;
-}
+
 .sendForm button {
   color: var(--text-inputs);
   background-color: var(--gray-primary);
@@ -50,8 +49,14 @@
   background-color: var(--green-back);
 }
 
-/* //////////////////////////// */
 
+.addImg{
+  margin-bottom: 5px;
+}
+.addImg button{
+height: 30px;}
+
+/* /////////////// */
 /* DARKMODE */
 .dark .productView {
   background-color: var(--background-color-dark);

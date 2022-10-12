@@ -1,7 +1,8 @@
 //Css
 import "../Input/input.css";
+import { useRef } from "react";
 
-const Input = ({ tipo = "text", name, value, label, handler, handlerBlur }) => {
+const Input = ({ tipo = "text",refe,name,value, label, handler, handlerBlur }) => {
 
   return (
     <div className="eachInput">
@@ -11,7 +12,7 @@ const Input = ({ tipo = "text", name, value, label, handler, handlerBlur }) => {
         onChange={handler}
         onBlur={handlerBlur}
         className="input"
-        placeholder="input"
+        placeholder={label}
         id={name}
         type={tipo}
         name={name}

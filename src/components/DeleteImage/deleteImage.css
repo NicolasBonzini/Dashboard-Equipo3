@@ -51,6 +51,7 @@
 
 .formImgs img {
   width: 45px;
+  max-height: 30px;
   border-radius: 5px;
 }
 .urlContainer {
@@ -64,7 +65,7 @@
 
 @media (min-width: 320px) {
   .urlContainer {
-    display: block;
+    /* display: block; */
     max-width: 130px;
     word-wrap: break-word;
   }
@@ -78,6 +79,7 @@
 @media (min-width: 450px) {
   .urlContainer {
     display: block;
+    padding: 10px;
     max-width: 200px;
     word-wrap: break-word;
   }

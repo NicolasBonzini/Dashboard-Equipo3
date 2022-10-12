@@ -3,16 +3,21 @@ import "../EditProduct/editProduct.css";
 //Componente
 import Avatar from "../Avatar/Avatar";
 
+// const style ={
+//  width: 'unset',
+// }
+
+
 const editProduct = (props) => {
   return (
     <div className="editProduct">
       <div className="editProduct__img">
-        <img src={props.img} alt="" />
+        <img src={props.img} alt={props.alt} />
       </div>
 
       <div className="editProduct__container">
         <div className="editProduct__name">
-          <h2>{props.name}</h2>
+          <h2>{props.name.substring(0,35)}</h2>
         </div>
         <div className="editProduct__info">
           <div className="eachInfo">
