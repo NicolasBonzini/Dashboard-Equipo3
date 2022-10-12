@@ -81,6 +81,7 @@ function EditForm() {
       ...form,
       stock: Number(e.target.value),
     });
+    setCounter(e.target.value)
   };
   // FIN STOCK //
 
