@@ -1,3 +1,4 @@
+//Css
 import "../Input/input.css";
 
 const TextArea = ({ value, handler }) => {

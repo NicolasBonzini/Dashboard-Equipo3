@@ -1,6 +1,7 @@
-import React from 'react'
-import ContentContainer from '../../components/ContentContainer/ContentContainer';
-import MainContainer from '../../components/MainContainer/MainContainer';
+//Componentes
+import ContentContainer from "../../components/ContentContainer/ContentContainer";
+import MainContainer from "../../components/MainContainer/MainContainer";
+//Css
 import "./error404.css";
 
 function Error404() {
@@ -11,11 +12,15 @@ function Error404() {
           <div className="text-container-404">
             <h1>Ups ! Parece que no encontramos la pagina que buscabas</h1>
           </div>
-          <a href="/"><div className="button-slider" text="Go to HOME">Click Me</div></a>
+          <a href="/">
+            <div className="button-slider" text="Go to HOME">
+              Click Me
+            </div>
+          </a>
         </div>
       </MainContainer>
     </ContentContainer>
-  )
+  );
 }
 
-export default Error404
+export default Error404;

@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-.button-context{
+.button-context {
   width: 100%;
   background-color: transparent !important;
 }
@@ -15,7 +15,7 @@
   display: block;
   position: absolute;
   top: 50%;
-  right: -15px;
+  right: -20px;
   width: 60px;
   height: 30px;
   margin: 0 15px 0 0;
@@ -43,7 +43,6 @@
   width: 10px;
   height: 10px;
   transform: scale(1);
-  /* border-radius: 50%; */
   transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform,
     0.3s ease background-color;
   z-index: 1;

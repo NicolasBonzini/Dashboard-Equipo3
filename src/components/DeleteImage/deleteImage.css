@@ -27,11 +27,9 @@
 .newForm .quitar {
   color: var(--text-inputs);
   background-color: var(--gray-primary);
-
   font-size: 8px;
   width: 40px;
   border-radius: 8px;
-
   height: 32px;
   margin-right: 20px;
   border: none;
@@ -65,7 +63,6 @@
 
 @media (min-width: 320px) {
   .urlContainer {
-    /* display: block; */
     max-width: 130px;
     word-wrap: break-word;
   }

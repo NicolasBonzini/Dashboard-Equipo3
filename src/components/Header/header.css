@@ -147,7 +147,6 @@
 
 .headerGroup .fa-magnifying-glass {
   background-color: var(--white);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -221,6 +220,6 @@
   }
 }
 
-.dark .desktopAdd:hover{
+.dark .desktopAdd:hover {
   background: grey;
 }

@@ -10,15 +10,13 @@ import getProductById from "../../utils/getProductById";
 // Componentes
 import EditProduct from "../EditProduct/EditProduct";
 //Sweet Alert
-import swal from 'sweetalert'
+import swal from "sweetalert";
 //React Router
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import Form from "../Form/Form";
 function EditForm() {
-
-  
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
@@ -38,19 +36,26 @@ function EditForm() {
   });
   // Estado del contador de stock
   const [counter, setCounter] = useState(form.stock);
-  const [image, setImg] = useState('');
+  const [image, setImg] = useState("");
   //Llamado a la api
   useEffect(() => {
     async function get() {
       await getProductById(id).then((re) => {
-        setform(re);
-        setCounter(re.stock);
+        if (re.status === 404) {
+          swal({
+            title: re.error,
+            icon: "error",
+          }).then(() => navigate("/"));
+        } else {
+          setform(re);
+          setCounter(re.stock);
+        }
       });
     }
     get();
   }, []);
 
-          //STOCK//
+  //STOCK//
   //Funciones incremento y decremento
   const handleDecrement = (e) => {
     e.preventDefault();
@@ -62,7 +67,6 @@ function EditForm() {
     e.preventDefault();
     setCounter(counter + 1);
   };
-  
 
   // Actualizo el stock del formulario con el estado del contador
   useEffect(() => {
@@ -72,62 +76,55 @@ function EditForm() {
     });
   }, [counter]);
 
-
- 
-  const handleStock = (e)=>{
+  const handleStock = (e) => {
     setform({
       ...form,
       stock: Number(e.target.value),
     });
-    console.log(form)
-  }
-          // FIN STOCK //
+  };
+  // FIN STOCK //
 
-    // HANDLERS
+  // HANDLERS
 
-          //IMAGENES//
+  //IMAGENES//
   // Actualizo / Elimino las imagenes
-  const handleImg = (e)=>{
+  const handleImg = (e) => {
     setImg(e.target.value);
-  }
+  };
 
-  const deleteIMG = (e)=>{
+  const deleteIMG = (e) => {
     e.preventDefault();
     swal({
-      title: 'Imagen eliminada',
-      icon: 'success'
-    })
-    const deletedUrl = e.target.value
-    let imagesForm = form.images.filter(image => image !== deletedUrl)
-    setform({...form, images:imagesForm,})
-  }
+      title: "Imagen eliminada",
+      icon: "success",
+    });
+    const deletedUrl = e.target.value;
+    let imagesForm = form.images.filter((image) => image !== deletedUrl);
+    setform({ ...form, images: imagesForm });
+  };
 
-  function prueba(e){
+  function prueba(e) {
     e.preventDefault();
-    const found =form.images.find(im=>im ==image)
-    if(image.length>0){
-      if(!found){
+    const found = form.images.find((im) => im == image);
+    if (image.length > 0) {
+      if (!found) {
         form.images.push(image);
-        setform({...form});
-        setImg('');
-
-      }else{
-        setImg('');
+        setform({ ...form });
+        setImg("");
+      } else {
+        setImg("");
       }
-      }
-
-
-  }     //FIN IMAGENES//
-
+    }
+  } //FIN IMAGENES//
 
   //Input handlers
   const handleInput = (e) => {
-    if ((e.target.name == "price") & (e.target.name.length > 0)) {
+    if (e.target.name == "price" && e.target.name.length > 0) {
       setform({
         ...form,
         [e.target.name]: Number(e.target.value),
       });
-    } else if ((e.target.name == "price") & (e.target.name.length == 0)) {
+    } else if (e.target.name == "price" && e.target.name.length == 0) {
       alert("Ingrese un valor en el nombre");
     } else {
       setform({
@@ -143,24 +140,24 @@ function EditForm() {
     let resp = await putProducts(form);
 
     if (resp.status === 200) {
-         swal({
-      title: 'El producto ha sido actualizado',
-      icon: 'success'
-    }).then( () => navigate('/products'));
+      swal({
+        title: "El producto ha sido actualizado",
+        icon: "success",
+      }).then(() => navigate("/products"));
     } else {
-        swal({
-      title: 'Ha ocurrido un error, no se pudo modificar el producto.',
-      icon: 'error'
-    })
+      swal({
+        title: "Ha ocurrido un error, no se pudo modificar el producto.",
+        icon: "error",
+      });
     }
   };
 
-  const handleCancel = (e)=>{
+  const handleCancel = (e) => {
     e.preventDefault();
     swal({
-      title: 'El producto no ha sido actualizado',
-      icon: 'error'
-    })
+      title: "El producto no ha sido actualizado",
+      icon: "error",
+    });
     async function get() {
       await getProductById(id).then((re) => {
         setform(re);
@@ -168,14 +165,11 @@ function EditForm() {
       });
     }
     get();
-
-  }
-  
+  };
 
   return (
     <>
       <div className="cont">
-        
         <EditProduct
           img={form.images[0]}
           name={form.title}
@@ -183,7 +177,7 @@ function EditForm() {
           valor={form.price}
           alt={form.title}
         />
-        <Form 
+        <Form
           handleIncrement={handleIncrement}
           handleDecrement={handleDecrement}
           handleStock={handleStock}
@@ -205,6 +199,3 @@ function EditForm() {
 export default EditForm;
 
 
-// En esta oportunidad, utilicé la liberia de sweetalert para enviar mensajes personalizados al usuario
-// https://sweetalert.js.org/guides/
-// - sdelrive

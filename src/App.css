@@ -1,3 +1,5 @@
+/* En esta oportunidad, utilicé la liberia de sweetalert para enviar mensajes personalizados al usuario
+https://sweetalert.js.org/guides/ */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
@@ -20,6 +22,7 @@
   --gray-primary:rgb(89,89,89);
   --border-cards: 16px;
   --text-inputs: #F2F2F2;
+    --backgroud-light: #dadada;
 }
 
 *{
