@@ -1,0 +1,9 @@
+.contentContainer {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dark .contentContainer {
+  background-color: var(--background-color-dark);
+}
