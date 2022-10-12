@@ -137,7 +137,7 @@ a {
 /* Dark Mode */
 .dark .dark-mobile .left-sidebar {
   background: rgba(34, 34, 34, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(9px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
