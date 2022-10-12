@@ -42,6 +42,7 @@ function AddForm() {
 
   useEffect(() => {
     setform({ ...form, id: lastId });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastId]);
 
   // Actualizo el stock del formulario con el estado del contador
@@ -50,6 +51,7 @@ function AddForm() {
       ...form,
       stock: counter,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   //----------STOCK
@@ -134,7 +136,7 @@ function AddForm() {
   };
   function prueba(e) {
     e.preventDefault();
-    const found = form.images.find((im) => im == image);
+    const found = form.images.find((im) => im === image);
     if (image.length > 0) {
       if (!found) {
         form.images.push(image);
