@@ -60,12 +60,12 @@ function EditForm() {
   const handleDecrement = (e) => {
     e.preventDefault();
     if (counter > 0) {
-      setCounter(counter - 1);
+      setCounter(Number(counter) - 1);
     }
   };
   const handleIncrement = (e) => {
     e.preventDefault();
-    setCounter(counter + 1);
+    setCounter(Number(counter) + 1);
   };
 
   // Actualizo el stock del formulario con el estado del contador
