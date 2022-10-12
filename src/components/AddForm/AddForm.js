@@ -60,13 +60,13 @@ function AddForm() {
     e.preventDefault();
 
     if (counter > 0) {
-      setCounter(counter - 1);
+      setCounter(Number(counter) - 1);
     }
   };
 
   const handleIncrement = (e) => {
     e.preventDefault();
-    setCounter(counter + 1);
+    setCounter(Number(counter) + 1);
   };
 
   const handleStock = (e) => {
