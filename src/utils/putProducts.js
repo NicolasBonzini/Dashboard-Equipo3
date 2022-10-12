@@ -9,5 +9,4 @@ const putProducts = async (form) => {
   return (res)
 }
 
-
 export default putProducts

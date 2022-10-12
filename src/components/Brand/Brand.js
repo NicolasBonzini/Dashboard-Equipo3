@@ -1,3 +1,4 @@
+//Image
 import logo from "../../assets/images/MiEcommerce.png";
 
 function Brand() {

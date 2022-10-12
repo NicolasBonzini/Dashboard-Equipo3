@@ -6,11 +6,12 @@ import "../EditForm/editForm.css";
 //Servicios
 import addProduct from "../../utils/addProduct";
 import getProducts from "../../utils/getProducts";
-// Componentes
-
+//React router
 import { useNavigate } from "react-router-dom";
+//Sweet alert
 import swal from 'sweetalert'
 import Form from "../Form/Form";
+
 function AddForm() {
   const navigate = useNavigate();
 
@@ -26,7 +27,6 @@ function AddForm() {
   });
 
   const [image, setImg] = useState('');
-
 
   // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
   const [lastId, SetLastId] = useState(0);
@@ -54,6 +54,7 @@ function AddForm() {
   //Funciones incremento y decremento
   const handleDecrement = (e) => {
     e.preventDefault();
+
     if (counter > 0) {
       setCounter(counter - 1);
     }
@@ -167,8 +168,6 @@ function AddForm() {
             image={image}
             form={form}
         />
-
-        
       </div>
     </>
   );

@@ -60,9 +60,22 @@
   .card-button-content {
     width: 100%;
   }
+}
+/* Resolucion menor a 520px */
+@media (max-width:520px){
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .card-button-content{
+    justify-content: center;
+    align-items: center;
+  }
 
-  .card-button {
-    width: auto;
+  .card-button{
+    padding: 8px;
   }
 }
 

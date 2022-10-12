@@ -1,5 +1,6 @@
-import React from "react";
+//Css
 import "../EditProduct/editProduct.css";
+//Componente
 import Avatar from "../Avatar/Avatar";
 
 // const style ={

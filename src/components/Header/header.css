@@ -7,7 +7,6 @@
   position: fixed;
   width: 100vw;
   background-color: white;
-  border-bottom: 1px solid var(--black);
 }
 
 .dark .header {
@@ -211,6 +210,7 @@
     margin-right: 15px;
     padding: 9px 15px !important;
     white-space: nowrap;
+    border: 1px solid black !important;
   }
 
   .header .title {
@@ -219,4 +219,8 @@
   .header .title_special {
     margin-left: -6px;
   }
+}
+
+.dark .desktopAdd:hover{
+  background: grey;
 }

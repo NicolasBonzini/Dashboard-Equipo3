@@ -10,7 +10,6 @@ const getProductById = async (id) => {
         // .then(data => data)
 
     return dataProduct;
-
 }
 
 export default getProductById

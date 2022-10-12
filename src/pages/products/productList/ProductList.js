@@ -26,7 +26,7 @@ function ProductList() {
     Filtros(products)
   }
 
-  function cleanInput(){
+  function cleanInput() {
     inputSearch.current.value = ''
     selectCategory.current.value = ''
     minInput.current.value = ''
@@ -35,19 +35,19 @@ function ProductList() {
   }
 
   //Filtros
-  function Filtros(products){
+  function Filtros(products) {
     let condiciones = [
       inputSearch.current.value,
       selectCategory.current.value,
       minInput.current.value,
-      maxInput.current.value                
+      maxInput.current.value
     ]
     const [search, select, min, max] = condiciones
     setProductsFilter(
-    products.filter(x =>
-      x.title.toLowerCase().includes(search.toLowerCase()) && 
-      (x.category.includes(select) || x.category === '') &&
-      (x.price >= Number(min) && (!max || x.price <= Number(max)))
+      products.filter(x =>
+        x.title.toLowerCase().includes(search.toLowerCase()) &&
+        (x.category.includes(select) || x.category === '') &&
+        (x.price >= Number(min) && (!max || x.price <= Number(max)))
       )
     )
   }
@@ -77,9 +77,8 @@ function ProductList() {
         <div className="headerGroup">
           <i
             onClick={handlerSearchBar}
-            className={`fa-regular fa-x ${
-              isVisibleInput ? "setVisible xVisible" : " "
-            }`}
+            className={`fa-regular fa-x ${isVisibleInput ? "setVisible xVisible" : " "
+              }`}
           ></i>
           <div className="formContainer">
             <form onSubmit={searchProducts}>
@@ -120,22 +119,22 @@ function ProductList() {
         <div className="header_top">
           {/* filtros */}
 
-            <div className='filter'>
-              <select ref={selectCategory} onChange={searchProducts} name="category" id="category">
-                <option value='' >
-                  Categorias
-                </option>
-                {allCategory?.map(cat => <option key={cat} value={cat} >{cat}</option>)}
-              </select>
-              <label className='price_filter'>
-                Precio:
-                <div>
-                  <input  ref={minInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Min' />
-                  <input  ref={maxInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Max' />
-                </div>
-              </label>
-              <button className="btn btn-secondary" onClick={cleanInput}>Limpiar</button>
+          <div className='filter'>
+            <select ref={selectCategory} onChange={searchProducts} name="category" id="category">
+              <option value='' >
+                Categorías
+              </option>
+              {allCategory?.map(cat => <option key={cat} value={cat} >{cat}</option>)}
+            </select>
+            <label className='price_filter'>
+              Precio: </label>
+            <div className='filter-inputs-div'>
+              <input ref={minInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Min' />
+              <input ref={maxInput} min='0' onChange={searchProducts} name="category" id="category" type='number' placeholder='Max' />
             </div>
+
+            <button className="btn btn-secondary" onClick={cleanInput}>Limpiar</button>
+          </div>
 
           <div className="products">
             {products.length ? (
@@ -143,6 +142,7 @@ function ProductList() {
                 productsFilter.map((product) => (
                   <ProductCard
                     key={product.id}
+                    price={product.price}
                     id={product.id}
                     title={product.title}
                     image={product.images[0]}

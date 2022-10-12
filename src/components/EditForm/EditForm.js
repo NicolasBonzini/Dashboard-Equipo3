@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useRef, React } from "react";
-
+//React
+import { useEffect, useState, React } from "react";
 //Estilos
 import "../StockButton/stockButton.css";
 import "../StockButton/stockButton.css";
@@ -10,8 +9,10 @@ import putProducts from "../../utils/putProducts";
 import getProductById from "../../utils/getProductById";
 // Componentes
 import EditProduct from "../EditProduct/EditProduct";
-
+//Sweet Alert
 import swal from 'sweetalert'
+//React Router
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import Form from "../Form/Form";
@@ -61,6 +62,8 @@ function EditForm() {
     e.preventDefault();
     setCounter(counter + 1);
   };
+  
+
   // Actualizo el stock del formulario con el estado del contador
   useEffect(() => {
     setform({
@@ -138,7 +141,7 @@ function EditForm() {
   const handleSave = async (e) => {
     e.preventDefault();
     let resp = await putProducts(form);
-    console.log(resp);
+
     if (resp.status === 200) {
          swal({
       title: 'El producto ha sido actualizado',

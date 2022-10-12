@@ -1,6 +1,6 @@
-import React from 'react'
-import ProductView from '../../pages/products/productView/ProductView'
-import productCard from '../ProductCard/productCard.css';
+
+import '../../pages/products/productView/ProductView'
+import '../ProductCard/productCard.css';
 import { NavLink } from 'react-router-dom';
 import arrowImg from '../../assets/images/chevron-right(1).svg';
 import Img from '../../assets/images/notImage.png'
@@ -28,7 +28,10 @@ function ProductCard(props) {
             <h4 className='productCardTitle'>
               {props.title}
             </h4>
-            <p className='productCardCode'>{handleDigitCount()}</p>
+            <div className='product_subtitle'>            
+              <p className='productCardCode'>{handleDigitCount()}</p>
+              <p className='productCardCode'>${props.price}.00</p>
+            </div>
           </div>
         </section>
         <figure className='productArrowImg'>
