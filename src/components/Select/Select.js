@@ -1,4 +1,3 @@
-
 const Select = () => {
   return (
     <div className="eachInput store-form">

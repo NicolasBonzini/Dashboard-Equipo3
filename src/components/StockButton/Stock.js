@@ -1,6 +1,5 @@
-import React from "react";
-import Input from "../Input/Input";
-import '../StockButton/stockButton.css'
+//Css
+import "./stockButton.css";
 
 const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
   return (
@@ -10,15 +9,15 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
         <button type="number" onClick={handlerD} className="decrement">
           -
         </button>
-        {/* <p className="result">{stock}</p> */}
-      
+
         <input
-        className="result"
-        type='number'
-        name='stock'
-        onChange={handleStock}
-        value={stock}
-        id="stock"/>
+          className="result"
+          type="number"
+          name="stock"
+          onChange={handleStock}
+          value={stock}
+          id="stock"
+        />
         <button type="number" onClick={handlerI} className="increment">
           +
         </button>

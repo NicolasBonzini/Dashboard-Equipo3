@@ -1,9 +1,7 @@
 //Css
 import "../Input/input.css";
-import { useRef } from "react";
 
-const Input = ({ tipo = "text",refe,name,value, label, handler, handlerBlur }) => {
-
+const Input = ({ tipo = "text", name, value, label, handler, handlerBlur }) => {
   return (
     <div className="eachInput">
       <label htmlFor="title">{label}</label>

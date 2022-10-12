@@ -1,12 +1,14 @@
+//Componentes
 import ContentContainer from "../../../components/ContentContainer/ContentContainer";
 import Header from "../../../components/Header/Header";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Button from "../../../components/Button/Button";
-import React from "react";
 import AddForm from "../../../components/AddForm/AddForm";
-// import "./productView.css";
 import MainContainer from "../../../components/MainContainer/MainContainer";
+//React router
+import { Link, useNavigate, useParams } from "react-router-dom";
+//React
+import { useState } from "react";
+//Sweet Alert
+import swal from 'sweetalert'
 
 function ProductNew() {
   const id = useParams().id;
@@ -28,13 +30,12 @@ function ProductNew() {
 
   //Tomo los datos de los inputs
   const handleInput = (e) => {
-    console.log(e.target.id);
-    // console.log(form)
+
     setform({
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
+
   };
   //Borrar producto
   function deleteProduct() {
@@ -46,11 +47,11 @@ function ProductNew() {
     })
       .then((res) => res.json())
       .then((data) =>
-        data.error ? console.log(data.error) : navigate("/products")
+        data.error ? (swal({
+          title: "Error al borrar el producto",
+          icon: 'error'
+        }).then(() => navigate('/') )) : navigate("/products")
       )
-      .catch((error) =>
-        console.log("Error al intentar eliminar, revisa: " + error)
-      );
   }
 
   return (

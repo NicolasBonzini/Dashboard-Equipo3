@@ -1,7 +1,8 @@
 //React
 import React from "react";
-//Componentes
+//Css
 import "../../components/Header/header.css";
+//Componentes
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 function Header({ children }) {

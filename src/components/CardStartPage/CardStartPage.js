@@ -1,5 +1,3 @@
-//React
-import React from "react";
 //CSS
 import "../../components/CardStartPage/cardStartPage.css";
 //Font awesome icons

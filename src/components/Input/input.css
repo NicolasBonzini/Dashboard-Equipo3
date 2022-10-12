@@ -14,10 +14,9 @@
   font-size: 12px;
 }
 
-.input:focus{
+.input:focus {
   background-color: var(--text-inputs);
 }
-
 
 .form-description {
   height: 130px;
@@ -30,10 +29,10 @@
 
 .dark .input {
   color: white;
-  /* font-weight: 300; */
   border: 1px solid var(--border-gray);
   background-color: var(--background-inputs-dark);
 }
-.dark .input:focus{
+
+.dark .input:focus {
   background-color: var(--gray-primary);
 }

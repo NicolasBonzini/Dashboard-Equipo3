@@ -1,4 +1,5 @@
-import { useEffect, useState, React } from "react";
+//React
+import { useEffect, useState } from "react";
 //Estilos
 import "../StockButton/stockButton.css";
 import "../DeleteImage/deleteImage.css";
@@ -9,7 +10,8 @@ import getProducts from "../../utils/getProducts";
 //React router
 import { useNavigate } from "react-router-dom";
 //Sweet alert
-import swal from 'sweetalert'
+import swal from "sweetalert";
+//Componentes
 import Form from "../Form/Form";
 
 function AddForm() {
@@ -26,7 +28,7 @@ function AddForm() {
     images: [],
   });
 
-  const [image, setImg] = useState('');
+  const [image, setImg] = useState("");
 
   // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
   const [lastId, SetLastId] = useState(0);
@@ -39,7 +41,8 @@ function AddForm() {
   }, []);
 
   useEffect(() => {
-    setform({ ...form, id: lastId })
+    setform({ ...form, id: lastId });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastId]);
 
   // Actualizo el stock del formulario con el estado del contador
@@ -48,6 +51,7 @@ function AddForm() {
       ...form,
       stock: counter,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   //----------STOCK
@@ -65,40 +69,38 @@ function AddForm() {
     setCounter(counter + 1);
   };
 
-  const handleStock = (e)=>{
+  const handleStock = (e) => {
     setform({
       ...form,
       stock: Number(e.target.value),
     });
-    console.log(form)
-  }
-
+  };
 
   //-------------IMAGENES
   // Actualizo / Elimino las imagenes
-  const handleImg = (e)=>{
+  const handleImg = (e) => {
     setImg(e.target.value);
-  }
+  };
 
-  const deleteIMG = (e)=>{
+  const deleteIMG = (e) => {
     e.preventDefault();
     swal({
-      title: 'Imagen eliminada',
-      icon: 'success'
-    })
-    const deletedUrl = e.target.value
-    let imagesForm = form.images.filter(image => image !== deletedUrl)
-    setform({...form, images:imagesForm,})
-  }
+      title: "Imagen eliminada",
+      icon: "success",
+    });
+    const deletedUrl = e.target.value;
+    let imagesForm = form.images.filter((image) => image !== deletedUrl);
+    setform({ ...form, images: imagesForm });
+  };
 
   //--------------Input handlers
   const handleInput = async (e) => {
-    if ((e.target.name === "price") & (e.target.name.length > 0)) {
+    if (e.target.name === "price" && e.target.name.length > 0) {
       setform({
         ...form,
         [e.target.name]: Number(e.target.value),
       });
-    } else if ((e.target.name === "price") & (e.target.name.length === 0)) {
+    } else if (e.target.name === "price" && e.target.name.length === 0) {
       alert("Ingrese un valor en el nombre");
     } else {
       setform({
@@ -111,62 +113,57 @@ function AddForm() {
   const handleSave = async (e) => {
     e.preventDefault();
     let response = await addProduct(form);
-    
+
     if (response.status === 201) {
       swal({
-        title: 'Producto agregado correctamente.',
-        icon: 'success'
-      }).then(() => navigate('/products'));
+        title: "Producto agregado correctamente.",
+        icon: "success",
+      }).then(() => navigate("/products"));
     } else {
       swal({
-        title: 'Ha ocurrido un error, no se ha podido agregar.',
-        icon: 'error'
-      })
-    };
-  }
- 
-  const handleCancel = (e)=>{
+        title: "Ha ocurrido un error, no se ha podido agregar.",
+        icon: "error",
+      });
+    }
+  };
+
+  const handleCancel = (e) => {
     e.preventDefault();
     swal({
-      title: 'No ha añadido ningún producto',
-      icon: 'error'
-    }).then(()=> navigate('/products'))
-
-  }
-  function prueba(e){
+      title: "No ha añadido ningún producto",
+      icon: "error",
+    }).then(() => navigate("/products"));
+  };
+  function prueba(e) {
     e.preventDefault();
-    const found =form.images.find(im=>im ==image)
-    if(image.length>0){
-      if(!found){
+    const found = form.images.find((im) => im === image);
+    if (image.length > 0) {
+      if (!found) {
         form.images.push(image);
-        setform({...form});
-        setImg('');
-
-
-      }else{
-        setImg('');
+        setform({ ...form });
+        setImg("");
+      } else {
+        setImg("");
       }
-      }
-
-
+    }
   }
-  
+
   return (
     <>
       <div className="cont">
-          <Form 
-            handleIncrement={handleIncrement}
-            handleDecrement={handleDecrement} 
-            handleStock ={handleStock}
-            handleSave={handleSave}
-            handleCancel={handleCancel}
-            handleInput={handleInput}
-            prueba={prueba}
-            deleteIMG={deleteIMG}
-            handleImg={handleImg}
-            counter={counter}
-            image={image}
-            form={form}
+        <Form
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          handleStock={handleStock}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+          handleInput={handleInput}
+          prueba={prueba}
+          deleteIMG={deleteIMG}
+          handleImg={handleImg}
+          counter={counter}
+          image={image}
+          form={form}
         />
       </div>
     </>

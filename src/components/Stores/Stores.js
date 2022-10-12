@@ -1,6 +1,9 @@
+//Componentes
 import "../CardStartPage/cardStartPage.css";
+//Font awesome icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
+//React router
 import { useNavigate } from "react-router-dom";
 
 function Stores() {

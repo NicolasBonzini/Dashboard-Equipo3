@@ -8,10 +8,7 @@
 }
 .counter {
   margin: 8px 0 8px 0;
-
-  /* background-color: rgb(51,51,51); */
   background-color: white;
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -29,8 +26,9 @@
   text-align: center;
   color: black;
   border: none;
-  background-color:white;
+  background-color: white;
 }
+
 .dark .result {
   background-color: var(--background-inputs-dark);
   color: white;

@@ -5,9 +5,7 @@ import user from "../../assets/images/ProfilePic.png";
 //CSS
 import "../Avatar/avatar.css";
 
-
-function Avatar({style}) {
-
+function Avatar({ style }) {
   const [id, setId] = useState("Anonimo");
 
   useEffect(() => {
@@ -17,11 +15,13 @@ function Avatar({style}) {
     }
     setId(JSON.parse(localStorage.getItem("user"))?.name || id);
   }, []);
-  
+
   return (
     <div style={style} className="avatar">
       <img src={user} className="avatar-img" alt="profilePic" />
-      <p style={style} className="user-name">{id}</p>
+      <p style={style} className="user-name">
+        {id}
+      </p>
     </div>
   );
 }

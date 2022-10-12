@@ -3,11 +3,6 @@ import "../EditProduct/editProduct.css";
 //Componente
 import Avatar from "../Avatar/Avatar";
 
-// const style ={
-//  width: 'unset',
-// }
-
-
 const editProduct = (props) => {
   return (
     <div className="editProduct">
@@ -17,7 +12,7 @@ const editProduct = (props) => {
 
       <div className="editProduct__container">
         <div className="editProduct__name">
-          <h2>{props.name.substring(0,35)}</h2>
+          <h2>{props.name.substring(0, 35)}</h2>
         </div>
         <div className="editProduct__info">
           <div className="eachInfo">
