@@ -74,6 +74,7 @@ function AddForm() {
       ...form,
       stock: Number(e.target.value),
     });
+    setCounter(e.target.value)
   };
 
   //-------------IMAGENES
