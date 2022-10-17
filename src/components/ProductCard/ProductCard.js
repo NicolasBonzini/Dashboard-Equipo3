@@ -5,7 +5,7 @@ import "../ProductCard/productCard.css";
 //React router
 import { NavLink } from "react-router-dom";
 //Images
-import arrowImg from "../../assets/images/chevron-right(1).svg";
+import arrowImg from "../../assets/images/chevron-right.svg";
 import Img from "../../assets/images/notImage.png";
 
 function ProductCard(props) {
