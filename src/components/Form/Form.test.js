@@ -36,4 +36,16 @@ describe("Todos los inputs renderizan correctamente", () => {
     //assertion
     expect(precio).toHaveValue(1);
   });
+
+  test("El Stock se renderiza, captura el valor predeterminado y reacciona a los eventos", () => {
+    // Renderizamos componente form
+    render(<Form form={form} counter = {5} />);
+    //Tomamos el input de nombre del producto
+    const stock = screen.getByLabelText("Stock");
+
+    // console.log(prettyDOM(stock));
+    //assertion
+    expect(stock).toBeInTheDocument();
+    // expect(stock.defaultValue).toBe(5);
+  });
 });

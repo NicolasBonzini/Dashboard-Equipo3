@@ -6,7 +6,7 @@ const TextArea = ({ value, handler }) => {
     <div className="eachInput">
       <label htmlFor="description">Descripción</label>
       <textarea
-        value={value}
+        defaultValue={value}
         onChange={handler}
         className="input form-description"
         placeholder="Description"
