@@ -11,7 +11,6 @@ import LinksNavegationSideBar from "../LinksNavegationSideBar/LinksNavegationSid
 import { ToggleContext } from "../../context/ToggleContext";
 
 function Sidebar() {
-
   const { toggle, toggleSidebar } = useContext(ToggleContext);
   //GUARDO EL LARGO DE LA RESOLUCION DE PANTALLA.
   const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -41,10 +40,10 @@ function Sidebar() {
       className={`sidebar ${
         windowSize.innerWidth > 1024
           ? "show-sidebar dark-desktop"
-          : "dark-mobile"
+          : " dark-mobile"
       }
     ${
-      windowSize.innerWidth < 1024 && toggle ? "close-sidebar" : "show-sidebar"
+      windowSize.innerWidth < 1024 && !toggle ? "close-sidebar" : "show-sidebar"
     }`}
     >
       {/* Sidebar */}

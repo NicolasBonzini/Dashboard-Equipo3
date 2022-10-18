@@ -10,7 +10,7 @@ function BurgerMenu() {
 
   return (
     <div
-      className={`burger-menu ${toggle ? null : "change"}`}
+      className={`burger-menu ${toggle ? "change" : null}`}
       onClick={() => toggleSidebar()}
     >
       <div className={`bar1`}></div>
