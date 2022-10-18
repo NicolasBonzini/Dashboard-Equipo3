@@ -10,7 +10,7 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
           type="number"
           onClick={(e) => {
             handlerD(e);
-            console.log("probando");
+            console.log(stock);
           }}
           className="decrement"
         >
@@ -21,7 +21,7 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
           type="number"
           name="stock"
           onChange={handleStock}
-          defaultValue={stock}
+          value={stock}
           id="stock"
         />
 

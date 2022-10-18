@@ -18,6 +18,7 @@ import swal from "sweetalert";
 const Form = (props) => {
   // Estado del formulario
   const [form, setform] = useState(props.formu);
+
   const [image, setImg] = useState("");
   // Actualizo el formulario
   useEffect(() => {
@@ -68,6 +69,7 @@ const Form = (props) => {
   }
 
   //Funciones incremento y decremento de stock
+
   const handleDecrement = (e) => {
     e.preventDefault();
     if (form.stock > 0) {
@@ -100,8 +102,6 @@ const Form = (props) => {
     setform(props.formu);
     console.log(props.formu);
   };
-
-  console.log(form);
 
   return (
     <div className="productView">
