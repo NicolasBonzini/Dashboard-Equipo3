@@ -7,6 +7,7 @@ import { act } from "react-dom/test-utils";
 import { renderHook } from "@testing-library/react";
 
 import { waitFor } from "@testing-library/dom";
+
 const form = {
   id: 1,
   title: "Producto",
@@ -20,6 +21,7 @@ const form = {
   category: "Categoria",
   images: [
     "https://tito.uy/wp-content/uploads/Dulce-De-Leche-Conaprole-500-Grs.jpg",
+    ,
   ],
 };
 
@@ -181,7 +183,7 @@ describe("Todos los elementos interactuan correctamente", () => {
     expect(inputImg).toHaveValue("ola.jpg");
   });
 
-  test.only("Si el input de la imagen tiene una url, al tocar el boton de agregar se añade la imagen", async () => {
+  test("Si el input de la imagen tiene una url, al tocar el boton de agregar se añade la imagen", async () => {
     render(<Form formu={form} />);
     const inputImg = screen.getByLabelText("Nueva Imagen");
 
@@ -194,5 +196,20 @@ describe("Todos los elementos interactuan correctamente", () => {
     await userEvent.click(add);
 
     expect(imagenes).toHaveLength(2);
+  });
+
+  test.only("Al añadir la imagen, se muestra en pantalla la imagen añadida", async () => {
+    render(<Form formu={form} />);
+    // array de imagenes que se renderizan
+    const imagenes = screen.getAllByAltText("Producto");
+    //input para añadir imagen
+    const inputImg = screen.getByLabelText("Nueva Imagen");
+    // boton para añadir
+    const add = screen.getByText("Añadir");
+    //aqui añado imagen
+    await userEvent.type(inputImg, "ola.jpg");
+    await userEvent.click(add);
+
+    console.log(imagenes.length);
   });
 });

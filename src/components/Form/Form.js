@@ -99,7 +99,8 @@ const Form = (props) => {
       title: "El producto no ha sido actualizado",
       icon: "error",
     });
-    setform(props.formu);
+    setform((current) => ({ ...current, ...props.formu }));
+    // setform(props.formu);
     console.log(props.formu);
   };
 
