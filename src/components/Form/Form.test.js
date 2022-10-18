@@ -1,6 +1,8 @@
 import { screen, render } from "@testing-library/react";
 import Form from "./Form";
 import { prettyDOM } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
 
 const form = {
   id: 1,
@@ -120,4 +122,27 @@ describe("Todos los elementos se renderizan correctamente", () => {
   });
 });
 
-describe("Todos los elementos interactuan correctamente", () => {});
+describe("Todos los elementos interactuan correctamente", () => {
+  test.only("el boton de stock interactua correctamente", async () => {
+    render(<Form formu={form} />);
+
+    // const user = userEvent();
+    //Tomamos el valor del stock inicial
+    const stockNumber = screen.getByLabelText("Stock");
+    // console.log(stockNumber.value);
+    //Tomamos el boton de +
+    const suma = screen.getByText("+");
+    //Tomamos el boton de -
+    const resta = screen.getByText("-");
+
+    // Al clickear suma me debe actualizar el stockNumber
+    // console.log(prettyDOM(suma));
+    await userEvent.click(resta);
+    // console.log(stockNumber.value);
+
+    // const stockNumber2 = screen.getByLabelText("Stock");
+
+    // console.log(screen.getByLabelText("Stock").value);
+    expect(stockNumber.value).toBe("4");
+  });
+});

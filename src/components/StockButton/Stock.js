@@ -4,9 +4,16 @@ import "./stockButton.css";
 const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
   return (
     <div className="eachInput">
-      <label htmlFor="stock" >Stock</label>
+      <label htmlFor="stock">Stock</label>
       <div className="counter">
-        <button type="number" onClick={handlerD} className="decrement">
+        <button
+          type="number"
+          onClick={(e) => {
+            handlerD(e);
+            console.log("probando");
+          }}
+          className="decrement"
+        >
           -
         </button>
         <input
