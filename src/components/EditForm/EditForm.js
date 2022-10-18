@@ -20,6 +20,7 @@ function EditForm() {
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
+
   // Estado del formulario
   const [form, setform] = useState({
     id: "",
@@ -34,9 +35,8 @@ function EditForm() {
     category: "",
     images: [""],
   });
+
   // Estado del contador de stock
-  const [counter, setCounter] = useState(form.stock);
-  const [image, setImg] = useState("");
   //Llamado a la api
   useEffect(() => {
     async function get() {
@@ -48,97 +48,17 @@ function EditForm() {
           }).then(() => navigate("/"));
         } else {
           setform(re);
-          setCounter(re.stock);
+          // setCounter(re.stock);
         }
       });
     }
     get();
   }, []);
 
-  //STOCK//
-  //Funciones incremento y decremento
-  const handleDecrement = (e) => {
+  // Defino qué petición haré con el formulario en esta pagina.
+  const Save = async (e, formulario) => {
     e.preventDefault();
-    if (counter > 0) {
-      setCounter(Number(counter) - 1);
-    }
-  };
-  const handleIncrement = (e) => {
-    e.preventDefault();
-    setCounter(Number(counter) + 1);
-  };
-
-  // Actualizo el stock del formulario con el estado del contador
-  useEffect(() => {
-    setform({
-      ...form,
-      stock: Number(counter),
-    });
-  }, [counter]);
-
-  const handleStock = (e) => {
-    setform({
-      ...form,
-      stock: Number(e.target.value),
-    });
-    setCounter(e.target.value)
-  };
-  // FIN STOCK //
-
-  // HANDLERS
-
-  //IMAGENES//
-  // Actualizo / Elimino las imagenes
-  const handleImg = (e) => {
-    setImg(e.target.value);
-  };
-
-  const deleteIMG = (e) => {
-    e.preventDefault();
-    swal({
-      title: "Imagen eliminada",
-      icon: "success",
-    });
-    const deletedUrl = e.target.value;
-    let imagesForm = form.images.filter((image) => image !== deletedUrl);
-    setform({ ...form, images: imagesForm });
-  };
-
-  function prueba(e) {
-    e.preventDefault();
-    const found = form.images.find((im) => im == image);
-    if (image.length > 0) {
-      if (!found) {
-        form.images.push(image);
-        setform({ ...form });
-        setImg("");
-      } else {
-        setImg("");
-      }
-    }
-  } //FIN IMAGENES//
-
-  //Input handlers
-  const handleInput = (e) => {
-    if (e.target.name == "price" && e.target.name.length > 0) {
-      setform({
-        ...form,
-        [e.target.name]: Number(e.target.value),
-      });
-    } else if (e.target.name == "price" && e.target.name.length == 0) {
-      alert("Ingrese un valor en el nombre");
-    } else {
-      setform({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  //Boton de hardar
-  const handleSave = async (e) => {
-    e.preventDefault();
-    let resp = await putProducts(form);
+    let resp = await putProducts(formulario);
 
     if (resp.status === 200) {
       swal({
@@ -153,21 +73,6 @@ function EditForm() {
     }
   };
 
-  const handleCancel = (e) => {
-    e.preventDefault();
-    swal({
-      title: "El producto no ha sido actualizado",
-      icon: "error",
-    });
-    async function get() {
-      await getProductById(id).then((re) => {
-        setform(re);
-        setCounter(re.stock);
-      });
-    }
-    get();
-  };
-
   return (
     <>
       <div className="cont">
@@ -178,25 +83,10 @@ function EditForm() {
           valor={form.price}
           alt={form.title}
         />
-        <Form
-          handleIncrement={handleIncrement}
-          handleDecrement={handleDecrement}
-          handleStock={handleStock}
-          handleSave={handleSave}
-          handleCancel={handleCancel}
-          handleInput={handleInput}
-          prueba={prueba}
-          deleteIMG={deleteIMG}
-          handleImg={handleImg}
-          counter={counter}
-          image={image}
-          form={form}
-        />
+        <Form Save={Save} formu={form} id={id} />
       </div>
     </>
   );
 }
 
 export default EditForm;
-
-

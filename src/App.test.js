@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+<<<<<<< HEAD
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
@@ -90,3 +91,8 @@ describe("Testeo de toda la navegacion", () => {
     expect(errorMessage).toBeInTheDocument();
   });
 });
+=======
+import App from "./App";
+
+test("renders learn react link", () => {});
+>>>>>>> 10f91ac0ae14f66183371e14abd2f83149d0b6be

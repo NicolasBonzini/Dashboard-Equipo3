@@ -19,101 +19,17 @@ function AddForm() {
 
   // Estado del formulario
   const [form, setform] = useState({
-    id: 0,
     title: "",
     description: "",
-    price: 0,
-    stock: Number(0),
+    price: "",
+    stock: "",
     category: "",
     images: [],
   });
 
-  const [image, setImg] = useState("");
-
-  // Codigo para conservar el ultimo id de la lista de productos e incluirselo al nuevo producto agregado
-  const [lastId, SetLastId] = useState(0);
-
-  // Estado del contador de stock
-  const [counter, setCounter] = useState(form.stock);
-
-  useEffect(() => {
-    getProducts().then((data) => SetLastId(data[data.length - 1].id + 1));
-  }, []);
-
-  useEffect(() => {
-    setform({ ...form, id: lastId });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastId]);
-
-  // Actualizo el stock del formulario con el estado del contador
-  useEffect(() => {
-    setform({
-      ...form,
-      stock: counter,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter]);
-
-  //----------STOCK
-  //Funciones incremento y decremento
-  const handleDecrement = (e) => {
+  const Save = async (e, formulario) => {
     e.preventDefault();
-
-    if (counter > 0) {
-      setCounter(Number(counter) - 1);
-    }
-  };
-
-  const handleIncrement = (e) => {
-    e.preventDefault();
-    setCounter(Number(counter) + 1);
-  };
-
-  const handleStock = (e) => {
-    setform({
-      ...form,
-      stock: Number(e.target.value),
-    });
-    setCounter(e.target.value)
-  };
-
-  //-------------IMAGENES
-  // Actualizo / Elimino las imagenes
-  const handleImg = (e) => {
-    setImg(e.target.value);
-  };
-
-  const deleteIMG = (e) => {
-    e.preventDefault();
-    swal({
-      title: "Imagen eliminada",
-      icon: "success",
-    });
-    const deletedUrl = e.target.value;
-    let imagesForm = form.images.filter((image) => image !== deletedUrl);
-    setform({ ...form, images: imagesForm });
-  };
-
-  //--------------Input handlers
-  const handleInput = async (e) => {
-    if (e.target.name === "price" && e.target.name.length > 0) {
-      setform({
-        ...form,
-        [e.target.name]: Number(e.target.value),
-      });
-    } else if (e.target.name === "price" && e.target.name.length === 0) {
-      alert("Ingrese un valor en el nombre");
-    } else {
-      setform({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  const handleSave = async (e) => {
-    e.preventDefault();
-    let response = await addProduct(form);
+    let response = await addProduct(formulario);
 
     if (response.status === 201) {
       swal({
@@ -135,37 +51,11 @@ function AddForm() {
       icon: "error",
     }).then(() => navigate("/products"));
   };
-  function prueba(e) {
-    e.preventDefault();
-    const found = form.images.find((im) => im === image);
-    if (image.length > 0) {
-      if (!found) {
-        form.images.push(image);
-        setform({ ...form });
-        setImg("");
-      } else {
-        setImg("");
-      }
-    }
-  }
 
   return (
     <>
       <div className="cont">
-        <Form
-          handleIncrement={handleIncrement}
-          handleDecrement={handleDecrement}
-          handleStock={handleStock}
-          handleSave={handleSave}
-          handleCancel={handleCancel}
-          handleInput={handleInput}
-          prueba={prueba}
-          deleteIMG={deleteIMG}
-          handleImg={handleImg}
-          counter={counter}
-          image={image}
-          form={form}
-        />
+        <Form Save={Save} formu={form} />
       </div>
     </>
   );

@@ -11,9 +11,13 @@
     "@testing-library/user-event": "^14.4.3",
     "cookie": "^0.5.0",
     "eslint-plugin-jest": "^27.1.2",
+<<<<<<< HEAD
     "eslint-plugin-jest-dom": "^4.0.2",
     "eslint-plugin-testing-library": "^5.7.2",
     "jest": "^27.5.1",
+=======
+    "eslint-plugin-testing-library": "^5.7.3",
+>>>>>>> 10f91ac0ae14f66183371e14abd2f83149d0b6be
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",

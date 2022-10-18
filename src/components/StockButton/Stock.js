@@ -4,12 +4,18 @@ import "./stockButton.css";
 const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
   return (
     <div className="eachInput">
-      <label>Stock</label>
+      <label htmlFor="stock">Stock</label>
       <div className="counter">
-        <button type="number" onClick={handlerD} className="decrement">
+        <button
+          type="number"
+          onClick={(e) => {
+            handlerD(e);
+            console.log(stock);
+          }}
+          className="decrement"
+        >
           -
         </button>
-
         <input
           className="result"
           type="number"
@@ -18,6 +24,7 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
           value={stock}
           id="stock"
         />
+
         <button type="number" onClick={handlerI} className="increment">
           +
         </button>
