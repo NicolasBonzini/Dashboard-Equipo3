@@ -4,6 +4,10 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
+<<<<<<< HEAD
+test('renders learn react link', () => {
+
+=======
 const renderWithRouter = (ui, { route = "/" } = {}) => {
   window.history.pushState({}, "Test page", route);
 
@@ -90,6 +94,7 @@ describe("Testeo de toda la navegacion", () => {
     const errorMessage = screen.getByText(/no encontramos la pagina/i);
     expect(errorMessage).toBeInTheDocument();
   });
+>>>>>>> 2ddec57a168cfb48677437e4b1ad4be98c8bdf6a
 });
 =======
 import App from "./App";
