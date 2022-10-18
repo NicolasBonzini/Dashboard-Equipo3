@@ -126,10 +126,9 @@ describe("Todos los elementos se renderizan correctamente", () => {
 });
 
 describe("Todos los elementos interactuan correctamente", () => {
-  test.only("el boton de stock interactua correctamente", async () => {
+  test("el boton de stock interactua correctamente", async () => {
     render(<Form formu={form} />);
 
-    // const user = userEvent();
     //Tomamos el valor del stock inicial
     const stockNumber = await screen.findByLabelText("Stock");
     //Tomamos el boton de +
@@ -139,7 +138,61 @@ describe("Todos los elementos interactuan correctamente", () => {
 
     // Al clickear suma me debe actualizar el stockNumber
     await userEvent.click(suma);
-
     expect(stockNumber.value).toBe("6");
+    await userEvent.click(resta);
+    expect(stockNumber.value).toBe("5");
+  });
+
+  test("El input del nombre permite escribir sin sobreescribir el campo predeterminado", async () => {
+    render(<Form formu={form} />);
+
+    const input = screen.getByLabelText("Nombre");
+
+    await userEvent.type(input, "hola");
+
+    expect(input).toHaveValue("Productohola");
+  });
+
+  test("El input del precio permite escribir sin sobreescribir el campo predeterminado", async () => {
+    render(<Form formu={form} />);
+
+    const input = screen.getByLabelText("Valor");
+
+    await userEvent.type(input, "4");
+
+    expect(input).toHaveValue(Number(14));
+  });
+  test("El textarea de la descripcion permite escribir sin sobreescribir el campo predeterminado", async () => {
+    render(<Form formu={form} />);
+
+    const textAr = screen.getByLabelText("Descripción");
+
+    await userEvent.type(textAr, "ola");
+
+    expect(textAr).toHaveValue("iphone 9ola");
+  });
+  test("El input de la imagen permite escribir sin sobreescribir el campo predeterminado", async () => {
+    render(<Form formu={form} />);
+
+    const inputImg = screen.getByLabelText("Nueva Imagen");
+
+    await userEvent.type(inputImg, "ola.jpg");
+
+    expect(inputImg).toHaveValue("ola.jpg");
+  });
+
+  test.only("Si el input de la imagen tiene una url, al tocar el boton de agregar se añade la imagen", async () => {
+    render(<Form formu={form} />);
+    const inputImg = screen.getByLabelText("Nueva Imagen");
+
+    const add = screen.getByText("Añadir");
+    //estas son las imagenes al principio
+    const imagenes = form.images;
+
+    //aqui agrego un texto al campo
+    await userEvent.type(inputImg, "ola.jpg");
+    await userEvent.click(add);
+
+    expect(imagenes).toHaveLength(2);
   });
 });
