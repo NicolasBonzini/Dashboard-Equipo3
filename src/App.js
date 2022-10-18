@@ -14,9 +14,8 @@ import { ThemeContext } from "./context/ThemeContext";
 
 export const LocationDisplay = () => {
   const location = useLocation();
-  // data-testid es un atributo para identificar
-  //un nodo del DOM para propositos de Testing.
-  return <div data-testid="location-display">{location.pathname}</div>;
+  // data-testid es un atributo para identificar un nodo del DOM para propositos de Testing.
+  return <div data-testid={location.pathname}></div>;
 };
 
 function App() {
