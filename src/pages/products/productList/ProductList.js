@@ -136,6 +136,7 @@ function ProductList() {
               onChange={searchProducts}
               name="category"
               id="category"
+              
             >
               <option value="">Categorías</option>
               {allCategory?.map((cat) => (
