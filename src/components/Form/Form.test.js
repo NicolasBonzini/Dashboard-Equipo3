@@ -19,10 +19,9 @@ const form = {
 };
 
 describe("Todos los elementos se renderizan correctamente", () => {
-  
   test("El input del nombre renderiza correctamente y captura el valor predeterminado", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const nombre = screen.getByLabelText("Nombre");
     //assertion
@@ -31,7 +30,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El input del precio renderiza correctamente y captura el valor predeterminado", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const precio = screen.getByLabelText("Valor");
 
@@ -42,7 +41,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El Stock se renderiza y captura el valor predeterminado", () => {
     // Renderizamos componente form
-    render(<Form form={form} counter={5} />);
+    render(<Form formu={form} counter={5} />);
     //Tomamos el input de nombre del producto
     const stock = screen.getByLabelText("Stock");
     // console.log(prettyDOM(stock));
@@ -52,7 +51,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El text area captura el valor escrito", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const textAr = screen.getByLabelText("Descripción");
     // console.log(prettyDOM(stock));
@@ -62,7 +61,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El Select captura el valor predeterminado", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const select = screen.getByLabelText("Tienda");
     // console.log(prettyDOM(select));
@@ -72,7 +71,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El input de la imagen se renderiza correctamente", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const inputImg = screen.getByLabelText("Nueva Imagen");
     // console.log(prettyDOM(select));
@@ -82,7 +81,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El boton de añadir producto se renderiza", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const buttonAdd = screen.getByText("Añadir");
     // console.log(prettyDOM(select));
@@ -92,7 +91,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El componente deleteImage se renderiza correctamente", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const deleteImage = screen.getByAltText("Producto");
     // console.log(prettyDOM(deleteImage));
@@ -102,7 +101,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El boton de Guardar producto se renderiza correctamente", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const saveProduct = screen.getByText("Guardar");
     // console.log(prettyDOM(deleteImage));
@@ -112,7 +111,7 @@ describe("Todos los elementos se renderizan correctamente", () => {
 
   test("El boton de Cancelar producto se renderiza correctamente", () => {
     // Renderizamos componente form
-    render(<Form form={form} />);
+    render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const cancelProduct = screen.getByText("Cancelar");
     // console.log(prettyDOM(deleteImage));
