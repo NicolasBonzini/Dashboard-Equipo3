@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { ToggleContext, ToggleProvider } from "./ToggleContext";
-import { logRoles, render, screen } from "@testing-library/react";
+import { ToggleProvider } from "./ToggleContext";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BurgerMenu from "../components/BurgerMenu/BurgerMenu";
-import { act } from "react-dom/test-utils";
 
 describe("ToggleContext", () => {
   test("User click the hamburgue menu", async () => {
