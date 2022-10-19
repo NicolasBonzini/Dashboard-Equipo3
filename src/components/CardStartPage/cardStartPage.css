@@ -57,6 +57,10 @@
   padding-right: 5px;
 }
 
+.link-button{
+  color: white;
+}
+
 @media screen and (max-width: 480px) {
   .card-button-content {
     width: 100%;

@@ -10,6 +10,9 @@ function BurgerMenu() {
 
   return (
     <div
+      role="button"
+      aria-label="menuButton"
+      data-testid={`burger-menu ${toggle ? "change" : null}`}
       className={`burger-menu ${toggle ? "change" : null}`}
       onClick={() => toggleSidebar()}
     >
