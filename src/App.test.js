@@ -2,9 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
+import mockedProducts from "./__mocks__/products/products";
+import getProducts from "./utils/getProducts";
 
+jest.mock("./utils/getProducts");
 
-const renderWithRouter = (ui, { route = "/" } = {}) => {
+const renderWithRouter = (ui, route = "/") => {
   window.history.pushState({}, "Test page", route);
 
   return {
@@ -17,6 +20,8 @@ describe("Testeo de toda la navegacion", () => {
   const jsdomPrompt = window.prompt;
 
   beforeEach(() => {
+    getProducts.mockResolvedValue(mockedProducts);
+    // console.log(mockedProducts);
     window.prompt = () => {};
   });
 
@@ -91,5 +96,3 @@ describe("Testeo de toda la navegacion", () => {
     expect(errorMessage).toBeInTheDocument();
   });
 });
-
-
