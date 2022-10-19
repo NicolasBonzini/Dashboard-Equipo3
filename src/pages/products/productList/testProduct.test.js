@@ -38,8 +38,8 @@ describe('searchbar input tests', () =>{
     
 
     test.only('Ver si filtra por Categoria', async () => { 
-        const selects = await screen.findAllByRole('select');
-        console.log(selects[0])
+       /*  const selects = await screen.findAllByRole('select');
+        console.log(selects[0]) */
 
         //const productsFilter = products.filter(x => x.category = 'smartphones')
        // const cards = await screen.findAllByRole('heading')
