@@ -9,7 +9,7 @@ import getProducts from "../../../utils/getProducts";
 jest.mock("../../../utils/getProducts");
 
 
-describe('searchbar input tests', () =>{
+describe('Filtros test', () =>{
 
     beforeEach(async () => {
         getProducts.mockResolvedValue( products );
@@ -37,14 +37,21 @@ describe('searchbar input tests', () =>{
     })
     
 
-    test.only('Ver si filtra por Categoria', async () => { 
-        const selects = await screen.findAllByRole('select');
-        console.log(selects[0])
+    test('Ver si filtra por Categoria', async () => { 
+        const selects = screen.getByRole('combobox');
+        const productsFilter = products.filter(x => x.category == 'smartphones');
+        const option = await screen.findByRole('option', { name: 'smartphones' })
+        await act(async ()=>{
+            await userEvent.selectOptions(
+                    selects,
+                    option
+                    )
+                }
+            )
+        const cards = await screen.findAllByRole('heading')
+        const prodDist = [... new Set(cards.map(tag => tag.textContent))]
+        const prodTitles = [... new Set(productsFilter.map(tag => tag.title))]
+        expect(prodDist).toEqual(prodTitles);
 
-        //const productsFilter = products.filter(x => x.category = 'smartphones')
-       // const cards = await screen.findAllByRole('heading')
-
-        //productsFilter.forEach(x => expect(cards).toHaveTextContent(x.title))
-        //cards.forEach(x => logRoles(x))
     })
 })
