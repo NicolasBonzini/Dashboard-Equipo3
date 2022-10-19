@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 const form = {
   id: 1,
   title: "Producto",
-  description: "iphone 9",
+  description: "iphon",
   price: 1,
   rating: {
     rate: 5,
@@ -26,7 +26,7 @@ describe("Testeando los inputs", () => {
     //Tomamos el input de nombre del producto
     const nombre = screen.getByLabelText("Nombre");
     //assertion
-    expect(nombre).toHaveValue("Producto");
+    expect(nombre).toHaveValue(form.title);
   });
 
   test("El input del precio renderiza correctamente y captura el valor predeterminado", () => {
@@ -37,7 +37,7 @@ describe("Testeando los inputs", () => {
 
     // console.log(prettyDOM(precio));
     //assertion
-    expect(precio).toHaveValue(1);
+    expect(precio).toHaveValue(form.price);
   });
 
   test("El text area captura el valor escrito", () => {
@@ -47,7 +47,7 @@ describe("Testeando los inputs", () => {
     const textAr = screen.getByLabelText("Descripción");
     // console.log(prettyDOM(stock));
     //assertion
-    expect(textAr.defaultValue).toBe("iphone 9");
+    expect(textAr.defaultValue).toBe(form.description);
   });
   test("El input del nombre permite escribir sin sobreescribir el campo predeterminado", async () => {
     render(<Form formu={form} />);
@@ -56,7 +56,7 @@ describe("Testeando los inputs", () => {
 
     await userEvent.type(input, "hola");
 
-    expect(input).toHaveValue("Productohola");
+    expect(input).toHaveValue(form.title + "hola");
   });
 
   test("El input del precio permite escribir sin sobreescribir el campo predeterminado", async () => {
@@ -75,6 +75,6 @@ describe("Testeando los inputs", () => {
 
     await userEvent.type(textAr, "ola");
 
-    expect(textAr).toHaveValue("iphone 9ola");
+    expect(textAr).toHaveValue(form.description + "ola");
   });
 });
