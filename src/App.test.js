@@ -7,7 +7,9 @@ import mockedProducts from "./__mocks__/products/products";
 import getProducts from "./utils/getProducts";
 import { act } from "react-dom/test-utils";
 
+
 jest.mock("./utils/getProducts");
+
 
 const renderWithRouter = (ui, route = "/") => {
   window.history.pushState({}, "Test page", route);
