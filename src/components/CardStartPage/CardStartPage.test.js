@@ -1,27 +1,12 @@
 import { screen, render, act, logRoles } from "@testing-library/react";
 import CardStartPage from "./CardStartPage";
-import userEvent from "@testing-library/user-event";
 import mockedProducts from "../../__mocks__/products/products";
 import { MemoryRouter } from "react-router-dom";
 import getProducts from "../../utils/getProducts";
 
-
 jest.mock("../../utils/getProducts");
 
-// const renderWithRouter = (ui, { route = "/" } = {}) => {
-//     window.history.pushState({}, "Test page", route);
-
-//     return {
-//         user: userEvent.setup(),
-//         ...render(<MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>),
-//     };
-// };
-
-// const jsdomPrompt = window.prompt;
-
 beforeEach(async () => {
-
-    // window.prompt = () => { };
 
     getProducts.mockResolvedValue(mockedProducts);
     await act(async () => {
@@ -33,9 +18,6 @@ beforeEach(async () => {
 
 });
 
-// afterEach(() => {
-//     window.prompt = jsdomPrompt;
-// });
 
 describe("Los elementos de CardStartPage se renderizan correctamente", () => {
 

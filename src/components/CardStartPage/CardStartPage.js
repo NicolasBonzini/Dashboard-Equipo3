@@ -7,15 +7,6 @@ import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const CardStartPage = ({ listProd }) => {
-  // const navigate = useNavigate();
-
-  // const handleListProducts = () => {
-  //   navigate("/products");
-  // };
-
-  // const handleAddProducts = () => {
-  //   navigate("/products/new");
-  // };
 
   return (
     <div className="card-content">
