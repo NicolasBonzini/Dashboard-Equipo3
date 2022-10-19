@@ -20,6 +20,7 @@ function EditForm() {
   const navigate = useNavigate();
   // Tomo el parametro de la url para identificar el productos
   const id = useParams().id;
+  console.log(id);
 
   // Estado del formulario
   const [form, setform] = useState({

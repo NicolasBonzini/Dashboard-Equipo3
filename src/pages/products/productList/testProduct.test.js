@@ -13,10 +13,6 @@ import getProducts from "../../../utils/getProducts";
 
 jest.mock("../../../utils/getProducts");
 
-describe("searchbar input tests", () => {
-  beforeEach(async () => {
-    getProducts.mockResolvedValue(products);
-
 
 
 test('Mensaje inicial de cargando', () => { 
@@ -37,9 +33,6 @@ describe('Filtros test y renderizacion de mensajes', () =>{
                             <ProductList />
                         </MemoryRouter>)
         })
-
-
-    });
   });
 
 

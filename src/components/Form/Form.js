@@ -1,3 +1,11 @@
+//React
+import { useEffect, useState, React } from "react";
+//Sweet Alert
+import swal from "sweetalert";
+//Estilos
+import "../StockButton/stockButton.css";
+import "../StockButton/stockButton.css";
+import "../StockButton/stockButton.css";
 //Componentes
 import Input from "../Input/Input";
 import Stock from "../StockButton/Stock";
@@ -6,26 +14,19 @@ import Select from "../Select/Select";
 import DeleteImage from "../DeleteImage/DeleteImage";
 import Button from "../Button/Button";
 
-//React
-import { useEffect, useState, React } from "react";
-//Estilos
-import "../StockButton/stockButton.css";
-import "../StockButton/stockButton.css";
-import "../StockButton/stockButton.css";
-//Sweet Alert
-import swal from "sweetalert";
-
+// Como props, envio el formulario que obtuve con getById.
 const Form = (props) => {
   // Estado del formulario
   const [form, setform] = useState(props.formu);
-
+  // Estado del input de imagenes
   const [image, setImg] = useState("");
-  // Actualizo el formulario
+
+  // Actualizo el formulario cuando las props se actualizan
   useEffect(() => {
     setform(props.formu);
   }, [props.formu]);
 
-  // Input handlers
+  // Handlers de los inptus Nombre, precio y descripción.
   const handleInput = (e) => {
     if (e.target.name == "price" && e.target.name.length > 0) {
       setform({
@@ -99,9 +100,7 @@ const Form = (props) => {
       title: "El producto no ha sido actualizado",
       icon: "error",
     });
-    setform((current) => ({ ...current, ...props.formu }));
-    // setform(props.formu);
-    console.log(props.formu);
+    setform({ ...props.formu });
   };
 
   return (
