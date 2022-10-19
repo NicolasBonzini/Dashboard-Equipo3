@@ -1,12 +1,21 @@
-import { findAllByText, logRoles, render, screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router-dom';
-import ProductList from './ProductList';
-import products from './mockProducts'
+import {
+  findAllByText,
+  logRoles,
+  render,
+  screen,
+  act,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+import ProductList from "./ProductList";
+import products from "./mockProducts";
 import getProducts from "../../../utils/getProducts";
 
-
 jest.mock("../../../utils/getProducts");
+
+describe("searchbar input tests", () => {
+  beforeEach(async () => {
+    getProducts.mockResolvedValue(products);
 
 
 
@@ -29,7 +38,10 @@ describe('Filtros test y renderizacion de mensajes', () =>{
                         </MemoryRouter>)
         })
 
+
     });
+  });
+
 
     test('Ver si el boton se renderiza', () => { 
         const searchInput = screen.getByPlaceholderText(/Buscar productos/i)
@@ -44,17 +56,19 @@ describe('Filtros test y renderizacion de mensajes', () =>{
         const messageNotMatch = screen.getByText('No hay coincidencias')
     })
 
-    test('Ver si filtra por titulo', async () => { 
-        const searchInput = screen.queryByPlaceholderText(/Buscar productos/i)
 
-        userEvent.type(searchInput, 'iPhone')
-        const productsFilter = products.filter(x => x.title.toLowerCase().includes('iPhone'))
-        const cards = await screen.findAllByRole('heading')
+  test("Ver si filtra por titulo", async () => {
+    const searchInput = screen.queryByPlaceholderText(/Buscar productos/i);
 
-        productsFilter.forEach(x => expect(cards).toHaveTextContent(x.title))
+    userEvent.type(searchInput, "iPhone");
+    const productsFilter = products.filter((x) =>
+      x.title.toLowerCase().includes("iPhone")
+    );
+    const cards = await screen.findAllByRole("heading");
 
-    })
-    
+    productsFilter.forEach((x) => expect(cards).toHaveTextContent(x.title));
+  });
+
 
     test('Ver si filtra por Categoria', async () => { 
         const selects = screen.getByRole('combobox');
@@ -74,3 +88,4 @@ describe('Filtros test y renderizacion de mensajes', () =>{
 
     })
 })
+

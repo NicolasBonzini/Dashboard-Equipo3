@@ -33,7 +33,6 @@ const CardStartPage = ({ listProd }) => {
           Agregar Producto
         </button>
       </div>
-      
     </div>
   );
 };

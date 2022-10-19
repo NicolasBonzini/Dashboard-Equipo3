@@ -196,6 +196,7 @@
   .header .bar3 {
     display: none;
   }
+
   .header {
     width: calc(100vw - 296px);
   }
