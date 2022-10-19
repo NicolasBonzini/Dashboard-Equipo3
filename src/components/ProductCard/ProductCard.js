@@ -20,7 +20,7 @@ function ProductCard(props) {
   };
 
   return (
-    <div className="productCard containerMain">
+    <div aria-label='productCard' role='list-item' className="productCard containerMain">
       <NavLink className="productCardLink" to={"/product/" + props.id}>
         <section className="productCardInfo">
           <figure className="productCardImg">
@@ -34,7 +34,7 @@ function ProductCard(props) {
             <h4 className="productCardTitle">{props.title}</h4>
             <div className="product_subtitle">
               <p className="productCardCode">{handleDigitCount()}</p>
-              <p className="productCardCode">${props.price}.00</p>
+              <p className="productCardCode" aria-label="priceParagraph" role='paragraph'>${props.price}.00</p>
             </div>
           </div>
         </section>

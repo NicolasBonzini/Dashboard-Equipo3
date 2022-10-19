@@ -1,14 +1,14 @@
-# Getting Started with Create React App
+# Proyecto Dashboard para MiEcommerce Grupo3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto fue inicializado con [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Comienzo
 
-In the project directory, you can run:
+En el directorio del proyecto debes escribir
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Corres la aplicacion en modo desarollador.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
