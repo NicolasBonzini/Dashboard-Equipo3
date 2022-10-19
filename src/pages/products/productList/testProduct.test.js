@@ -10,10 +10,6 @@ jest.mock("../../../utils/getProducts");
 
 
 
-
-        
-
-
 test('Mensaje inicial de cargando', () => { 
     getProducts.mockImplementation( ()=> new Promise(resolve => {}));
     render(<MemoryRouter>
