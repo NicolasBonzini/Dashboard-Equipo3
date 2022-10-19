@@ -1,12 +1,28 @@
-import { screen, render, act } from "@testing-library/react";
+import { screen, render, act, logRoles } from "@testing-library/react";
 import CardStartPage from "./CardStartPage";
+import userEvent from "@testing-library/user-event";
 import mockedProducts from "../../__mocks__/products/products";
 import { MemoryRouter } from "react-router-dom";
 import getProducts from "../../utils/getProducts";
 
+
 jest.mock("../../utils/getProducts");
 
+// const renderWithRouter = (ui, { route = "/" } = {}) => {
+//     window.history.pushState({}, "Test page", route);
+
+//     return {
+//         user: userEvent.setup(),
+//         ...render(<MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>),
+//     };
+// };
+
+// const jsdomPrompt = window.prompt;
+
 beforeEach(async () => {
+
+    // window.prompt = () => { };
+
     getProducts.mockResolvedValue(mockedProducts);
     await act(async () => {
         render(
@@ -15,12 +31,15 @@ beforeEach(async () => {
             </MemoryRouter>);
     });
 
-
 });
+
+// afterEach(() => {
+//     window.prompt = jsdomPrompt;
+// });
 
 describe("Los elementos de CardStartPage se renderizan correctamente", () => {
 
- 
+
     test("El parrafo con el texto productos se renderiza correctamente", () => {
 
 
@@ -61,7 +80,22 @@ describe("Los elementos de CardStartPage se renderizan correctamente", () => {
 
 describe("Los link redirigen de forma correcta", () => {
 
+    test('El link "Ver Listado" redirige correctamente a /products', async () => {
 
+        const LinkToShowList = screen.getByText('Ver Listado');
+        const link = LinkToShowList.getAttribute('href');
+
+        expect(link).toMatch('/products');
+
+    })
+
+    test('El link "Agregar Producto" redirige correctamente a /products/new', () => {
+
+        const LinkToAddList = screen.getByText('Agregar Producto');
+        const link = LinkToAddList.getAttribute('href');
+        expect(link).toMatch('/products/new');
+
+    })
 
 
 })

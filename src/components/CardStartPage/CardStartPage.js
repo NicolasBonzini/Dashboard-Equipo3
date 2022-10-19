@@ -26,14 +26,18 @@ const CardStartPage = ({ listProd }) => {
       <p className="card-text">Productos</p>
 
       <div className="card-button-content">
-        <Link className="card-button" to='/products'>
-          Ver Listado
-        </Link>
-        <Link className="card-button" to='/products/new'>
-          Agregar Producto
-        </Link>
+        <button className="card-button">
+          <Link className="link-button" to='/products'>
+            Ver Listado
+          </Link>
+        </button>
+        <button className="card-button">
+          <Link className="link-button" to='/products/new'>
+            Agregar Producto
+          </Link>
+        </button>
       </div>
-      
+
     </div>
   );
 };
