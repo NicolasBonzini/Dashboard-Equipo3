@@ -21,7 +21,7 @@ const Stock = ({ handlerD, handlerI, stock, handleStock }) => {
           type="number"
           name="stock"
           onChange={handleStock}
-          value={stock}
+          defaultValue={stock}
           id="stock"
         />
 

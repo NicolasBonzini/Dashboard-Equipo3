@@ -6,10 +6,10 @@ import BurgerMenu from "../components/BurgerMenu/BurgerMenu";
 import { act } from "react-dom/test-utils";
 
 describe("ToggleContext", () => {
-  it("User click the hamburgue menu", async () => {
+  test("User click the hamburgue menu", async () => {
     const user = userEvent.setup();
 
-    render(
+    const { container } = render(
       <ToggleProvider>
         <BurgerMenu />
       </ToggleProvider>

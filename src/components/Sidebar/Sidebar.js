@@ -77,7 +77,12 @@ function Sidebar() {
         </nav>
       </div>
       {/* Space to click in and close sidebar */}
-      <div className={`right-sidebar `} onClick={() => toggleSidebar()}></div>
+      <div
+        role="button"
+        aria-label="closeSidebar"
+        className={`right-sidebar `}
+        onClick={() => toggleSidebar()}
+      ></div>
     </div>
   );
 }
