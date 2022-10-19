@@ -9,7 +9,20 @@ import getProducts from "../../../utils/getProducts";
 jest.mock("../../../utils/getProducts");
 
 
-describe('Filtros test', () =>{
+
+
+        
+
+
+test('Mensaje inicial de cargando', () => { 
+    getProducts.mockImplementation( ()=> new Promise(resolve => {}));
+    render(<MemoryRouter>
+        <ProductList />
+    </MemoryRouter>)
+    const messageLoading = screen.getAllByText('Cargando...')
+ })
+
+describe('Filtros test y renderizacion de mensajes', () =>{
 
     beforeEach(async () => {
         getProducts.mockResolvedValue( products );
@@ -19,10 +32,20 @@ describe('Filtros test', () =>{
                             <ProductList />
                         </MemoryRouter>)
         })
+
     });
 
     test('Ver si el boton se renderiza', () => { 
         const searchInput = screen.getByPlaceholderText(/Buscar productos/i)
+    })
+
+    test('Mensaje de no coincidencias', async () =>{
+        const searchInput = screen.queryByPlaceholderText(/Buscar productos/i)
+
+        await userEvent.type(searchInput, 'juanito alcachofo!')
+        const productsFilter = products.filter(x => x.title.toLowerCase().includes('juanito alcachofo!'))
+
+        const messageNotMatch = screen.getByText('No hay coincidencias')
     })
 
     test('Ver si filtra por titulo', async () => { 
