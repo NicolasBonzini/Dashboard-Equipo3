@@ -44,12 +44,12 @@ function LinksNavegationSideBar() {
 
   return (
     <>
-    {/* Con un map recorro el objeto links, colocando cada link en el sidebar */}
+      {/* Con un map recorro el objeto links, colocando cada link en el sidebar */}
       {links.map((link) => {
         return <NavigateLink key={link.id} {...link} />;
       })}
 
-      <li className="dark-mode-sidebar">
+      <li className="dark-mode-sidebar" data-testid={theme}>
         <ButtonContext>
           <FontAwesomeIcon
             icon={theme === "" ? faMoon : faSun}
@@ -65,7 +65,7 @@ function LinksNavegationSideBar() {
           id="toggle_checkbox"
         />
         <ButtonContext>
-          <label htmlFor="toggle_checkbox">
+          <label htmlFor="toggle_checkbox" role="button">
             <div id="star">
               <div className="star" id="star-1">
                 ★
