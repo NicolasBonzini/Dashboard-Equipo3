@@ -1,4 +1,6 @@
+/* istanbul ignore file */
 //Sweet alert
+
 import swal from "sweetalert";
 
 const url = "http://localhost:5000/api/product";

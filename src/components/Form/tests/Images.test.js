@@ -15,7 +15,7 @@ const form = {
   stock: 5,
   category: "Categoria",
   images: [
-    "https://tito.uy/wp-content/uploads/Dulce-De-Leche-Conaprole-500-Grs.jpg",
+    "https://tito.uy/wp-content/uploads/Dulce-De-Leche-Conaprole-500-Grs.jpg"
   ],
 };
 
@@ -73,14 +73,14 @@ describe("Las imagenes del producto funcionan correctamente", () => {
 
     expect(imagenes).toHaveLength(2);
   });
-  test.only("Al añadir la imagen, se muestra en pantalla la imagen añadida, y podemos quitar imagenes al darle al boton quitar", async () => {
+  test("Al añadir la imagen, se muestra en pantalla la imagen añadida, y podemos quitar imagenes al darle al boton quitar", async () => {
     render(<Form formu={form} />);
     //input para añadir imagen
     const inputImg = screen.getByLabelText("Nueva Imagen");
     // boton para añadir
     const add = screen.getByText("Añadir");
     // boton para quitar
-    const del = screen.getByText("Quitar");
+    const del = screen.getAllByText("Quitar")[0];
 
     // //aqui añado imagen
     await userEvent.type(inputImg, "ola.jpg");

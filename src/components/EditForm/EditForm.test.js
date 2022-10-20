@@ -39,7 +39,7 @@ const formulario = {
 };
 
 describe("testeando putProducts", () => {
-  it("Posteo un formulario y me devuelve status de 200", async () => {
+  test("Posteo un formulario y me devuelve status de 200", async () => {
     putProducts.mockResolvedValue({
       json: () => new Promise((resolve) => resolve({ status: 200 })),
     });

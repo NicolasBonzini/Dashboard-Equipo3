@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const urlProduct = "http://localhost:5000/api/product/";
 
 const getProductById = async (id) => {
