@@ -41,6 +41,7 @@ function EditForm() {
   //Llamado a la api
   useEffect(() => {
     getProductById(id).then((re) => {
+      /* istanbul ignore if */
       if (re.status === 404) {
         swal({
           title: re.error,
@@ -57,13 +58,16 @@ function EditForm() {
   const Save = async (e, formulario) => {
     e.preventDefault();
     let resp = await putProducts(formulario);
-
+    /* istanbul ignore if */
     if (resp.status === 200) {
       swal({
         title: "El producto ha sido actualizado",
         icon: "success",
       }).then(() => navigate("/products"));
-    } else {
+
+    }
+    /* istanbul ignore else */
+    else {
       swal({
         title: "Ha ocurrido un error, no se pudo modificar el producto.",
         icon: "error",
