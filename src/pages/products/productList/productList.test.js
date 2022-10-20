@@ -1,4 +1,10 @@
-import { render, screen, act, logRoles } from "@testing-library/react";
+import {
+  render,
+  screen,
+  act,
+  getByRole,
+  logRoles,
+} from "@testing-library/react";
 import { useParams, BrowserRouter, MemoryRouter } from "react-router-dom";
 import mockedProducts from "../../../__mocks__/products/products";
 import getProducts from "../../../utils/getProducts";
@@ -19,31 +25,47 @@ describe("This component must list products and allow redirection to edit and cr
     });
   });
 
-  it("Render all products", async () => {
-    //const titles = await screen.findAllByRole("heading");
-
+  test("Render all products", async () => {
     mockedProducts.forEach((product) => {
-      //expect(titles[0]).toHaveTextContent(product.title);
       screen.getByText(product.title);
+      /* Finding product.title in the document means the test passed. Expect assertion is not necessary.  */
     });
-
-    //expect(titles).toHaveLength(mockedProducts.length);
-
-    /*  mockedProducts.forEach(product => {
-        expect(screen.getByRole('headings')).toHaveTextContent(product.title);
-      }); */
-
-    /* const products = screen. */
-    /*  expect(products).toHaveBeenCalledTimes(1); */
   });
 
-  it("Render props correctly", () => {
-    mockedProducts.forEach((prod) => {
-      expect(screen.getByText(prod.title));
-      /*       expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(prod.title);
-      expect(screen.getByRole("img")).toHaveAttribute("src", prod.images[0]);
-     */
-    
+  test("Correctly renders prop: props.id", async () => {
+    const items = screen.getAllByRole("list-item", { name: "productCard" });
+
+    items.forEach((item, i) => {
+      const link = getByRole(item, "link");
+      expect(link).toHaveAttribute("href", `/product/${mockedProducts[i].id}`);
+    });
+  });
+
+  test("Correctly renders prop: props.title", () => {
+    mockedProducts.forEach((prod, i) => {
+      expect(screen.getAllByRole("heading", { level: 4 })[i]).toHaveTextContent(
+        prod.title
+      );
+    });
+  });
+
+  test("Correctly renders prop: props.img", async () => {
+    let imgs = await screen.findAllByRole("img");
+    let newArr = imgs.filter(
+      (i) => i.src != "http://localhost/chevron-right.svg"
+    );
+
+    mockedProducts.forEach((prod, i) => {
+      expect(newArr[i]).toHaveAttribute("src", prod.images[0]);
+    });
+  });
+
+  test("Must confirm redirection route is set to /product/productId", async () => {
+    const items = screen.getAllByRole("list-item", { name: "productCard" });
+
+    items.forEach((item, i) => {
+      const link = getByRole(item, "link");
+      expect(link).toHaveAttribute("href", `/product/${mockedProducts[i].id}`);
     });
   });
 });

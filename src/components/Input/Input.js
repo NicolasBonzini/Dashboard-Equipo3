@@ -6,7 +6,7 @@ const Input = ({ tipo = "text", name, value, label, handler, handlerBlur }) => {
     <div className="eachInput">
       <label htmlFor={name}>{label}</label>
       <input
-        defaultValue={value}
+        value={value}
         onChange={handler}
         onBlur={handlerBlur}
         className="input"

@@ -37,14 +37,24 @@ function Sidebar() {
 
   return (
     <div
+      data-testid={`sidebar ${
+        windowSize.innerWidth > 1024
+          ? "show-sidebar dark-desktop"
+          : " dark-mobile"
+      } ${
+        windowSize.innerWidth < 1024 && !toggle
+          ? "close-sidebar"
+          : "show-sidebar"
+      }`}
       className={`sidebar ${
         windowSize.innerWidth > 1024
           ? "show-sidebar dark-desktop"
           : " dark-mobile"
-      }
-    ${
-      windowSize.innerWidth < 1024 && !toggle ? "close-sidebar" : "show-sidebar"
-    }`}
+      } ${
+        windowSize.innerWidth < 1024 && !toggle
+          ? "close-sidebar"
+          : "show-sidebar"
+      }`}
     >
       {/* Sidebar */}
       <div className="left-sidebar">
@@ -67,7 +77,12 @@ function Sidebar() {
         </nav>
       </div>
       {/* Space to click in and close sidebar */}
-      <div className={`right-sidebar `} onClick={() => toggleSidebar()}></div>
+      <div
+        role="button"
+        aria-label="closeSidebar"
+        className={`right-sidebar `}
+        onClick={() => toggleSidebar()}
+      ></div>
     </div>
   );
 }
