@@ -75,13 +75,13 @@ function EditForm() {
   return (
     <>
       <div className="cont">
-        {/* <EditProduct
+        <EditProduct
           img={form.images[0]}
           name={form.title}
           stock={form.stock}
           valor={form.price}
           alt={form.title}
-        /> */}
+        />
         <Form Save={Save} formu={form} id={id} />
       </div>
     </>

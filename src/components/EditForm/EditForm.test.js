@@ -51,7 +51,7 @@ describe("testeando putProducts", () => {
 });
 
 describe("La pagina del producto obtiene los datos e imprime en pantalla", () => {
-  test.only("Me trae el producto y lo muestra correctamente", async () => {
+  test("Me trae el producto y lo muestra correctamente", async () => {
     useParams.mockReturnValue({
       id: 5,
     });
@@ -72,15 +72,30 @@ describe("La pagina del producto obtiene los datos e imprime en pantalla", () =>
     });
 
     const inputName = screen.getByLabelText("Nombre");
+
+    expect(inputName).toHaveValue(products[useParams().id].name);
   });
 
-  test.skip("La cartita del producto se renderiza correctamente", async () => {
-    const id = 6;
+  test("La cartita del producto se renderiza correctamente", async () => {
+    useParams.mockReturnValue({
+      id: 5,
+    });
+    // Simulo el prompt
+    window.prompt = jest.fn();
 
-    getProductById.mockResolvedValue({
-      json: () => new Promise((resolve) => resolve(products[id])),
+    //mockeo el llamado a la api
+    getProductById.mockResolvedValue(
+      products.find((product) => product.id === useParams().id)
+    );
+
+    await act(async () => {
+      await render(
+        <MemoryRouter>
+          <EditForm />
+        </MemoryRouter>
+      );
     });
 
-    const form = await getProductById(0).then((res) => res.json());
+    // const form = await getProductById(0).then((res) => res.json());
   });
 });
