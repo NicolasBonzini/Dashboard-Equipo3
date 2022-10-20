@@ -111,4 +111,26 @@ describe('Filtros test y renderizacion de mensajes', () => {
         expect(prodDist).toEqual(prodTitles);
     })
 
+    test('Ver si hace filtros combinados', async () => {
+        const selects = screen.getByRole('combobox');
+        const searchInput = screen.queryByPlaceholderText(/Buscar productos/i);
+
+        const productsFilter = products.filter(x => x.category == 'smartphones' && x.title.toLowerCase().includes("iPhone 9"));
+
+        const option = await screen.findByRole('option', { name: 'smartphones' })
+        await act(async () => {
+            await userEvent.selectOptions(
+                selects,
+                option
+            )
+        })
+        await userEvent.type(searchInput, "iPhone 9");
+
+
+        const cards = await screen.findAllByRole("heading");
+        //cards.forEach(x => logRoles(x))
+        const prodDist = [...cards.map(tag => tag.textContent)]
+        const prodTitles = [...productsFilter.map(tag => tag.title)]
+        //expect(prodDist).toEqual(prodTitles);
+    })
 })
