@@ -18,25 +18,27 @@ function AddForm() {
   const navigate = useNavigate();
 
   // Estado del formulario
-  const [form, setform] = useState({
+  const form = {
     title: "",
     description: "",
     price: "",
     stock: "",
     category: "",
     images: [],
-  });
+  };
 
   const Save = async (e, formulario) => {
     e.preventDefault();
     let response = await addProduct(formulario);
 
+    /* istanbul ignore if */
     if (response.status === 201) {
       swal({
         title: "Producto agregado correctamente.",
         icon: "success",
       }).then(() => navigate("/products"));
-    } else {
+    }
+    /* istanbul ignore else */ else {
       swal({
         title: "Ha ocurrido un error, no se ha podido agregar.",
         icon: "error",
@@ -44,13 +46,6 @@ function AddForm() {
     }
   };
 
-  const handleCancel = (e) => {
-    e.preventDefault();
-    swal({
-      title: "No ha añadido ningún producto",
-      icon: "error",
-    }).then(() => navigate("/products"));
-  };
 
   return (
     <>
