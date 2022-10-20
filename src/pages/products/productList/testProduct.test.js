@@ -33,7 +33,7 @@ describe('Filtros test y renderizacion de mensajes', () =>{
                         </MemoryRouter>)
         })
 
-    });
+    }); 
 
     test('Ver si el boton se renderiza', () => { 
         const searchInput = screen.getByPlaceholderText(/Buscar productos/i)
@@ -58,7 +58,33 @@ describe('Filtros test y renderizacion de mensajes', () =>{
         productsFilter.forEach(x => expect(cards).toHaveTextContent(x.title))
 
     })
-    
+    test('Ver si el boton de limpiar se renderiza', async () => { 
+        const cleanInput = screen.getByText(/Limpiar/i)
+    })
+
+    test('Ver si el boton de limpiar vacia los campos', async () => { 
+        const cleanInput = screen.getByText(/Limpiar/i)
+        const searchInput = screen.queryByPlaceholderText(/Buscar productos/i)
+
+        await userEvent.type(searchInput, 'iphone')
+        await userEvent.click(cleanInput)
+        expect(searchInput).toBeEmptyDOMElement()
+    })
+
+    test('Ver si al limpiar los campos vuelve a mostrar todos los productos', async () => { 
+        const cleanInput = screen.getByText(/Limpiar/i)
+        const searchInput = screen.queryByPlaceholderText(/Buscar productos/i)
+
+        await userEvent.type(searchInput, 'iphoneeeeeee')
+        await userEvent.click(cleanInput)
+
+        const cards = await screen.findAllByRole('heading')
+        const prodTextTag = [...cards.map(tag => tag.textContent)]
+        const prodTitles = [... new Set(products.map(tag => tag.title))]
+        expect(prodTextTag).toEqual(prodTitles);
+
+    })
+
 
     test('Ver si filtra por Categoria', async () => { 
         const selects = screen.getByRole('combobox');
@@ -75,6 +101,9 @@ describe('Filtros test y renderizacion de mensajes', () =>{
         const prodDist = [... new Set(cards.map(tag => tag.textContent))]
         const prodTitles = [... new Set(productsFilter.map(tag => tag.title))]
         expect(prodDist).toEqual(prodTitles);
-
     })
 })
+
+//ver si filtra min 
+//ver si filtra max
+//ver si hace filtros combinados
