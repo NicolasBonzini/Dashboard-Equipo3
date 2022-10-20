@@ -59,7 +59,7 @@ describe("El boton de cancelar cambios funciona correctamente", () => {
 
     expect(inputDescription).toHaveValue("iphone 9");
   });
-  test.skip("Añado imagen, y al cancelar se borra lo que escribi", async () => {
+  test("Añado imagen, y al cancelar se borra lo que escribi", async () => {
     render(<Form formu={form} />);
     const cancel = screen.getByText("Cancelar");
 
