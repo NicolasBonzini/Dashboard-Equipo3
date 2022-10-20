@@ -95,7 +95,5 @@ describe("La pagina del producto obtiene los datos e imprime en pantalla", () =>
         </MemoryRouter>
       );
     });
-
-    // const form = await getProductById(0).then((res) => res.json());
   });
 });

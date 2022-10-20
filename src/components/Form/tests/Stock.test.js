@@ -25,7 +25,6 @@ describe("Testeando el boton de stock", () => {
     render(<Form formu={form} counter={5} />);
     //Tomamos el input de nombre del producto
     const stock = screen.getByLabelText("Stock");
-    // console.log(prettyDOM(stock));
     //assertion
     expect(parseInt(stock.defaultValue)).toBe(5);
   });
