@@ -25,12 +25,14 @@ function ProductView() {
     })
     .then((willDelete) => {
       if (willDelete) {
+        /* istanbul ignore file */
         swal("Poof! Producto eliminado!", {
           icon: "success",
         });
         delProduct(id)
         navigate('/products')
       }else {
+        /* istanbul ignore file */
         swal("El producto no ha sido eliminado.");
       }
     });
