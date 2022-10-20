@@ -35,7 +35,6 @@ describe("Testeando los inputs", () => {
     //Tomamos el input de nombre del producto
     const precio = screen.getByLabelText("Valor");
 
-    // console.log(prettyDOM(precio));
     //assertion
     expect(precio).toHaveValue(form.price);
   });
@@ -45,7 +44,6 @@ describe("Testeando los inputs", () => {
     render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const textAr = screen.getByLabelText("Descripción");
-    // console.log(prettyDOM(stock));
     //assertion
     expect(textAr.defaultValue).toBe(form.description);
   });

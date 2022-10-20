@@ -72,6 +72,6 @@ describe("El boton de cancelar cambios funciona correctamente", () => {
     const imagenes = screen.getAllByAltText("Producto");
     console.log(imagenes.length);
 
-    // expect(imagenes).toHaveLength("1");
+    // expect(imagenes).toHaveLength(Number("2"));
   });
 });

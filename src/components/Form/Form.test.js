@@ -25,7 +25,6 @@ describe("Todos los elementos se renderizan correctamente", () => {
     render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const select = screen.getByLabelText("Tienda");
-    // console.log(prettyDOM(select));
     //assertion
     expect(select.value).toBe("Tienda");
   });
@@ -35,7 +34,6 @@ describe("Todos los elementos se renderizan correctamente", () => {
     render(<Form formu={form} />);
     //Tomamos el input de nombre del producto
     const saveProduct = screen.getByText("Guardar");
-    // console.log(prettyDOM(deleteImage));
     //assertion
     expect(saveProduct).toBeInTheDocument();
   });
