@@ -87,7 +87,7 @@ describe('Filtros test y renderizacion de mensajes', () => {
 
         const cards = await screen.findAllByRole('heading')
         const prodTextTag = [...cards.map(tag => tag.textContent)]
-        const prodTitles = [... new Set(products.map(tag => tag.title))]
+        const prodTitles = [... products.map(tag => tag.title)]
         expect(prodTextTag).toEqual(prodTitles);
 
     })
