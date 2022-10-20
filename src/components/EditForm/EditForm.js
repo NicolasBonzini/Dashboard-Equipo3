@@ -73,6 +73,7 @@ function EditForm() {
       });
     }
   };
+  console.log("editform: ", form);
 
   return (
     <>

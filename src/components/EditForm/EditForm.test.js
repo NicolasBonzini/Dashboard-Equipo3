@@ -58,20 +58,22 @@ describe("La pagina del producto obtiene los datos e imprime en pantalla", () =>
     // Simulo el prompt
     window.prompt = jest.fn();
 
-    getProductById.mockImplementation((id) => {
-      return new Promise((resolve) => {
-        resolve({
-          json: () =>
-            new Promise((resolve) =>
-              resolve(products.filter((prod) => prod.id === id))
-            ),
-        });
-      });
-    });
+    // getProductById.mockImplementation((id) => {
+    //   return new Promise((resolve) => {
+    //     resolve({
+    //       json: () =>
+    //         new Promise((resolve) =>
+    //           resolve(products.filter((prod) => prod.id === id))
+    //         ),
+    //     });
+    //   });
+    // });
 
-    const form = (await getProductById(4).then((res) => res.json()))[0];
+    getProductById.mockResolvedValue(products[4]);
+
+    // const form = (await getProductById(4).then((res) => res.json()))[0];
+    const form = await getProductById();
     console.log(form);
-    // await waitFor(() => expect(form.images).toHaveLength(5));
 
     await act(async () => {
       await render(
