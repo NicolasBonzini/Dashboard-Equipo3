@@ -25,9 +25,11 @@ describe("This component must render props", () => {
     });
   });
 
+
   test("Props.price must be correctly rendered", () => {
     const item = screen.getByText(/549/i);
-    //  logRoles(item);
+
+
     expect(item).toHaveTextContent("$549.00");
   });
 });

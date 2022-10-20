@@ -73,7 +73,9 @@ describe("Las imagenes del producto funcionan correctamente", () => {
 
     expect(imagenes).toHaveLength(2);
   });
-  test.skip("Al añadir la imagen, se muestra en pantalla la imagen añadida, y podemos quitar imagenes al darle al boton quitar", async () => {
+
+  test("Al añadir la imagen, se muestra en pantalla la imagen añadida, y podemos quitar imagenes al darle al boton quitar", async () => {
+
     render(<Form formu={form} />);
     //input para añadir imagen
     const inputImg = screen.getByLabelText("Nueva Imagen");
