@@ -13,8 +13,7 @@ import ProductList from "./ProductList";
 jest.mock("../../../utils/getProducts");
 
 describe("This component must list products and allow redirection to edit and create product", () => {
-  
-    beforeEach(async () => {
+  beforeEach(async () => {
     getProducts.mockResolvedValue(mockedProducts);
 
     await act(async () => {
@@ -26,16 +25,14 @@ describe("This component must list products and allow redirection to edit and cr
     });
   });
 
-
-  it("Render all products", async () => {
+  test("Render all products", async () => {
     mockedProducts.forEach((product) => {
       screen.getByText(product.title);
       /* Finding product.title in the document means the test passed. Expect assertion is not necessary.  */
     });
   });
 
-
-  it("Correctly renders prop: props.id", async () => {
+  test("Correctly renders prop: props.id", async () => {
     const items = screen.getAllByRole("list-item", { name: "productCard" });
 
     items.forEach((item, i) => {
@@ -44,9 +41,7 @@ describe("This component must list products and allow redirection to edit and cr
     });
   });
 
-
-
-  it("Correctly renders prop: props.title", () => {
+  test("Correctly renders prop: props.title", () => {
     mockedProducts.forEach((prod, i) => {
       expect(screen.getAllByRole("heading", { level: 4 })[i]).toHaveTextContent(
         prod.title
@@ -54,8 +49,7 @@ describe("This component must list products and allow redirection to edit and cr
     });
   });
 
-
-  it("Correctly renders prop: props.img", async () => {
+  test("Correctly renders prop: props.img", async () => {
     let imgs = await screen.findAllByRole("img");
     let newArr = imgs.filter(
       (i) => i.src != "http://localhost/chevron-right.svg"
@@ -66,18 +60,12 @@ describe("This component must list products and allow redirection to edit and cr
     });
   });
 
-
-  it('Must confirm redirection route is set to /product/productId', async () => {
+  test("Must confirm redirection route is set to /product/productId", async () => {
     const items = screen.getAllByRole("list-item", { name: "productCard" });
 
     items.forEach((item, i) => {
       const link = getByRole(item, "link");
       expect(link).toHaveAttribute("href", `/product/${mockedProducts[i].id}`);
     });
-
   });
-
-
-  
-
 });

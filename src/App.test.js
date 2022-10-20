@@ -1,11 +1,9 @@
 import { logRoles, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-// import { getProducts } from "./utils/getProducts";
 import App from "./App";
 import mockedProducts from "./__mocks__/products/products";
 import getProducts from "./utils/getProducts";
-import { act } from "react-dom/test-utils";
 
 jest.mock("./utils/getProducts");
 

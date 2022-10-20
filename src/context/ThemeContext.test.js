@@ -1,4 +1,4 @@
-import { getByRole, logRoles, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "./ThemeContext";
 import userEvent from "@testing-library/user-event";
 import LinksNavegationSideBar from "../components/LinksNavegationSideBar/LinksNavegationSideBar";
@@ -16,7 +16,6 @@ describe("ThemeContext", () => {
       </MemoryRouter>
     );
 
-    logRoles(container);
     const themeDefault = screen.getByTestId("");
     const label = screen.getByRole("button", { name: "★ ★" });
 
