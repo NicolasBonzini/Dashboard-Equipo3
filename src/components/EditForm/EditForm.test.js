@@ -58,17 +58,7 @@ describe("La pagina del producto obtiene los datos e imprime en pantalla", () =>
     // Simulo el prompt
     window.prompt = jest.fn();
 
-    // getProductById.mockImplementation((id) => {,jn,j
-    //   return new Promise((resolve) => {
-    //     resolve({
-    //       json: () =>
-    //         new Promise((resolve) =>
-    //           resolve(products.filter((prod) => prod.id === id))
-    //         ),
-    //     });
-    //   });
-    // });
-
+    //mockeo el llamado a la api
     getProductById.mockResolvedValue(
       products.find((product) => product.id === useParams().id)
     );
