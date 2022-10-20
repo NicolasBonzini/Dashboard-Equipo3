@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const addProduct = async (form) => {
   const res = await fetch("http://localhost:5000/api/product", {
     method: "POST",
