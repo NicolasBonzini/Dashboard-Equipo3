@@ -88,21 +88,6 @@ describe("Testeo de toda la navegacion", () => {
     expect(currentNewRoute.dataset.testid).toMatch(/products\/new/i);
   });
 
-  test("Al dar click sobre el boton VER LISTADO la app debe navegar a la ruta products", async () => {
-    const { user, container } = renderWithRouter(<App />);
-
-    const currentRoute = screen.getByTestId("/");
-
-    const storesButton = screen.getByRole("link", {
-      name: "Ver Listado",
-    });
-
-    await user.click(storesButton);
-
-    const currentNewRoute = screen.getByTestId(/products/i);
-    expect(currentNewRoute.dataset.testid).toMatch(/products/i);
-  });
-
   test("Al dar click para acceder a la ruta profile debe aparecer la vista de error404", async () => {
     const { user } = renderWithRouter(<App />);
 
