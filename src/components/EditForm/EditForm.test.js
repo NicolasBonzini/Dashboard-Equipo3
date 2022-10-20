@@ -53,12 +53,12 @@ describe("testeando putProducts", () => {
 describe("La pagina del producto obtiene los datos e imprime en pantalla", () => {
   test.only("Me trae el producto y lo muestra correctamente", async () => {
     useParams.mockReturnValue({
-      id: "",
+      id: 5,
     });
     // Simulo el prompt
     window.prompt = jest.fn();
 
-    // getProductById.mockImplementation((id) => {
+    // getProductById.mockImplementation((id) => {,jn,j
     //   return new Promise((resolve) => {
     //     resolve({
     //       json: () =>
@@ -69,11 +69,9 @@ describe("La pagina del producto obtiene los datos e imprime en pantalla", () =>
     //   });
     // });
 
-    getProductById.mockResolvedValue(products[4]);
-
-    // const form = (await getProductById(4).then((res) => res.json()))[0];
-    const form = await getProductById();
-    console.log(form);
+    getProductById.mockResolvedValue(
+      products.find((product) => product.id === useParams().id)
+    );
 
     await act(async () => {
       await render(

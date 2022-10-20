@@ -40,20 +40,17 @@ function EditForm() {
   // Estado del contador de stock
   //Llamado a la api
   useEffect(() => {
-    async function get() {
-      await getProductById(id).then((re) => {
-        if (re.status === 404) {
-          swal({
-            title: re.error,
-            icon: "error",
-          }).then(() => navigate("/"));
-        } else {
-          setform(re);
-          // setCounter(re.stock);
-        }
-      });
-    }
-    get();
+    getProductById(id).then((re) => {
+      if (re.status === 404) {
+        swal({
+          title: re.error,
+          icon: "error",
+        }).then(() => navigate("/"));
+      } else {
+        setform(re);
+        // setCounter(re.stock);
+      }
+    });
   }, []);
 
   // Defino qué petición haré con el formulario en esta pagina.
